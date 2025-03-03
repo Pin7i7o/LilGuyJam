@@ -9,50 +9,38 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+var prev_velocity = Vector2.ZERO
+
 func _ready():
 	pass
 
 func _physics_process(_delta: float) -> void:
 	set_gravity()
 	
-	var direction: float = input()
+	var direction = Input.get_axis("left", "right")
 	
-	if direction != 0:
-		accelerate(direction)
-	else:
-		decelerate()
-		#set state and anim
-		
-	flip_sprite(direction)
-	player_movement()
+	run(direction)
+	
 	jump()
+	if not is_on_floor():
+		velocity.x = lerp(prev_velocity.x, velocity.x, 0.1)
+
+	prev_velocity = velocity 
+	move_and_slide()
+
 
 func set_gravity() -> void:
 		if not is_on_floor():
 			velocity.y += GRAVITY
 
-func input() -> float:
-	var direction = 0
-	
-	direction = Input.get_axis("left", "right")
-	return direction
-	
-func accelerate(direction) -> void:
-	velocity.x = move_toward(velocity.x, SPEED * direction, ACCELERATION)
-
-func decelerate() -> void:
-	velocity.x = move_toward(velocity.x, 0, DECELERATION)
-	
-func flip_sprite(direction: float) -> void:
-	if direction == 1:
-		animated_sprite_2d.flip_h = false
-	elif direction == -1:
-		animated_sprite_2d.flip_h = true
-	
-func player_movement() -> void:
-	move_and_slide()
+func run(direction) -> void:
+	if direction != 0:
+		velocity.x = move_toward(velocity.x, SPEED * direction, ACCELERATION)
+		animated_sprite_2d.flip_h = direction < 0
+	else :
+		velocity.x = move_toward(velocity.x, 0, DECELERATION)
 
 func jump() -> void:
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
-			velocity.y -= JUMP                                  
+			velocity.y -= JUMP                          
