@@ -1,10 +1,26 @@
-[gd_scene load_steps=19 format=3 uid="uid://det88ts0af6a6"]
+[gd_scene load_steps=31 format=3 uid="uid://det88ts0af6a6"]
 
-[ext_resource type="Script" uid="uid://c0w3rsxb2iman" path="res://Scripts/Characters/Player/player_movement.gd" id="1_nbnqn"]
+[ext_resource type="Script" uid="uid://c0w3rsxb2iman" path="res://Scripts/Characters/Player/player.gd" id="1_nbnqn"]
 [ext_resource type="Texture2D" uid="uid://c45arjww6euoo" path="res://Assets/TestDino/DinoSprites - vita.png" id="1_s3jil"]
-[ext_resource type="Script" uid="uid://ccnxfjuq8060l" path="res://Scripts/Characters/Player/States/idle_state.gd" id="3_6t5aa"]
-[ext_resource type="Script" uid="uid://dphnlmd0fgjlx" path="res://Scripts/Characters/Player/States/run_state.gd" id="4_x3wgy"]
-[ext_resource type="Script" uid="uid://btk4iunh3kx3j" path="res://Scripts/Characters/Player/States/jump_state.gd" id="5_3smsa"]
+[ext_resource type="Resource" uid="uid://410r6fd0wyn4" path="res://Resources/Player/player_stats.tres" id="2_f1ek2"]
+[ext_resource type="Script" uid="uid://36q6j38bo6bq" path="res://Scripts/Characters/Player/States/idle_state.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://cu1dwtcn4sj7s" path="res://Scripts/Characters/Player/limbo_hsm.gd" id="3_tx1dd"]
+[ext_resource type="Script" uid="uid://mu6gixmp3out" path="res://Scripts/Characters/Player/States/move_state.gd" id="6_x3wgy"]
+[ext_resource type="Script" uid="uid://lctegp3harp3" path="res://Scripts/Characters/Player/player_input.gd" id="7_3smsa"]
+[ext_resource type="Resource" uid="uid://d347e2j7fu016" path="res://Resources/Player/player_input.tres" id="9_f1ek2"]
+[ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="10_gymyn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+atlas = ExtResource("1_s3jil")
+region = Rect2(240, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
+atlas = ExtResource("1_s3jil")
+region = Rect2(264, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4iuc"]
+atlas = ExtResource("1_s3jil")
+region = Rect2(288, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vc1j0"]
 atlas = ExtResource("1_s3jil")
@@ -50,8 +66,38 @@ region = Rect2(192, 0, 24, 24)
 atlas = ExtResource("1_s3jil")
 region = Rect2(216, 0, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd4e3"]
+atlas = ExtResource("1_s3jil")
+region = Rect2(240, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqcod"]
+atlas = ExtResource("1_s3jil")
+region = Rect2(264, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igrcy"]
+atlas = ExtResource("1_s3jil")
+region = Rect2(288, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs7ks"]
+atlas = ExtResource("1_s3jil")
+region = Rect2(408, 0, 24, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_dd72n"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3wgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8erm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4iuc")
+}],
+"loop": true,
+"name": &"atk",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vc1j0")
@@ -99,39 +145,84 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd4e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqcod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igrcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs7ks")
+}],
+"loop": true,
+"name": &"ult",
+"speed": 8.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phill"]
 radius = 4.0
 height = 16.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_8erm5"]
+var/direction/name = &"direction"
+var/direction/type = 5
+var/direction/value = Vector2(0, 0)
+var/direction/hint = 0
+var/direction/hint_string = "Direction the player move"
+
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d")]
 collision_mask = 4
 script = ExtResource("1_nbnqn")
-state_machine = NodePath("LimboHSM")
+animated_sprite_2d = NodePath("AnimatedSprite2D")
+stats = ExtResource("2_f1ek2")
+
+[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -35.0
+offset_right = 19.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("10_gymyn")
+limbo_hsm = NodePath("../LimboHSM")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dd72n")
-animation = &"jump"
-frame_progress = 0.4254
+animation = &"ult"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_phill")
 
-[node name="LimboHSM" type="LimboHSM" parent="."]
+[node name="LimboHSM" type="LimboHSM" parent="." node_paths=PackedStringArray("character", "states")]
+blackboard_plan = SubResource("BlackboardPlan_8erm5")
+script = ExtResource("3_tx1dd")
+character = NodePath("..")
+states = {
+"idle": NodePath("IdleState"),
+"move": NodePath("MoveState")
+}
 
-[node name="idle_state" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animated_sprite_2d")]
+[node name="IdleState" type="LimboState" parent="LimboHSM"]
 script = ExtResource("3_6t5aa")
 animation_name = &"idle"
-animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="run_state" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animated_sprite_2d")]
-script = ExtResource("4_x3wgy")
+[node name="MoveState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("6_x3wgy")
 animation_name = &"run"
-animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+metadata/_custom_type_script = "uid://coc0ycfjrlafn"
 
-[node name="jump_state" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animated_sprite_2d")]
-script = ExtResource("5_3smsa")
-animation_name = &"jump"
-animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+[node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("limbo_hsm")]
+script = ExtResource("7_3smsa")
+player_actions = ExtResource("9_f1ek2")
+limbo_hsm = NodePath("../LimboHSM")

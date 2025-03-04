@@ -218,14 +218,9 @@ sources/0 = SubResource("TileSetAtlasSource_dwsja")
 [node name="main" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_etmrj")]
-position = Vector2(123, 204)
+position = Vector2(123, 385)
 scale = Vector2(2, 2)
 disable_mode = 1
-SPEED = 300
-ACCELERATION = 50
-DECELERATION = 100
-DEFAULT_GRAVITY = 10
-JUMP = 300
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
