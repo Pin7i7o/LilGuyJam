@@ -11,4 +11,4 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	if not is_on_floor():
-		velocity += get_gravity()
+		velocity += get_gravity() *_delta

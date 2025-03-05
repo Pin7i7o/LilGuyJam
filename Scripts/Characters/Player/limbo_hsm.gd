@@ -11,5 +11,4 @@ func _ready() -> void:
 	set_active(true)
 	
 func _bind_transitions():
-	add_transition(states["idle"], states["move"], "&toMove")
-	add_transition(states["move"], states["idle"], "&toIdle")
+	pass

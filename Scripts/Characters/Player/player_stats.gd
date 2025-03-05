@@ -10,3 +10,4 @@ extends Resource
 #jump variables
 @export var DEFAULT_GRAVITY: float = 10
 @export var JUMP: float = 300 
+@export var MAX_JUMPS: int = 1
