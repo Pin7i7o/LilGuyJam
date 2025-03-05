@@ -11,4 +11,5 @@ func _ready() -> void:
 	set_active(true)
 	
 func _bind_transitions():
-	pass
+	add_transition(states["ground"], states["air"], "&toAir")
+	add_transition(states["air"], states["ground"], "&toGround")

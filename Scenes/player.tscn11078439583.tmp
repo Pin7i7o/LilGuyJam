@@ -180,16 +180,11 @@ var/jump/value = false
 var/jump/hint = 0
 var/jump/hint_string = "Is player trying to jump?"
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "timer")]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d")]
 collision_mask = 4
 script = ExtResource("1_nbnqn")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 stats = ExtResource("2_f1ek2")
-timer = NodePath("Timer")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.15
-one_shot = true
 
 [node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
 anchors_preset = 3
