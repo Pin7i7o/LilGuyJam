@@ -5,11 +5,10 @@ extends StateManager
 @export var idle_anim: StringName
 @export var run_anim: StringName
 
-var current_jump: int = 0
 
 func _update(_delta: float) -> void:
 	_apply_gravity(false)
-	run()
+	_run()
 	
 	if Vector2.ZERO.is_equal_approx(agent.velocity):
 		agent.animated_sprite_2d.play(idle_anim)
@@ -18,24 +17,11 @@ func _update(_delta: float) -> void:
 	
 	if agent.is_on_floor():
 		if blackboard.get_var(BBNames.jump_input) && current_jump == 0:
-			jump()
-			current_jump = 0
+			_jump()
 	else:
 		coyote_timer.start()
 		dispatch("&toAir")
-
-func jump() -> void:
-	if current_jump < player_stats.MAX_JUMPS:
-		agent.velocity.y = -player_stats.JUMP
-		current_jump += 1
 		
-func run() -> void:
-	var direction: Vector2 = blackboard.get_var(BBNames.direction_var)
-
-	if not is_zero_approx(direction.x):
-		agent.velocity.x = move_toward(agent.velocity.x, player_stats.SPEED * direction.x, player_stats.ACCELERATION)
-		agent.animated_sprite_2d.flip_h = direction.x < 0
-	else:
-		agent.velocity.x = move_toward(agent.velocity.x, 0, player_stats.DECELERATION)
-	
-	agent.move_and_slide()
+	if blackboard.get_var(BBNames.attack_input):
+		dispatch("&toAtk")
+		

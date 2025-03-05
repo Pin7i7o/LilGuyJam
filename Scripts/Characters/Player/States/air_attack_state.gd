@@ -15,5 +15,5 @@ func _update(_delta: float) -> void:
 	if agent.is_on_floor():
 		dispatch("&toGround") 
 	
-	if blackboard.get_var(BBNames.attack_input):
-		dispatch("&toAtk")
+	if !blackboard.get_var(BBNames.attack_input):
+		dispatch("&toAir")

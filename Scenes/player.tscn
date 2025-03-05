@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://det88ts0af6a6"]
+[gd_scene load_steps=33 format=3 uid="uid://det88ts0af6a6"]
 
 [ext_resource type="Script" uid="uid://c0w3rsxb2iman" path="res://Scripts/Characters/Player/player.gd" id="1_nbnqn"]
 [ext_resource type="Texture2D" uid="uid://c45arjww6euoo" path="res://Assets/TestDino/DinoSprites - vita.png" id="1_s3jil"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://b5m6xegpqtnap" path="res://Scripts/Characters/Player/States/air_state.gd" id="6_f1ek2"]
 [ext_resource type="Script" uid="uid://mu6gixmp3out" path="res://Scripts/Characters/Player/States/ground_state.gd" id="6_x3wgy"]
 [ext_resource type="Script" uid="uid://lctegp3harp3" path="res://Scripts/Characters/Player/player_input.gd" id="7_3smsa"]
+[ext_resource type="Script" uid="uid://d12ej273bispq" path="res://Scripts/Characters/Player/States/ground_attack_state.gd" id="8_tx1dd"]
 [ext_resource type="Resource" uid="uid://d347e2j7fu016" path="res://Resources/Player/player_input.tres" id="9_f1ek2"]
+[ext_resource type="Script" uid="uid://ciaqc4lu5t30l" path="res://Scripts/Characters/Player/States/air_attack_state.gd" id="9_gymyn"]
 [ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="10_gymyn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
@@ -178,7 +180,12 @@ var/jump/name = &"jump"
 var/jump/type = 1
 var/jump/value = false
 var/jump/hint = 0
-var/jump/hint_string = "Is player trying to jump?"
+var/jump/hint_string = "Is player jumping?"
+var/attack/name = &"attack"
+var/attack/type = 2
+var/attack/value = 0
+var/attack/hint = 0
+var/attack/hint_string = "Is player attacking?"
 
 [node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "timer")]
 collision_mask = 4
@@ -220,7 +227,9 @@ script = ExtResource("3_tx1dd")
 character = NodePath("..")
 states = {
 "air": NodePath("AirState"),
-"ground": NodePath("GroundState")
+"air_atk": NodePath("AirAttackState"),
+"ground": NodePath("GroundState"),
+"ground_atk": NodePath("GroundAttackState")
 }
 
 [node name="AirState" type="LimboState" parent="LimboHSM"]
@@ -233,6 +242,16 @@ script = ExtResource("6_x3wgy")
 idle_anim = &"idle"
 run_anim = &"run"
 animation_name = &"run"
+metadata/_custom_type_script = "uid://coc0ycfjrlafn"
+
+[node name="GroundAttackState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("8_tx1dd")
+animation_name = &"atk"
+metadata/_custom_type_script = "uid://coc0ycfjrlafn"
+
+[node name="AirAttackState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("9_gymyn")
+animation_name = &"atk"
 metadata/_custom_type_script = "uid://coc0ycfjrlafn"
 
 [node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("limbo_hsm")]

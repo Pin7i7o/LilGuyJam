@@ -12,5 +12,5 @@ JUMP = 300.0
 MAX_JUMPS = 1
 AIR_ACCELERATION = 15.0
 AIR_FRICTION = 10.0
-GRAVITY_MULTIPLIER = 1.5
+GRAVITY_MULTIPLIER = 2.0
 metadata/_custom_type_script = "uid://cdnod4r3kna00"
