@@ -6,6 +6,7 @@ extends LimboState
 var player_stats: PlayerStats
 var coyote_timer: Timer
 var current_jump: int
+var weapon: Weapon
 
 func _enter() -> void:
 	agent.animated_sprite_2d.play(animation_name)
@@ -13,6 +14,7 @@ func _enter() -> void:
 	player_stats = agent.stats
 	coyote_timer = agent.timer
 	current_jump = 0
+	weapon = agent.weapon
 
 func _apply_gravity(multiplier: bool) -> void:
 	if not agent.is_on_floor():
@@ -47,3 +49,7 @@ func _air_move() -> void:
 		agent.velocity.x = move_toward(agent.velocity.x, 0, player_stats.AIR_FRICTION)
 		
 	agent.move_and_slide()
+	
+func _shoot() -> void:
+	weapon.shoot()
+	

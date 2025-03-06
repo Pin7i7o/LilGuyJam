@@ -9,12 +9,14 @@ var blackboard: Blackboard
 var input_direction: Vector2
 var jump: bool
 var attack: bool
+var ult: bool
 
 func _ready() -> void:
 	blackboard = limbo_hsm.blackboard
 	blackboard.bind_var_to_property(BBNames.direction_input, self, "input_direction", false)
 	blackboard.bind_var_to_property(BBNames.jump_input, self, "jump", false)
 	blackboard.bind_var_to_property(BBNames.attack_input, self, "attack", false)
+	blackboard.bind_var_to_property(BBNames.ult_input, self, "ult", false)
 
 func _process(_delta: float) -> void:
 	#movement input
@@ -31,4 +33,10 @@ func _process(_delta: float) -> void:
 		attack = true
 	elif Input.is_action_just_released(player_actions.attack):
 		attack = false
+		
+	#ult input
+	if Input.is_action_just_pressed(player_actions.ult):
+		ult = true
+	elif Input.is_action_just_released(player_actions.ult):
+		ult = false
 	

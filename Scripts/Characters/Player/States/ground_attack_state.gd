@@ -3,6 +3,7 @@ extends StateManager
 func _update(_delta: float) -> void:
 	_apply_gravity(false)
 	_run()
+	_shoot()
 	
 	if !blackboard.get_var(BBNames.attack_input):
 		dispatch("&toGround")

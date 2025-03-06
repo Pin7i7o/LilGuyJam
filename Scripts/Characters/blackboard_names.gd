@@ -4,3 +4,4 @@ class_name BBNames
 static var direction_input: StringName = "direction"
 static var jump_input: StringName = "jump"
 static var attack_input: StringName = "attack"
+static var ult_input: StringName = "ult"

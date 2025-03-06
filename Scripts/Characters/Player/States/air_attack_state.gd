@@ -7,6 +7,7 @@ func _update(_delta: float) -> void:
 		_apply_gravity(false)
 		
 	_air_move()
+	_shoot()
 	
 	if !coyote_timer.is_stopped():
 		if blackboard.get_var(BBNames.jump_input) && current_jump == 0:
