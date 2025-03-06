@@ -12,7 +12,7 @@ func _ready() -> void:
 	
 	
 func shoot() -> void:
-	var projectile = ranged_projectile.instantiate() as RangedProjectile
+	var projectile = ranged_projectile.instantiate() as Area2D
 	projectiles_parent.add_child(projectile)
 	
 	projectile.position = global_position

@@ -8,10 +8,9 @@
 radius = 2.0
 height = 14.0
 
-[node name="RangedProjectile" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="RangedProjectile" type="Area2D"]
 script = ExtResource("1_olekx")
-ranged_stats = ExtResource("2_qp68y")
+stats = ExtResource("2_qp68y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_p5nbe")

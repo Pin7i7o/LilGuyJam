@@ -1,7 +1,7 @@
 class_name RangedProjectile
-extends RigidBody2D
+extends Area2D
 
-@export var ranged_stats: WeaponStats
+@export var stats: WeaponStats
 
-func _ready() -> void:
-	linear_velocity.x = ranged_stats.R_BULLET_SPEED
+func _process(delta: float) -> void:
+	position += transform.x * stats.R_BULLET_SPEED
