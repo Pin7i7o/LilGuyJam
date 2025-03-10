@@ -12,7 +12,7 @@ func _enter() -> void:
 	agent.animated_sprite_2d.play(animation_name)
 	
 	player_stats = agent.stats
-	coyote_timer = agent.timer
+	coyote_timer = agent.coyote_time_timer
 	current_jump = 0
 	weapon = agent.weapon
 

@@ -13,9 +13,9 @@
 [ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="10_gymyn"]
 [ext_resource type="Script" uid="uid://cot5yl7brcu0h" path="res://Scripts/Characters/Player/States/ult_state.gd" id="10_pu2lt"]
 [ext_resource type="Script" uid="uid://dd2mcyy8tl8x4" path="res://Scripts/Weapons/weapon.gd" id="13_ukyrk"]
-[ext_resource type="PackedScene" uid="uid://br1vfihjgqiyv" path="res://Scenes/ranged_projectile.tscn" id="15_h4iuc"]
+[ext_resource type="PackedScene" uid="uid://br1vfihjgqiyv" path="res://Scenes/ranged_projectile.tscn" id="14_h4iuc"]
 [ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="16_fd4e3"]
-[ext_resource type="Texture2D" uid="uid://cwqdw5o7xhgms" path="res://Assets/Characters/Weapons/Player/1.png" id="16_qqcod"]
+[ext_resource type="Resource" uid="uid://bysaok0vnyjn" path="res://Resources/Weapons/weapon_stats.tres" id="16_qqcod"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pu2lt"]
 atlas = ExtResource("4_gymyn")
@@ -197,16 +197,21 @@ var/ult/value = false
 var/ult/hint = 0
 var/ult/hint_string = "Is player ulting?"
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "timer", "weapon")]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "coyote_time_timer", "weapon")]
 collision_mask = 4
 script = ExtResource("1_nbnqn")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 stats = ExtResource("2_f1ek2")
-timer = NodePath("Timer")
+coyote_time_timer = NodePath("Timers/CoyoteTimer")
 weapon = NodePath("Weapon")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timers" type="Node" parent="."]
+
+[node name="CoyoteTimer" type="Timer" parent="Timers"]
 wait_time = 0.15
+one_shot = true
+
+[node name="FireRate" type="Timer" parent="Timers"]
 one_shot = true
 
 [node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
@@ -277,16 +282,11 @@ script = ExtResource("7_3smsa")
 player_actions = ExtResource("9_f1ek2")
 limbo_hsm = NodePath("../LimboHSM")
 
-[node name="Weapon" type="Node2D" parent="." node_paths=PackedStringArray("player_input") groups=["weapon"]]
+[node name="Weapon" type="Node2D" parent="." node_paths=PackedStringArray("player_input", "fire_rate_timer") groups=["weapon"]]
 position = Vector2(0, 4)
 script = ExtResource("13_ukyrk")
-ranged_projectile = ExtResource("15_h4iuc")
+ranged_projectile = ExtResource("14_h4iuc")
 group_names = ExtResource("16_fd4e3")
 player_input = NodePath("../PlayerInput")
-
-[node name="Sprite2D" type="Sprite2D" parent="Weapon"]
-visible = false
-position = Vector2(4, -3)
-texture = ExtResource("16_qqcod")
-region_enabled = true
-region_rect = Rect2(0, 118, 12, 10)
+fire_rate_timer = NodePath("../Timers/FireRate")
+weapon_stats = ExtResource("16_qqcod")

@@ -1,18 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://br1vfihjgqiyv"]
+[gd_scene load_steps=5 format=3 uid="uid://br1vfihjgqiyv"]
 
 [ext_resource type="Script" uid="uid://cfgi27rylyaof" path="res://Scripts/Weapons/ranged_projectile.gd" id="1_olekx"]
 [ext_resource type="Resource" uid="uid://bysaok0vnyjn" path="res://Resources/Weapons/weapon_stats.tres" id="2_qp68y"]
 [ext_resource type="Texture2D" uid="uid://cwqdw5o7xhgms" path="res://Assets/Characters/Weapons/Player/1.png" id="3_p5nbe"]
-[ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="3_qp68y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_olekx"]
 radius = 2.0
 height = 14.0
 
-[node name="RangedProjectile" type="Area2D"]
+[node name="BaseProjectile" type="Area2D"]
+disable_mode = 1
+collision_layer = 8
+collision_mask = 6
 script = ExtResource("1_olekx")
 stats = ExtResource("2_qp68y")
-group_names = ExtResource("3_qp68y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_p5nbe")
@@ -22,3 +23,5 @@ region_rect = Rect2(193, 71, 13, 3)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_olekx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

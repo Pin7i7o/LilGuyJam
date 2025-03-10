@@ -7,7 +7,7 @@ extends Node
 
 var blackboard: Blackboard
 var input_direction: Vector2
-var input_direction_history: Array
+var input_direction_history: Array = [Vector2(1,0)]
 var history_cap: int = 2
 var jump: bool
 var attack: bool

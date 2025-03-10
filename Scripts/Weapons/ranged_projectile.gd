@@ -1,12 +1,12 @@
-class_name RangedProjectile
+class_name BaseProjectile
 extends Area2D
 
 @export var stats: WeaponStats
-@export var group_names: GroupNames
 
 var projectile_direction = Vector2.RIGHT
 
 func _process(delta: float) -> void:
-	position += projectile_direction * stats.R_BULLET_SPEED
-
+	position += projectile_direction * stats.BULLET_SPEED
 	
+func _on_body_entered(body: Node2D) -> void:
+	queue_free()

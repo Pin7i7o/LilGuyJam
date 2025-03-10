@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://b5ntutnuc6pin"]
+[gd_scene load_steps=7 format=4 uid="uid://b5ntutnuc6pin"]
 
 [ext_resource type="PackedScene" uid="uid://det88ts0af6a6" path="res://Scenes/player.tscn" id="1_k5f4k"]
 [ext_resource type="Texture2D" uid="uid://cn10x0j7lndwe" path="res://Assets/Tilesets/test_tileset.png" id="2_6phgx"]
+[ext_resource type="PackedScene" uid="uid://ch4faolj8jq8a" path="res://Scenes/enemy.tscn" id="2_81xng"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 size = Vector2(20, 322.5)
@@ -215,7 +216,7 @@ texture = ExtResource("2_6phgx")
 
 [sub_resource type="TileSet" id="TileSet_jggsm"]
 physics_layer_0/collision_layer = 4
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_mask = 11
 sources/0 = SubResource("TileSetAtlasSource_dwsja")
 
 [node name="level" type="Node2D"]
@@ -224,9 +225,16 @@ sources/0 = SubResource("TileSetAtlasSource_dwsja")
 position = Vector2(123, 385)
 scale = Vector2(2, 2)
 disable_mode = 1
+collision_mask = 6
 
 [node name="CameraFollow" type="RemoteTransform2D" parent="CharacterBody2D"]
 remote_path = NodePath("../../Camera2D")
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("2_81xng")]
+position = Vector2(777, 540)
+disable_mode = 1
+collision_layer = 2
+collision_mask = 5
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(123, 385)
@@ -237,7 +245,6 @@ collision_layer = 4
 position = Vector2(-50, -31)
 scale = Vector2(1.11757, 1)
 shape = SubResource("RectangleShape2D_bo1nx")
-debug_color = Color(0.868297, 0.284371, 0.541546, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(123, 385)

@@ -4,13 +4,8 @@
 
 [resource]
 script = ExtResource("1_v5r87")
-R_BULLET_SPEED = 10.0
-R_DAMAGE = 25.0
-R_COOLDOWN = 1.0
-M_SPEED = 200.0
-M_DAMAGE = 50.0
-M_COOLDOWN = 2.0
-S_DAMAGE = 25.0
-S_OVERHEAT = 5.0
-S_AMMO = 50.0
+DAMAGE = 25.0
+BULLET_SPEED = 8.0
+FIRE_RATE = 0.1
+AMMUNITION = 1.0
 metadata/_custom_type_script = "uid://cevxaenu2t6y7"
