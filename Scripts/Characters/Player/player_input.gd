@@ -24,6 +24,7 @@ func _process(_delta: float) -> void:
 	#movement input
 	input_direction = Input.get_vector(player_actions.move_left, player_actions.move_right, player_actions.move_up, player_actions.move_down)
 	_add_to_history(input_direction)
+	
 	#jump input
 	if Input.is_action_just_pressed(player_actions.jump):
 		jump = true

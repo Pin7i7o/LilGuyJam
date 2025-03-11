@@ -6,3 +6,4 @@
 script = ExtResource("1_sljtk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(17, 0)
