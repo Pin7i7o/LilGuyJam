@@ -1,92 +1,92 @@
 [gd_scene load_steps=38 format=3 uid="uid://det88ts0af6a6"]
 
-[ext_resource type="Script" uid="uid://c0w3rsxb2iman" path="res://Scripts/Characters/Player/player.gd" id="1_nbnqn"]
-[ext_resource type="Resource" uid="uid://410r6fd0wyn4" path="res://Resources/Player/player_stats.tres" id="2_f1ek2"]
-[ext_resource type="Script" uid="uid://cu1dwtcn4sj7s" path="res://Scripts/Characters/Player/limbo_hsm.gd" id="3_tx1dd"]
-[ext_resource type="Texture2D" uid="uid://cfpt1osrxuvkw" path="res://Assets/Characters/Player/DinoSprites - vita.png" id="4_gymyn"]
-[ext_resource type="Script" uid="uid://b5m6xegpqtnap" path="res://Scripts/Characters/Player/States/air_state.gd" id="6_f1ek2"]
-[ext_resource type="Script" uid="uid://mu6gixmp3out" path="res://Scripts/Characters/Player/States/ground_state.gd" id="6_x3wgy"]
-[ext_resource type="Script" uid="uid://lctegp3harp3" path="res://Scripts/Characters/Player/player_input.gd" id="7_3smsa"]
-[ext_resource type="Script" uid="uid://d12ej273bispq" path="res://Scripts/Characters/Player/States/ground_attack_state.gd" id="8_tx1dd"]
-[ext_resource type="Resource" uid="uid://d347e2j7fu016" path="res://Resources/Player/player_input.tres" id="9_f1ek2"]
-[ext_resource type="Script" uid="uid://ciaqc4lu5t30l" path="res://Scripts/Characters/Player/States/air_attack_state.gd" id="9_gymyn"]
-[ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="10_gymyn"]
-[ext_resource type="Script" uid="uid://cot5yl7brcu0h" path="res://Scripts/Characters/Player/States/ult_state.gd" id="10_pu2lt"]
-[ext_resource type="Script" uid="uid://dd2mcyy8tl8x4" path="res://Scripts/Weapons/weapon.gd" id="13_ukyrk"]
-[ext_resource type="PackedScene" uid="uid://br1vfihjgqiyv" path="res://Scenes/ranged_projectile.tscn" id="14_h4iuc"]
-[ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="16_fd4e3"]
-[ext_resource type="Resource" uid="uid://bysaok0vnyjn" path="res://Resources/Weapons/weapon_stats.tres" id="16_qqcod"]
+[ext_resource type="Script" uid="uid://c0w3rsxb2iman" path="res://Scripts/Characters/Player/player.gd" id="1_dxpk4"]
+[ext_resource type="Resource" uid="uid://410r6fd0wyn4" path="res://Resources/Player/player_stats.tres" id="2_15c3i"]
+[ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="3_yt1oc"]
+[ext_resource type="Texture2D" uid="uid://cfpt1osrxuvkw" path="res://Assets/Characters/Player/DinoSprites - vita.png" id="4_jnx77"]
+[ext_resource type="Script" uid="uid://cu1dwtcn4sj7s" path="res://Scripts/Characters/Player/limbo_hsm.gd" id="5_hy8lp"]
+[ext_resource type="Script" uid="uid://b5m6xegpqtnap" path="res://Scripts/Characters/Player/States/air_state.gd" id="6_uxymp"]
+[ext_resource type="Script" uid="uid://mu6gixmp3out" path="res://Scripts/Characters/Player/States/ground_state.gd" id="7_fepmq"]
+[ext_resource type="Script" uid="uid://d12ej273bispq" path="res://Scripts/Characters/Player/States/ground_attack_state.gd" id="8_ddhxa"]
+[ext_resource type="Script" uid="uid://ciaqc4lu5t30l" path="res://Scripts/Characters/Player/States/air_attack_state.gd" id="9_3k74t"]
+[ext_resource type="Script" uid="uid://cot5yl7brcu0h" path="res://Scripts/Characters/Player/States/ult_state.gd" id="10_v8iml"]
+[ext_resource type="Script" uid="uid://lctegp3harp3" path="res://Scripts/Characters/Player/player_input.gd" id="11_ojpki"]
+[ext_resource type="Resource" uid="uid://d347e2j7fu016" path="res://Resources/Player/player_input.tres" id="12_rv8bj"]
+[ext_resource type="PackedScene" uid="uid://dek2d8wqy2gav" path="res://Scenes/Weapons/weapon.tscn" id="13_dxpk4"]
+[ext_resource type="PackedScene" uid="uid://br1vfihjgqiyv" path="res://Scenes/Weapons/Ammo/ranged_projectile.tscn" id="14_f2s78"]
+[ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="15_hwltk"]
+[ext_resource type="Resource" uid="uid://bysaok0vnyjn" path="res://Resources/Weapons/weapon_stats.tres" id="16_hhnlt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pu2lt"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(240, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukyrk"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(264, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dp3o"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(288, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4iuc"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fd4e3"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqcod"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_igrcy"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fs7ks"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(168, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6n3p"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(96, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olqyp"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(120, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpjfl"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(144, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bi64h"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(168, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ijsl"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(192, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1odr"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(216, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gysh"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(240, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfarp"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(264, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6uwr"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(288, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83xs0"]
-atlas = ExtResource("4_gymyn")
+atlas = ExtResource("4_jnx77")
 region = Rect2(408, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dd72n"]
@@ -199,9 +199,9 @@ var/ult/hint_string = "Is player ulting?"
 
 [node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "coyote_time_timer", "weapon")]
 collision_mask = 4
-script = ExtResource("1_nbnqn")
+script = ExtResource("1_dxpk4")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
-stats = ExtResource("2_f1ek2")
+stats = ExtResource("2_15c3i")
 coyote_time_timer = NodePath("Timers/CoyoteTimer")
 weapon = NodePath("Weapon")
 
@@ -226,7 +226,7 @@ offset_right = 19.0
 offset_bottom = -12.0
 grow_horizontal = 0
 grow_vertical = 0
-script = ExtResource("10_gymyn")
+script = ExtResource("3_yt1oc")
 limbo_hsm = NodePath("../LimboHSM")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -240,7 +240,7 @@ shape = SubResource("CapsuleShape2D_phill")
 
 [node name="LimboHSM" type="LimboHSM" parent="." node_paths=PackedStringArray("character", "states")]
 blackboard_plan = SubResource("BlackboardPlan_8erm5")
-script = ExtResource("3_tx1dd")
+script = ExtResource("5_hy8lp")
 character = NodePath("..")
 states = {
 "air": NodePath("AirState"),
@@ -251,42 +251,40 @@ states = {
 }
 
 [node name="AirState" type="LimboState" parent="LimboHSM"]
-script = ExtResource("6_f1ek2")
+script = ExtResource("6_uxymp")
 animation_name = &"jump"
 metadata/_custom_type_script = "uid://coc0ycfjrlafn"
 
 [node name="GroundState" type="LimboState" parent="LimboHSM"]
-script = ExtResource("6_x3wgy")
+script = ExtResource("7_fepmq")
 idle_anim = &"idle"
 run_anim = &"run"
 animation_name = &"run"
 metadata/_custom_type_script = "uid://coc0ycfjrlafn"
 
 [node name="GroundAttackState" type="LimboState" parent="LimboHSM"]
-script = ExtResource("8_tx1dd")
+script = ExtResource("8_ddhxa")
 animation_name = &"atk"
 metadata/_custom_type_script = "uid://coc0ycfjrlafn"
 
 [node name="AirAttackState" type="LimboState" parent="LimboHSM"]
-script = ExtResource("9_gymyn")
+script = ExtResource("9_3k74t")
 animation_name = &"atk"
 metadata/_custom_type_script = "uid://coc0ycfjrlafn"
 
 [node name="UltState" type="LimboState" parent="LimboHSM"]
-script = ExtResource("10_pu2lt")
+script = ExtResource("10_v8iml")
 animation_name = &"ult"
 metadata/_custom_type_script = "uid://coc0ycfjrlafn"
 
 [node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("limbo_hsm")]
-script = ExtResource("7_3smsa")
-player_actions = ExtResource("9_f1ek2")
+script = ExtResource("11_ojpki")
+player_actions = ExtResource("12_rv8bj")
 limbo_hsm = NodePath("../LimboHSM")
 
-[node name="Weapon" type="Node2D" parent="." node_paths=PackedStringArray("player_input", "fire_rate_timer") groups=["weapon"]]
-position = Vector2(0, 4)
-script = ExtResource("13_ukyrk")
-ranged_projectile = ExtResource("14_h4iuc")
-group_names = ExtResource("16_fd4e3")
+[node name="Weapon" parent="." node_paths=PackedStringArray("player_input", "fire_rate_timer") instance=ExtResource("13_dxpk4")]
+ranged_projectile = ExtResource("14_f2s78")
+group_names = ExtResource("15_hwltk")
 player_input = NodePath("../PlayerInput")
 fire_rate_timer = NodePath("../Timers/FireRate")
-weapon_stats = ExtResource("16_qqcod")
+weapon_stats = ExtResource("16_hhnlt")

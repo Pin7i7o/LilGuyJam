@@ -29,7 +29,7 @@ func _is_on_cooldown() -> bool:
 	
 func shoot() -> void:
 	if !_is_on_cooldown():
-		var projectile: Area2D = ranged_projectile.instantiate()
+		var projectile: BaseProjectile = ranged_projectile.instantiate()
 		projectiles_parent.add_child(projectile)
 		
 		var direction: Vector2 = _get_projectile_direction(player_input.input_direction)
@@ -37,5 +37,6 @@ func shoot() -> void:
 		projectile.position = global_position
 		projectile.projectile_direction = direction
 		projectile.rotation = direction.angle()
+		projectile.projectile_speed = weapon_stats.BULLET_SPEED
 		
 		fire_rate_timer.start()
