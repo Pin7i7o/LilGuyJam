@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dek2d8wqy2gav"]
-
-[ext_resource type="Script" uid="uid://dd2mcyy8tl8x4" path="res://Scripts/Weapons/weapon.gd" id="1_sljtk"]
-
-[node name="Weapon" type="Node2D"]
-script = ExtResource("1_sljtk")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(17, 0)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bihfnv62ojgf8"]
+
+[ext_resource type="Script" uid="uid://ca086vi8s620x" path="res://Scripts/Weapons/Weapons/base_weapon.gd" id="1_cxo3g"]
+[ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="2_iwobt"]
+
+[node name="BaseWeapon" type="Node2D"]
+script = ExtResource("1_cxo3g")
+group_names = ExtResource("2_iwobt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(17, 0)

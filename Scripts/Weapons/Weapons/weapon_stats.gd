@@ -17,12 +17,10 @@ extends Resource
 enum WeaponTypes {
 	DEFAULT,
 	EXPLOSIVE,
-	LASER,
 	MELEE
 }
 
 enum RangeTypes {
-	EXTRA_SMALL,
 	SMALL,
 	MEDIUM,
 	HIGH,

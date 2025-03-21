@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://det88ts0af6a6"]
+[gd_scene load_steps=36 format=3 uid="uid://det88ts0af6a6"]
 
 [ext_resource type="Script" uid="uid://c0w3rsxb2iman" path="res://Scripts/Characters/Player/player.gd" id="1_dxpk4"]
 [ext_resource type="Resource" uid="uid://410r6fd0wyn4" path="res://Resources/Player/player_stats.tres" id="2_15c3i"]
@@ -12,9 +12,8 @@
 [ext_resource type="Script" uid="uid://cot5yl7brcu0h" path="res://Scripts/Characters/Player/States/ult_state.gd" id="10_v8iml"]
 [ext_resource type="Script" uid="uid://lctegp3harp3" path="res://Scripts/Characters/Player/player_input.gd" id="11_ojpki"]
 [ext_resource type="Resource" uid="uid://d347e2j7fu016" path="res://Resources/Player/player_input.tres" id="12_rv8bj"]
-[ext_resource type="PackedScene" uid="uid://dek2d8wqy2gav" path="res://Scenes/Weapons/weapon.tscn" id="13_dxpk4"]
-[ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="15_hwltk"]
-[ext_resource type="Resource" uid="uid://bysaok0vnyjn" path="res://Resources/Weapons/base_weapon_stats.tres" id="16_hhnlt"]
+[ext_resource type="PackedScene" uid="uid://bihfnv62ojgf8" path="res://Scenes/Weapons/base_weapon.tscn" id="13_01b8d"]
+[ext_resource type="Resource" uid="uid://cgpixd86i3th7" path="res://Resources/Weapons/explosive_weapon.tres" id="14_dxpk4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pu2lt"]
 atlas = ExtResource("4_jnx77")
@@ -202,7 +201,7 @@ script = ExtResource("1_dxpk4")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 stats = ExtResource("2_15c3i")
 coyote_time_timer = NodePath("Timers/CoyoteTimer")
-weapon = NodePath("Weapon")
+weapon = NodePath("BaseWeapon")
 
 [node name="Timers" type="Node" parent="."]
 
@@ -281,8 +280,7 @@ script = ExtResource("11_ojpki")
 player_actions = ExtResource("12_rv8bj")
 limbo_hsm = NodePath("../LimboHSM")
 
-[node name="Weapon" parent="." node_paths=PackedStringArray("player_input", "fire_rate_timer") instance=ExtResource("13_dxpk4")]
-group_names = ExtResource("15_hwltk")
+[node name="BaseWeapon" parent="." node_paths=PackedStringArray("player_input", "fire_rate_timer") instance=ExtResource("13_01b8d")]
+weapon_stats = ExtResource("14_dxpk4")
 player_input = NodePath("../PlayerInput")
 fire_rate_timer = NodePath("../Timers/FireRate")
-weapon_stats = ExtResource("16_hhnlt")

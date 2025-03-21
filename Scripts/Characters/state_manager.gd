@@ -6,7 +6,7 @@ extends LimboState
 var player_stats: PlayerStats
 var coyote_timer: Timer
 var current_jump: int
-var weapon: Weapon
+var weapon: Node2D
 
 func _enter() -> void:
 	agent.animated_sprite_2d.play(animation_name)
