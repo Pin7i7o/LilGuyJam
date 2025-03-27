@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://det88ts0af6a6"]
+[gd_scene load_steps=37 format=3 uid="uid://det88ts0af6a6"]
 
 [ext_resource type="Script" uid="uid://c0w3rsxb2iman" path="res://Scripts/Characters/Player/player.gd" id="1_dxpk4"]
 [ext_resource type="Resource" uid="uid://410r6fd0wyn4" path="res://Resources/Player/player_stats.tres" id="2_15c3i"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://lctegp3harp3" path="res://Scripts/Characters/Player/player_input.gd" id="11_ojpki"]
 [ext_resource type="Resource" uid="uid://d347e2j7fu016" path="res://Resources/Player/player_input.tres" id="12_rv8bj"]
 [ext_resource type="PackedScene" uid="uid://bihfnv62ojgf8" path="res://Scenes/Weapons/base_weapon.tscn" id="13_01b8d"]
-[ext_resource type="Resource" uid="uid://cgpixd86i3th7" path="res://Resources/Weapons/explosive_weapon.tres" id="14_dxpk4"]
+[ext_resource type="Script" uid="uid://cevxaenu2t6y7" path="res://Scripts/Weapons/weapon_stats.gd" id="14_xccyk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pu2lt"]
 atlas = ExtResource("4_jnx77")
@@ -195,7 +195,14 @@ var/ult/value = false
 var/ult/hint = 0
 var/ult/hint_string = "Is player ulting?"
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "coyote_time_timer", "weapon")]
+[sub_resource type="Resource" id="Resource_h1n2f"]
+script = ExtResource("14_xccyk")
+damage = 25.0
+bullet_speed = 10.0
+fire_rate = 0.3
+metadata/_custom_type_script = "uid://cevxaenu2t6y7"
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "coyote_time_timer", "weapon")]
 collision_mask = 4
 script = ExtResource("1_dxpk4")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
@@ -207,9 +214,6 @@ weapon = NodePath("BaseWeapon")
 
 [node name="CoyoteTimer" type="Timer" parent="Timers"]
 wait_time = 0.15
-one_shot = true
-
-[node name="FireRate" type="Timer" parent="Timers"]
 one_shot = true
 
 [node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
@@ -280,7 +284,6 @@ script = ExtResource("11_ojpki")
 player_actions = ExtResource("12_rv8bj")
 limbo_hsm = NodePath("../LimboHSM")
 
-[node name="BaseWeapon" parent="." node_paths=PackedStringArray("player_input", "fire_rate_timer") instance=ExtResource("13_01b8d")]
-weapon_stats = ExtResource("14_dxpk4")
+[node name="BaseWeapon" parent="." node_paths=PackedStringArray("player_input") instance=ExtResource("13_01b8d")]
+weapon_stats = SubResource("Resource_h1n2f")
 player_input = NodePath("../PlayerInput")
-fire_rate_timer = NodePath("../Timers/FireRate")

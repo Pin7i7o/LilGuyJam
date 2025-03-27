@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca5eri0sn5uxr"]
+
+[ext_resource type="Script" uid="uid://bwqdj5xhwvn0x" path="res://Scripts/Weapons/Ammo/bullet.gd" id="1_14wxs"]
+[ext_resource type="Texture2D" uid="uid://cwqdw5o7xhgms" path="res://Assets/Characters/Weapons/Player/1.png" id="2_8bitv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3jqx"]
+size = Vector2(10, 3)
+
+[node name="bullet" type="Node2D"]
+script = ExtResource("1_14wxs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8bitv")
+region_enabled = true
+region_rect = Rect2(196, 71, 10, 3)
+
+[node name="Area2D" type="Area2D" parent="."]
+disable_mode = 2
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_k3jqx")
+
+[node name="Lifetime" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

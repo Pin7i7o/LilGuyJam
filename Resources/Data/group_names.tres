@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_blvcu")
-projectiles_parent_group = &"projectiles_parent_node"
+bullets_parent_group = &"bullets_parent_node"
+weapons_group = &"weapon"
 metadata/_custom_type_script = "uid://dqdhufqe7t7ai"

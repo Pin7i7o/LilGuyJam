@@ -6,4 +6,4 @@
 
 [node name="level" parent="." instance=ExtResource("1_a02cp")]
 
-[node name="Projectiles" type="Node2D" parent="." groups=["projectiles_parent_node"]]
+[node name="Bullets" type="Node2D" parent="." groups=["bullets_parent_node"]]

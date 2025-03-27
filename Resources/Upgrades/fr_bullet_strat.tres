@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FireRateBulletStrategy" load_steps=3 format=3 uid="uid://cphvsv2a4qj56"]
+
+[ext_resource type="Script" uid="uid://dqamayhr8dtht" path="res://Scripts/Weapons/Upgrades/fr_bullet_strat.gd" id="1_mjpnp"]
+[ext_resource type="Texture2D" uid="uid://bhtdt0hw53tqj" path="res://Assets/Characters/Weapons/Player/explosive.png" id="2_mbgit"]
+
+[resource]
+script = ExtResource("1_mjpnp")
+fire_rate = 0.15
+sprite = ExtResource("2_mbgit")
+metadata/_custom_type_script = "uid://dqamayhr8dtht"
