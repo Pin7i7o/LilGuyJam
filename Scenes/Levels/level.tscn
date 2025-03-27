@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cn10x0j7lndwe" path="res://Assets/Tilesets/test_tileset.png" id="2_6phgx"]
 [ext_resource type="PackedScene" uid="uid://ch4faolj8jq8a" path="res://Scenes/Characters/enemy.tscn" id="2_81xng"]
 [ext_resource type="PackedScene" uid="uid://dv5r7ihm7h5u4" path="res://Scenes/Weapons/Upgrades/upgrade.tscn" id="4_tq1so"]
-[ext_resource type="Script" uid="uid://d2i7sjidd4p0i" path="res://Scripts/Weapons/Upgrades/ps_bullet_strat.gd" id="5_rv5g2"]
-[ext_resource type="Texture2D" uid="uid://cg31s5n51os4x" path="res://Assets/Characters/Weapons/Player/laser.png" id="6_lhx7y"]
+[ext_resource type="Script" uid="uid://b4oyv4ywuf2xx" path="res://Scripts/Weapons/Upgrades/spread_bullet_strat.gd" id="5_rv5g2"]
+[ext_resource type="Texture2D" uid="uid://bhtdt0hw53tqj" path="res://Assets/Characters/Weapons/Player/explosive.png" id="6_rv5g2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 size = Vector2(20, 322.5)
@@ -222,12 +222,11 @@ physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 11
 sources/0 = SubResource("TileSetAtlasSource_dwsja")
 
-[sub_resource type="Resource" id="Resource_i5435"]
+[sub_resource type="Resource" id="Resource_lhx7y"]
 script = ExtResource("5_rv5g2")
-pierce_count = 2.0
-bullet_speed = 1.5
-texture = ExtResource("6_lhx7y")
-metadata/_custom_type_script = "uid://d2i7sjidd4p0i"
+rotation_offset = 10.0
+texture = ExtResource("6_rv5g2")
+metadata/_custom_type_script = "uid://b4oyv4ywuf2xx"
 
 [node name="Level" type="Node2D"]
 
@@ -246,6 +245,7 @@ disable_mode = 1
 collision_mask = 5
 
 [node name="Enemy2" parent="." instance=ExtResource("2_81xng")]
+visible = false
 position = Vector2(866, 540)
 disable_mode = 1
 collision_mask = 5
@@ -275,4 +275,4 @@ tile_set = SubResource("TileSet_jggsm")
 
 [node name="Upgrade" parent="." instance=ExtResource("4_tq1so")]
 position = Vector2(474, 554)
-bullet_strat = SubResource("Resource_i5435")
+bullet_strat = SubResource("Resource_lhx7y")

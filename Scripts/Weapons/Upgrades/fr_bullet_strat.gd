@@ -5,6 +5,6 @@ class_name FireRateBulletStrategy
 
 var name: String = "Fire_Rate+"
 
-func apply_upgrade(_bullet: Bullet, weapon: Node2D) -> void:
+func apply_weapon_mod(weapon: BaseWeapon) -> void:
 	weapon.fire_rate_timer.wait_time = fire_rate
 	

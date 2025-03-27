@@ -4,12 +4,9 @@ class_name Bullet
 @onready var lifetime: Timer = $Lifetime
 
 var bullet_speed: float
+
 var max_pierce_count: float = 1.0
-
 var curent_pierce_count: float = 0
-
-func _ready() -> void:
-	lifetime.start(3.0)
 
 func _physics_process(_delta: float) -> void:
 	position += transform.x * bullet_speed

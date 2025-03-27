@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SpreadBulletStrategy" load_steps=3 format=3 uid="uid://bpojcn8lwjdax"]
+
+[ext_resource type="Script" uid="uid://b4oyv4ywuf2xx" path="res://Scripts/Weapons/Upgrades/spread_bullet_strat.gd" id="1_kykly"]
+[ext_resource type="Texture2D" uid="uid://cg31s5n51os4x" path="res://Assets/Characters/Weapons/Player/laser.png" id="2_n1a1n"]
+
+[resource]
+script = ExtResource("1_kykly")
+texture = ExtResource("2_n1a1n")
+metadata/_custom_type_script = "uid://b4oyv4ywuf2xx"
