@@ -46,7 +46,7 @@ func shoot() -> void:
 		
 		bullet.position = marker_2d.global_position
 		bullet.rotation = rotation
-		bullet.projectile_speed = weapon_stats.bullet_speed
+		bullet.bullet_speed = weapon_stats.bullet_speed
 		
 		for upgrade in upgrades:
 			upgrade.apply_upgrade(bullet, self)

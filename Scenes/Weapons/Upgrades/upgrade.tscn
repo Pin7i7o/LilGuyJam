@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv5r7ihm7h5u4"]
+[gd_scene load_steps=3 format=3 uid="uid://dv5r7ihm7h5u4"]
 
 [ext_resource type="Script" uid="uid://dcj1pbt0546oe" path="res://Scripts/Weapons/Upgrades/upgrade.gd" id="1_5f4pk"]
-[ext_resource type="Texture2D" uid="uid://cn10x0j7lndwe" path="res://Assets/Tilesets/test_tileset.png" id="1_pm4ry"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5f4pk"]
 
@@ -9,8 +8,6 @@
 script = ExtResource("1_5f4pk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_pm4ry")
-region_enabled = true
 region_rect = Rect2(211, 132, 9, 9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

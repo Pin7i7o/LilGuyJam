@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PierceSpeedBulletStrategy" load_steps=2 format=3 uid="uid://clyc70v1w8f0l"]
+
+[ext_resource type="Script" uid="uid://d2i7sjidd4p0i" path="res://Scripts/Weapons/Upgrades/ps_bullet_strat.gd" id="1_tqii6"]
+
+[resource]
+script = ExtResource("1_tqii6")
+pierce_count = 2.0
+bullet_speed = 1.5
+metadata/_custom_type_script = "uid://d2i7sjidd4p0i"
