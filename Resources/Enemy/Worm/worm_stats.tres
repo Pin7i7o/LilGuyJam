@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WormEnemyStats" load_steps=2 format=3 uid="uid://b2c2qn3gju7hk"]
+
+[ext_resource type="Script" uid="uid://cepu3wfrpd483" path="res://Scripts/Characters/Enemies/Worm/worm_stats.gd" id="1_co86v"]
+
+[resource]
+script = ExtResource("1_co86v")
+SUBMERGED_SPEED_MULTIPLIER = 1.5
+ATTACK_COOLDOWN = 2.0
+VISION_CONE_RANGE = 75.0
+HP = 150.0
+SPEED = 200.0
+ACCELERATION = 50.0
+metadata/_custom_type_script = "uid://cepu3wfrpd483"

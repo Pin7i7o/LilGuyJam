@@ -67,8 +67,7 @@ ult={
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="ground"
 2d_physics/layer_4="throwable"
-2d_physics/layer_5="meele"
-2d_physics/layer_6="player ult"
+2d_physics/layer_5="wall"
 2d_physics/layer_7="boss ult"
 
 [rendering]
