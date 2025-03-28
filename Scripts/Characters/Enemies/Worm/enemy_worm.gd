@@ -1,5 +1,5 @@
-extends Enemy
-class_name WormEnemy
+extends EnemyWorm
+class_name blah
 
 func move() -> void:
 	if wall_ray.is_colliding():

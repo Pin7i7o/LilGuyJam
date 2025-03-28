@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=3 uid="uid://ch4faolj8jq8a"]
+
+[ext_resource type="Script" uid="uid://bfuce4lt4qwwd" path="res://Scripts/Characters/Enemies/enemy.gd" id="1_d38j1"]
+[ext_resource type="Resource" uid="uid://17rnn3snio4n" path="res://Resources/Enemy/Worm/worm_stats.tres" id="2_58qal"]
+[ext_resource type="Texture2D" uid="uid://babm48c8dnd4n" path="res://icon.svg" id="2_kushx"]
+[ext_resource type="Script" uid="uid://12hf5wvkav4h" path="res://Scripts/Characters/Enemies/Worm/States/patrol_state.gd" id="3_d38j1"]
+[ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="3_k2jxm"]
+[ext_resource type="Script" uid="uid://dyyq16x30jmdy" path="res://Scripts/Characters/Enemies/Worm/limbo_hsm.gd" id="3_kushx"]
+[ext_resource type="Script" uid="uid://bq6uxan0qsbor" path="res://Scripts/Characters/Enemies/Worm/state_manager.gd" id="4_d38j1"]
+[ext_resource type="Script" uid="uid://xtv680w60gq7" path="res://Scripts/Characters/Enemies/Worm/States/pursuit_state.gd" id="6_k2jxm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijx7g"]
+atlas = ExtResource("2_kushx")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_77ke4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijx7g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
+size = Vector2(61, 61)
+
+[node name="EnemyWorm" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "right_ground_ray", "left_ground_ray", "wall_ray", "vision_cone_ray")]
+collision_layer = 2
+collision_mask = 63
+script = ExtResource("1_d38j1")
+stats = ExtResource("2_58qal")
+animated_sprite_2d = NodePath("AnimatedSprite")
+right_ground_ray = NodePath("RightGroundRay")
+left_ground_ray = NodePath("LeftGroundRay")
+wall_ray = NodePath("WallRay")
+vision_cone_ray = NodePath("VisionConeRay")
+max_distance = 150.0
+
+[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -35.0
+offset_right = 19.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("3_k2jxm")
+limbo_hsm = NodePath("../LimboHSM")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_77ke4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_1f0kj")
+
+[node name="RightGroundRay" type="RayCast2D" parent="."]
+position = Vector2(42, 0)
+target_position = Vector2(0, 39)
+collision_mask = 4
+
+[node name="LeftGroundRay" type="RayCast2D" parent="."]
+position = Vector2(-42, 0)
+target_position = Vector2(0, 39)
+collision_mask = 4
+
+[node name="WallRay" type="RayCast2D" parent="."]
+position = Vector2(42, 0)
+rotation = -1.5708
+target_position = Vector2(0, 19)
+collision_mask = 4
+
+[node name="VisionConeRay" type="RayCast2D" parent="."]
+position = Vector2(0, 7)
+target_position = Vector2(0, 0)
+
+[node name="LimboHSM" type="LimboHSM" parent="." node_paths=PackedStringArray("character", "states")]
+script = ExtResource("3_kushx")
+character = NodePath("..")
+states = {
+"attack": NodePath("AttackState"),
+"patrol": NodePath("PatrolState"),
+"pursuit": NodePath("PursuitState")
+}
+
+[node name="PatrolState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("3_d38j1")
+animation_name = &"default"
+metadata/_custom_type_script = "uid://bq6uxan0qsbor"
+
+[node name="PursuitState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("6_k2jxm")
+animation_name = &"default"
+metadata/_custom_type_script = "uid://bq6uxan0qsbor"
+
+[node name="AttackState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("4_d38j1")
+animation_name = &"default"
+metadata/_custom_type_script = "uid://bq6uxan0qsbor"

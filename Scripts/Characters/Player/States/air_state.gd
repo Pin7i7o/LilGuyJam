@@ -1,4 +1,4 @@
-extends StateManager
+extends PlayerStateManager
 
 func _update(_delta: float) -> void:
 	if agent.velocity.y > 0:

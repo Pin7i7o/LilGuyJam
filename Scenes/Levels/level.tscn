@@ -1,19 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://b5ntutnuc6pin"]
+[gd_scene load_steps=7 format=4 uid="uid://b5ntutnuc6pin"]
 
 [ext_resource type="PackedScene" uid="uid://det88ts0af6a6" path="res://Scenes/Characters/player.tscn" id="1_k5f4k"]
 [ext_resource type="Texture2D" uid="uid://cn10x0j7lndwe" path="res://Assets/Tilesets/test_tileset.png" id="2_6phgx"]
-[ext_resource type="PackedScene" uid="uid://ch4faolj8jq8a" path="res://Scenes/Characters/enemy.tscn" id="2_81xng"]
-[ext_resource type="Script" uid="uid://cepu3wfrpd483" path="res://Scripts/Characters/Enemies/Worm/worm_stats.gd" id="3_lkqqh"]
-
-[sub_resource type="Resource" id="Resource_tq1so"]
-script = ExtResource("3_lkqqh")
-SUBMERGED_SPEED_MULTIPLIER = 1.5
-ATTACK_COOLDOWN = 2.0
-VISION_CONE_RANGE = 75.0
-HP = 150.0
-SPEED = 200.0
-ACCELERATION = 50.0
-metadata/_custom_type_script = "uid://cepu3wfrpd483"
+[ext_resource type="PackedScene" uid="uid://ch4faolj8jq8a" path="res://Scenes/Characters/Enemy/worm.tscn" id="2_81xng"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 size = Vector2(20, 322.5)
@@ -245,7 +234,6 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(777, 540)
 disable_mode = 1
 collision_mask = 5
-enemy_stats = SubResource("Resource_tq1so")
 max_distance = 200.0
 
 [node name="MapBounds" type="StaticBody2D" parent="."]

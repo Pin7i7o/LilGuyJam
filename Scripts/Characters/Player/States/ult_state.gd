@@ -1,4 +1,4 @@
-extends StateManager
+extends PlayerStateManager
 
 func _enter() -> void:
 	super()

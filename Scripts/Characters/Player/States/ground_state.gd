@@ -1,4 +1,4 @@
-extends StateManager
+extends PlayerStateManager
 #Stand state for the player character
 #Controls the player when he is standing, i.e: while moving or idling on the ground
 

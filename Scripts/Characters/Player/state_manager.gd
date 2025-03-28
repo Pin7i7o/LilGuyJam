@@ -1,4 +1,4 @@
-class_name StateManager
+class_name PlayerStateManager
 extends LimboState
 
 @export var animation_name: StringName
