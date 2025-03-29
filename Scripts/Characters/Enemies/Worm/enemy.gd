@@ -2,17 +2,20 @@ extends CharacterBody2D
 class_name EnemyWorm
 
 @export var stats: WormEnemyStats
+@export var group_names: GroupNames
 @export var animated_sprite_2d: AnimatedSprite2D
-
 @export var wall_ray: RayCast2D
-
 @export var max_distance: float
+@export var upgrades_array: Array[BaseBulletStrategy]
 
 @onready var hitbox: CollisionShape2D = $Hitbox/CollisionShape2D
 
 var right_bound: Vector2 = Vector2.ZERO
 var left_bound: Vector2 = Vector2.ZERO
 var hp: float
+var upgrade_scene: PackedScene = preload("res://Scenes/Weapons/Upgrades/upgrade.tscn")
+var upgrades_parent: Node2D
+
 
 func _ready() -> void:
 	right_bound = global_position + Vector2(max_distance, 0)
@@ -20,3 +23,6 @@ func _ready() -> void:
 	
 	hp = stats.HP
 	hitbox.shape = hitbox.shape.duplicate()
+	
+	upgrades_parent = get_tree().get_first_node_in_group(group_names.upgrades_parent_node)
+	assert(upgrades_parent != null, "No upgrades node found")

@@ -1,12 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://b5ntutnuc6pin"]
+[gd_scene load_steps=7 format=4 uid="uid://b5ntutnuc6pin"]
 
 [ext_resource type="PackedScene" uid="uid://det88ts0af6a6" path="res://Scenes/Characters/player.tscn" id="1_k5f4k"]
 [ext_resource type="Texture2D" uid="uid://cn10x0j7lndwe" path="res://Assets/Tilesets/test_tileset.png" id="2_6phgx"]
 [ext_resource type="PackedScene" uid="uid://ch4faolj8jq8a" path="res://Scenes/Characters/Enemy/worm.tscn" id="2_81xng"]
-[ext_resource type="PackedScene" uid="uid://dv5r7ihm7h5u4" path="res://Scenes/Weapons/Upgrades/upgrade.tscn" id="4_rv5g2"]
-[ext_resource type="Resource" uid="uid://cphvsv2a4qj56" path="res://Resources/Upgrades/fr_bullet_strat.tres" id="5_lhx7y"]
-[ext_resource type="Resource" uid="uid://clyc70v1w8f0l" path="res://Resources/Upgrades/ps_bullet_strat.tres" id="6_i5435"]
-[ext_resource type="Resource" uid="uid://bpojcn8lwjdax" path="res://Resources/Upgrades/spread_bullet_strat.tres" id="7_lhx7y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwsja"]
 texture = ExtResource("2_6phgx")
@@ -268,15 +264,3 @@ limit_left = 0
 limit_top = 0
 limit_bottom = 648
 editor_draw_limits = true
-
-[node name="Upgrade" parent="." instance=ExtResource("4_rv5g2")]
-position = Vector2(434, 556)
-bullet_strat = ExtResource("5_lhx7y")
-
-[node name="Upgrade2" parent="." instance=ExtResource("4_rv5g2")]
-position = Vector2(84, 552)
-bullet_strat = ExtResource("6_i5435")
-
-[node name="Upgrade3" parent="." instance=ExtResource("4_rv5g2")]
-position = Vector2(1042, 491)
-bullet_strat = ExtResource("7_lhx7y")

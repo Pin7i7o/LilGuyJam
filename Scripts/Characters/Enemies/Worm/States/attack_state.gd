@@ -4,18 +4,18 @@ extends WormStateManager
 
 func _update(_delta: float) -> void:
 	if agent.hp <= 0:
-		agent.queue_free()
+		_die()
 
 func _exit() -> void:
 	_change_hitbox(false)
 
 func _on_attack_cd_timeout() -> void:
 	_change_hitbox(true)
-	idle_timer.start(3.0)
+	idle_timer.start(2.0)
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Player:
-		print("SHING SHING")
+		body._die()
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area is Bullet:

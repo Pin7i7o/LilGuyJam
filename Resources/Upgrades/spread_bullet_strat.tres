@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="SpreadBulletStrategy" load_steps=3 format=3 uid="uid://bpojcn8lwjdax"]
 
 [ext_resource type="Script" uid="uid://b4oyv4ywuf2xx" path="res://Scripts/Weapons/Upgrades/spread_bullet_strat.gd" id="1_kykly"]
-[ext_resource type="Texture2D" uid="uid://cg31s5n51os4x" path="res://Assets/Characters/Weapons/Player/laser.png" id="2_n1a1n"]
+[ext_resource type="Texture2D" uid="uid://bhtdt0hw53tqj" path="res://Assets/Characters/Weapons/Player/explosive.png" id="2_kykly"]
 
 [resource]
 script = ExtResource("1_kykly")
 rotation_offset = 10.0
-texture = ExtResource("2_n1a1n")
+texture = ExtResource("2_kykly")
 metadata/_custom_type_script = "uid://b4oyv4ywuf2xx"

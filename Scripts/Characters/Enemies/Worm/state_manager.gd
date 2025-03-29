@@ -4,11 +4,11 @@ class_name WormStateManager
 @export var animation_name: StringName
 
 var enemy_stats: WormEnemyStats
-
 var wall_ray: RayCast2D
 var hitbox: CollisionShape2D
 
 var direction: Vector2 = Vector2.RIGHT
+
 
 func _enter() -> void:
 	agent.animated_sprite_2d.play(animation_name)
@@ -35,4 +35,18 @@ func _patrol() -> void:
 	
 func _take_damage() -> void:
 	agent.hp -= 25
-	print(agent.hp)
+
+func _die() -> void:
+	var random_upgrade: BaseBulletStrategy = agent.upgrades_array.pick_random()
+	print(random_upgrade.name)
+	
+	if random_upgrade != null:
+		var upgrade: Upgrade = agent.upgrade_scene.instantiate()
+		agent.upgrades_parent.add_child(upgrade)
+		
+		upgrade.bullet_strat = random_upgrade
+		upgrade.sprite_2d.texture = random_upgrade.texture
+		upgrade.position = agent.global_position
+	
+	agent.queue_free()
+	
