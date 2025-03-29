@@ -1,5 +1,11 @@
 extends WormStateManager
 
+@export var attack_preparation_timer: Timer
+
+func _enter() -> void:
+	super()
+	_change_hitbox(false)
+
 func _update(_delta: float) -> void:
 	if wall_ray.is_colliding():
 		_change_direction()
@@ -13,6 +19,9 @@ func _update(_delta: float) -> void:
 			_change_direction()
 			
 	_patrol()
+
+func _on_atkbox_body_entered(body: Node2D) -> void:
+	if body is Player:
+		attack_preparation_timer.start(0.5)
+		dispatch("&toAtk")
 	
-	if vision_cone_ray.is_colliding():
-		dispatch("&toPursuit")

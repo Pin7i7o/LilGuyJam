@@ -12,11 +12,7 @@ func _ready() -> void:
 	
 func _bind_transitions():
 	#Patrol state transitions
-	add_transition(states["patrol"], states["pursuit"], "&toPursuit")
-	
-	#Pursuit state transitions
-	add_transition(states["pursuit"], states["attack"], "&toAtk")
-	add_transition(states["pursuit"], states["patrol"], "&toPatrol")
+	add_transition(states["patrol"], states["attack"], "&toAtk")
 	
 	#Attack state transitions
 	add_transition(states["attack"], states["patrol"], "&toPatrol")

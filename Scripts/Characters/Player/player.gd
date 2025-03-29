@@ -10,4 +10,4 @@ func _ready():
 	pass
 
 func _physics_process(_delta: float) -> void:
-	pass
+	GlobalVariables.player_position = global_position

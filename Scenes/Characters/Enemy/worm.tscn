@@ -1,13 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch4faolj8jq8a"]
+[gd_scene load_steps=13 format=3 uid="uid://ch4faolj8jq8a"]
 
-[ext_resource type="Script" uid="uid://bfuce4lt4qwwd" path="res://Scripts/Characters/Enemies/enemy.gd" id="1_d38j1"]
+[ext_resource type="Script" uid="uid://bfuce4lt4qwwd" path="res://Scripts/Characters/Enemies/Worm/enemy.gd" id="1_d38j1"]
 [ext_resource type="Resource" uid="uid://17rnn3snio4n" path="res://Resources/Enemy/Worm/worm_stats.tres" id="2_58qal"]
 [ext_resource type="Texture2D" uid="uid://babm48c8dnd4n" path="res://icon.svg" id="2_kushx"]
 [ext_resource type="Script" uid="uid://12hf5wvkav4h" path="res://Scripts/Characters/Enemies/Worm/States/patrol_state.gd" id="3_d38j1"]
 [ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="3_k2jxm"]
 [ext_resource type="Script" uid="uid://dyyq16x30jmdy" path="res://Scripts/Characters/Enemies/Worm/limbo_hsm.gd" id="3_kushx"]
-[ext_resource type="Script" uid="uid://bq6uxan0qsbor" path="res://Scripts/Characters/Enemies/Worm/state_manager.gd" id="4_d38j1"]
-[ext_resource type="Script" uid="uid://xtv680w60gq7" path="res://Scripts/Characters/Enemies/Worm/States/pursuit_state.gd" id="6_k2jxm"]
+[ext_resource type="Script" uid="uid://doabgggwp7ujq" path="res://Scripts/Characters/Enemies/Worm/States/attack_state.gd" id="7_k2jxm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ijx7g"]
 atlas = ExtResource("2_kushx")
@@ -25,9 +24,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
-size = Vector2(61, 61)
+size = Vector2(0, 0)
 
-[node name="EnemyWorm" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "right_ground_ray", "left_ground_ray", "wall_ray", "vision_cone_ray")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijx7g"]
+size = Vector2(32, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2jxm"]
+size = Vector2(0, 0)
+
+[node name="EnemyWorm" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "right_ground_ray", "left_ground_ray", "wall_ray", "hitbox")]
 collision_layer = 2
 collision_mask = 63
 script = ExtResource("1_d38j1")
@@ -36,7 +41,7 @@ animated_sprite_2d = NodePath("AnimatedSprite")
 right_ground_ray = NodePath("RightGroundRay")
 left_ground_ray = NodePath("LeftGroundRay")
 wall_ray = NodePath("WallRay")
-vision_cone_ray = NodePath("VisionConeRay")
+hitbox = NodePath("Hitbox/CollisionShape2D")
 max_distance = 150.0
 
 [node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
@@ -46,9 +51,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -21.0
-offset_top = -35.0
+offset_top = -61.0
 offset_right = 19.0
-offset_bottom = -12.0
+offset_bottom = -38.0
 grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("3_k2jxm")
@@ -59,7 +64,6 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_77ke4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_1f0kj")
 
 [node name="RightGroundRay" type="RayCast2D" parent="."]
@@ -78,30 +82,51 @@ rotation = -1.5708
 target_position = Vector2(0, 19)
 collision_mask = 4
 
-[node name="VisionConeRay" type="RayCast2D" parent="."]
-position = Vector2(0, 7)
-target_position = Vector2(0, 0)
-
 [node name="LimboHSM" type="LimboHSM" parent="." node_paths=PackedStringArray("character", "states")]
 script = ExtResource("3_kushx")
 character = NodePath("..")
 states = {
 "attack": NodePath("AttackState"),
-"patrol": NodePath("PatrolState"),
-"pursuit": NodePath("PursuitState")
+"patrol": NodePath("PatrolState")
 }
 
-[node name="PatrolState" type="LimboState" parent="LimboHSM"]
+[node name="PatrolState" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("attack_preparation_timer")]
 script = ExtResource("3_d38j1")
+attack_preparation_timer = NodePath("../../Timers/AttackCD")
 animation_name = &"default"
 metadata/_custom_type_script = "uid://bq6uxan0qsbor"
 
-[node name="PursuitState" type="LimboState" parent="LimboHSM"]
-script = ExtResource("6_k2jxm")
+[node name="AttackState" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("idle_timer")]
+script = ExtResource("7_k2jxm")
+idle_timer = NodePath("../../Timers/IdleTimer")
 animation_name = &"default"
 metadata/_custom_type_script = "uid://bq6uxan0qsbor"
 
-[node name="AttackState" type="LimboState" parent="LimboHSM"]
-script = ExtResource("4_d38j1")
-animation_name = &"default"
-metadata/_custom_type_script = "uid://bq6uxan0qsbor"
+[node name="Atkbox" type="Area2D" parent="."]
+disable_mode = 2
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Atkbox"]
+shape = SubResource("RectangleShape2D_ijx7g")
+
+[node name="Hitbox" type="Area2D" parent="."]
+disable_mode = 2
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_k2jxm")
+debug_color = Color(0.723265, 0.308227, 0.908917, 0.42)
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="AttackCD" type="Timer" parent="Timers"]
+wait_time = 3.0
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[connection signal="body_entered" from="Atkbox" to="LimboHSM/PatrolState" method="_on_atkbox_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Timers/AttackCD" to="LimboHSM/AttackState" method="_on_attack_cd_timeout"]
+[connection signal="timeout" from="Timers/IdleTimer" to="LimboHSM/AttackState" method="_on_idle_timer_timeout"]
