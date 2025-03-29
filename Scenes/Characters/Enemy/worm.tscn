@@ -32,16 +32,13 @@ size = Vector2(32, 61)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2jxm"]
 size = Vector2(0, 0)
 
-[node name="EnemyWorm" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "right_ground_ray", "left_ground_ray", "wall_ray", "hitbox")]
+[node name="EnemyWorm" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "wall_ray")]
 collision_layer = 2
-collision_mask = 63
+collision_mask = 7
 script = ExtResource("1_d38j1")
 stats = ExtResource("2_58qal")
 animated_sprite_2d = NodePath("AnimatedSprite")
-right_ground_ray = NodePath("RightGroundRay")
-left_ground_ray = NodePath("LeftGroundRay")
 wall_ray = NodePath("WallRay")
-hitbox = NodePath("Hitbox/CollisionShape2D")
 max_distance = 150.0
 
 [node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
@@ -65,16 +62,7 @@ sprite_frames = SubResource("SpriteFrames_77ke4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1f0kj")
-
-[node name="RightGroundRay" type="RayCast2D" parent="."]
-position = Vector2(42, 0)
-target_position = Vector2(0, 39)
-collision_mask = 4
-
-[node name="LeftGroundRay" type="RayCast2D" parent="."]
-position = Vector2(-42, 0)
-target_position = Vector2(0, 39)
-collision_mask = 4
+disabled = true
 
 [node name="WallRay" type="RayCast2D" parent="."]
 position = Vector2(42, 0)
@@ -103,15 +91,14 @@ animation_name = &"default"
 metadata/_custom_type_script = "uid://bq6uxan0qsbor"
 
 [node name="Atkbox" type="Area2D" parent="."]
-disable_mode = 2
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Atkbox"]
 shape = SubResource("RectangleShape2D_ijx7g")
 
 [node name="Hitbox" type="Area2D" parent="."]
-disable_mode = 2
 collision_layer = 2
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_k2jxm")
@@ -127,6 +114,7 @@ one_shot = true
 one_shot = true
 
 [connection signal="body_entered" from="Atkbox" to="LimboHSM/PatrolState" method="_on_atkbox_body_entered"]
+[connection signal="area_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="Timers/AttackCD" to="LimboHSM/AttackState" method="_on_attack_cd_timeout"]
 [connection signal="timeout" from="Timers/IdleTimer" to="LimboHSM/AttackState" method="_on_idle_timer_timeout"]

@@ -5,20 +5,15 @@ class_name WormStateManager
 
 var enemy_stats: WormEnemyStats
 
-var right_ground_ray: RayCast2D
-var left_ground_ray: RayCast2D
 var wall_ray: RayCast2D
 var hitbox: CollisionShape2D
 
 var direction: Vector2 = Vector2.RIGHT
 
-
 func _enter() -> void:
 	agent.animated_sprite_2d.play(animation_name)
 	
 	enemy_stats = agent.stats
-	right_ground_ray = agent.right_ground_ray
-	left_ground_ray = agent.left_ground_ray
 	wall_ray = agent.wall_ray
 	hitbox = agent.hitbox
 
@@ -37,3 +32,7 @@ func _change_hitbox(is_attacking: bool) -> void:
 func _patrol() -> void:
 	agent.velocity.x = move_toward(agent.velocity.x, enemy_stats.SPEED * direction.x, enemy_stats.ACCELERATION)
 	agent.move_and_slide()
+	
+func _take_damage() -> void:
+	agent.hp -= 25
+	print(agent.hp)
