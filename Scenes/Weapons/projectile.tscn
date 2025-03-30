@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://byyxufsk4t0gd"]
+
+[ext_resource type="Texture2D" uid="uid://cwqdw5o7xhgms" path="res://Assets/Characters/Weapons/Player/1.png" id="1_4lkvf"]
+[ext_resource type="Script" uid="uid://b4i5jwdp6g1qx" path="res://Scripts/Weapons/Ammo/projectile.gd" id="1_u1pgf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1pgf"]
+size = Vector2(7, 3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4lkvf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1pgf"]
+radius = 75.0
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_u1pgf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4lkvf")
+region_enabled = true
+region_rect = Rect2(199, 71, 7, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u1pgf")
+
+[node name="Atkbox" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Atkbox"]
+shape = SubResource("CircleShape2D_4lkvf")
+debug_color = Color(0.710409, 0.301599, 0.944278, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_u1pgf")
+debug_color = Color(0.391217, 0.605428, 0.237701, 0.42)
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="Lifetime" type="Timer" parent="Timers"]
+
+[node name="ScoutTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Atkbox" to="." method="_on_atkbox_body_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="timeout" from="Timers/Lifetime" to="." method="_on_lifetime_timeout"]
+[connection signal="timeout" from="Timers/ScoutTimer" to="." method="_on_scout_timer_timeout"]

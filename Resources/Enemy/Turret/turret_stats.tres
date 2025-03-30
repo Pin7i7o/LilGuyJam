@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TurretEnemyStats" load_steps=2 format=3 uid="uid://bfcrsjcif6bje"]
+
+[ext_resource type="Script" uid="uid://bh0uqqj3yn16g" path="res://Scripts/Characters/Enemies/Turret/turret_stats.gd" id="1_xlgrf"]
+
+[resource]
+script = ExtResource("1_xlgrf")
+HP = 75.0
+ATTACK_COOLDOWN = 3.0
+ATTACK_RANGE = 700.0
+PROJECTILE_SPEED = 5.0
+PROJECTILE_SPEED_MULTIPLIER = 1.5
+PROJECTILE_MAX_HEIGHT = 100.0
+PROJECTILE_SCOUT_RANGE = 800.0
+metadata/_custom_type_script = "uid://bh0uqqj3yn16g"

@@ -38,7 +38,6 @@ func _take_damage() -> void:
 
 func _die() -> void:
 	var random_upgrade: BaseBulletStrategy = agent.upgrades_array.pick_random()
-	print(random_upgrade.name)
 	
 	if random_upgrade != null:
 		var upgrade: Upgrade = agent.upgrade_scene.instantiate()

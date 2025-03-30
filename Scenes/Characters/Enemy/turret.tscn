@@ -1,0 +1,117 @@
+[gd_scene load_steps=18 format=3 uid="uid://b10vo8bj0iuhs"]
+
+[ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="1_1lxv3"]
+[ext_resource type="Script" uid="uid://bvdihxl78jayu" path="res://Scripts/Characters/Enemies/Turret/enemy.gd" id="1_o8feu"]
+[ext_resource type="Resource" uid="uid://bfcrsjcif6bje" path="res://Resources/Enemy/Turret/turret_stats.tres" id="2_jq5oc"]
+[ext_resource type="Texture2D" uid="uid://babm48c8dnd4n" path="res://icon.svg" id="2_o8feu"]
+[ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="3_4ynd2"]
+[ext_resource type="Script" uid="uid://b3lp10235nxg5" path="res://Scripts/Weapons/Upgrades/base_bullet_strat.gd" id="4_diixa"]
+[ext_resource type="Resource" uid="uid://cphvsv2a4qj56" path="res://Resources/Upgrades/fr_bullet_strat.tres" id="5_ttsbe"]
+[ext_resource type="Resource" uid="uid://clyc70v1w8f0l" path="res://Resources/Upgrades/ps_bullet_strat.tres" id="6_4q4aq"]
+[ext_resource type="Resource" uid="uid://bpojcn8lwjdax" path="res://Resources/Upgrades/spread_bullet_strat.tres" id="7_huqbs"]
+[ext_resource type="Script" uid="uid://ihcgn6rhjrsh" path="res://Scripts/Characters/Enemies/Turret/limbo_hsm.gd" id="10_sfypk"]
+[ext_resource type="Script" uid="uid://cnhctntopwhlm" path="res://Scripts/Characters/Enemies/Turret/States/scout_state.gd" id="11_sfypk"]
+[ext_resource type="Script" uid="uid://cavkw28ft17sq" path="res://Scripts/Characters/Enemies/Turret/States/attack_state.gd" id="12_jq5oc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijx7g"]
+atlas = ExtResource("2_o8feu")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4jqpi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijx7g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfypk"]
+size = Vector2(61, 62)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1lxv3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jq5oc"]
+size = Vector2(61, 62)
+
+[node name="Turret" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "marker_2d", "attack_cd")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_o8feu")
+stats = ExtResource("2_jq5oc")
+group_names = ExtResource("3_4ynd2")
+animated_sprite_2d = NodePath("AnimatedSprite")
+upgrades_array = Array[ExtResource("4_diixa")]([ExtResource("5_ttsbe"), ExtResource("6_4q4aq"), ExtResource("7_huqbs"), null, null, null, null, null, null, null])
+marker_2d = NodePath("Marker2D")
+attack_cd = NodePath("Timers/AttackCD")
+
+[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -61.0
+offset_right = 19.0
+offset_bottom = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_1lxv3")
+limbo_hsm = NodePath("../LimboHSM")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4jqpi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_sfypk")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -40)
+
+[node name="LimboHSM" type="LimboHSM" parent="." node_paths=PackedStringArray("character", "states")]
+script = ExtResource("10_sfypk")
+character = NodePath("..")
+states = {
+"attack": NodePath("AttackState"),
+"scout": NodePath("ScoutState")
+}
+
+[node name="ScoutState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("11_sfypk")
+animation_name = &"default"
+metadata/_custom_type_script = "uid://c71b6x5qep1ys"
+
+[node name="AttackState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("12_jq5oc")
+animation_name = &"default"
+metadata/_custom_type_script = "uid://c71b6x5qep1ys"
+
+[node name="Atkbox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Atkbox"]
+shape = SubResource("CircleShape2D_1lxv3")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_jq5oc")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="AttackCD" type="Timer" parent="Timers"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="Atkbox" to="LimboHSM/ScoutState" method="_on_atkbox_body_entered"]
+[connection signal="body_exited" from="Atkbox" to="LimboHSM/AttackState" method="_on_atkbox_body_exited"]
+[connection signal="area_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_body_entered"]

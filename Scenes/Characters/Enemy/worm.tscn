@@ -37,7 +37,7 @@ size = Vector2(32, 61)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2jxm"]
 size = Vector2(0, 0)
 
-[node name="EnemyWorm" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "wall_ray")]
+[node name="Worm" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "wall_ray")]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_d38j1")
@@ -46,7 +46,7 @@ group_names = ExtResource("3_q50qe")
 animated_sprite_2d = NodePath("AnimatedSprite")
 wall_ray = NodePath("WallRay")
 max_distance = 150.0
-upgrades_array = Array[ExtResource("3_ktquc")]([ExtResource("4_q50qe"), ExtResource("5_tdutr"), ExtResource("6_1vnx0")])
+upgrades_array = Array[ExtResource("3_ktquc")]([ExtResource("4_q50qe"), ExtResource("5_tdutr"), ExtResource("6_1vnx0"), null, null, null, null, null, null, null])
 
 [node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
 anchors_preset = 3

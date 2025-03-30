@@ -9,3 +9,5 @@
 [node name="Bullets" type="Node2D" parent="." groups=["bullets_parent_node"]]
 
 [node name="Upgrades" type="Node2D" parent="." groups=["upgrades_parent_node"]]
+
+[node name="Projectiles" type="Node2D" parent="." groups=["projectiles_parent_node"]]
