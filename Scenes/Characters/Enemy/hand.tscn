@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cct2vi1ajwkog"]
+
+[ext_resource type="Texture2D" uid="uid://cwqdw5o7xhgms" path="res://Assets/Characters/Weapons/Player/1.png" id="1_cn8sc"]
+[ext_resource type="Script" uid="uid://b8nej16288ge8" path="res://Scripts/Weapons/hand.gd" id="1_k1vmn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cn8sc"]
+size = Vector2(25, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1vmn"]
+size = Vector2(88.6154, 33.2615)
+
+[node name="Hand" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_k1vmn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cn8sc")
+region_enabled = true
+region_rect = Rect2(96, 37, 25, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cn8sc")
+
+[node name="Scoutbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scoutbox"]
+position = Vector2(0.154003, 20.1385)
+shape = SubResource("RectangleShape2D_k1vmn")
+
+[node name="ScoutTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Scoutbox" to="." method="_on_scoutbox_body_entered"]
+[connection signal="timeout" from="ScoutTimer" to="." method="_on_scout_timer_timeout"]

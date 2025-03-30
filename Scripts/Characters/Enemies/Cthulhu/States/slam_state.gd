@@ -1,1 +1,12 @@
 extends BossStateManager
+
+func _enter() -> void:
+	super()
+	_spawn_hand()
+
+func _update(_delta: float) -> void:
+	if _check_slam_counter():
+		dispatch("&toIdle")
+
+func _exit() -> void:
+	_despawn_hand()

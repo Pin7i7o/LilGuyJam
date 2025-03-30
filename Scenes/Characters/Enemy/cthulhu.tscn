@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bifd0t63ikkcw"]
+[gd_scene load_steps=15 format=3 uid="uid://bifd0t63ikkcw"]
 
 [ext_resource type="Script" uid="uid://dkkhq5a6j7vhn" path="res://Scripts/Characters/Enemies/Cthulhu/enemy.gd" id="1_3y6l8"]
 [ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="1_w1jmu"]
 [ext_resource type="Script" uid="uid://b8ankegirkm1n" path="res://Scripts/Characters/Enemies/Cthulhu/boss_stats.gd" id="2_0v7qk"]
 [ext_resource type="Texture2D" uid="uid://babm48c8dnd4n" path="res://icon.svg" id="2_3y6l8"]
+[ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="3_jw5i8"]
 [ext_resource type="Script" uid="uid://beexnqxdlci8w" path="res://Scripts/Characters/Enemies/Cthulhu/limbo_hsm.gd" id="5_ll348"]
 [ext_resource type="Script" uid="uid://0yctoe055mab" path="res://Scripts/Characters/Enemies/Cthulhu/state_manager.gd" id="6_1kbi3"]
 [ext_resource type="Script" uid="uid://d4k46n0c1f40c" path="res://Scripts/Characters/Enemies/Cthulhu/States/idle_state.gd" id="6_jv23i"]
@@ -13,14 +14,12 @@
 script = ExtResource("2_0v7qk")
 HP = 1500.0
 SLAM_COOLDOWN = 3.0
-SLAM_DOWNARDS_SPEED = 10.0
-SLAM_UPWARDS_SPEED = 5.0
-SQUISH_SPEED = 0.0
-SQUISH_WINDUP_COOLDOWN = 0.0
-SLAM_COOLDOWN_MULTIPLIER = 0.7
-SLAM_DOWNARDS_SPEED_MULTIPLIER = 1.2
-SQUISH_SPEED_MULTIPLIER = 0.0
-SQUISH_WINDUP_MULTIPLIER = 0.0
+SLAM_DOWNARDS_SPEED = 5.0
+SLAM_UPWARDS_SPEED = 3.0
+SLAM_2_COOLDOWN_MULTIPLIER = 0.7
+SLAM_2_DOWNARDS_SPEED_MULTIPLIER = 1.2
+SLAM_3_COOLDOWN_MULTIPLIER = 0.5
+SLAM_3_DOWNARDS_SPEED_MULTIPLIER = 1.3
 SPAWNED_WORM_AMOUNT = 5.0
 SPAWNED_TURRET_AMOUNT = 3.0
 metadata/_custom_type_script = "uid://b8ankegirkm1n"
@@ -51,6 +50,7 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_3y6l8")
 stats = SubResource("Resource_ll348")
+group_names = ExtResource("3_jw5i8")
 enemy_phase = Array[StringName]([&"slam1", &"worm", &"slam2", &"turret", &"slam3"])
 animated_sprite_2d = NodePath("AnimatedSprite")
 hitbox = NodePath("Hitbox")
@@ -120,13 +120,5 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_l2hne")
-
-[node name="AnimatedSprite2" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_0v7qk")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ll348")
-disabled = true
 
 [connection signal="area_entered" from="Hitbox" to="LimboHSM/IdleState" method="_on_hitbox_area_entered"]

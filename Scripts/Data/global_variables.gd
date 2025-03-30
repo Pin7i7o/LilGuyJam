@@ -1,3 +1,3 @@
 extends Node
 
-var player_position: Vector2
+var slam_counter: float = 0-0

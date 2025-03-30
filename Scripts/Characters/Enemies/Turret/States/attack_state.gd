@@ -12,8 +12,7 @@ func _on_atkbox_body_exited(body: Node2D) -> void:
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Player:
-		#body._die()
-		print("dead")
+		body._die()
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area is Bullet:

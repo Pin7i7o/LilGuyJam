@@ -203,7 +203,7 @@ fire_rate = 0.3
 metadata/_custom_type_script = "uid://cevxaenu2t6y7"
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "coyote_time_timer", "weapon")]
-collision_mask = 4
+collision_mask = 20
 script = ExtResource("1_dxpk4")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 stats = ExtResource("2_15c3i")

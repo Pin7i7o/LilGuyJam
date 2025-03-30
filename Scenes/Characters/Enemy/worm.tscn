@@ -39,7 +39,7 @@ size = Vector2(0, 0)
 
 [node name="Worm" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "wall_ray")]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 23
 script = ExtResource("1_d38j1")
 stats = ExtResource("2_58qal")
 group_names = ExtResource("3_q50qe")

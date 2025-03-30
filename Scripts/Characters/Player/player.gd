@@ -9,8 +9,5 @@ class_name Player
 func _ready():
 	pass
 
-func _physics_process(_delta: float) -> void:
-	GlobalVariables.player_position = global_position
-
 func _die() -> void:
 	queue_free()

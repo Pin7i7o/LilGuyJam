@@ -11,3 +11,5 @@
 [node name="Upgrades" type="Node2D" parent="." groups=["upgrades_parent_node"]]
 
 [node name="Projectiles" type="Node2D" parent="." groups=["projectiles_parent_node"]]
+
+[node name="Hand" type="Node2D" parent="." groups=["hand_parent_node"]]
