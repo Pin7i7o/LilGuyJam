@@ -1,5 +1,5 @@
 extends LimboHSM
-#State machine for the worm enemy
+#State machine for the turret enemy
 
 @export var character: EnemyTurret
 

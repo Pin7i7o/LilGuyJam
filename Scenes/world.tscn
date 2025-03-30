@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvyy0tixs4t2g"]
 
-[ext_resource type="PackedScene" uid="uid://b5ntutnuc6pin" path="res://Scenes/Levels/level.tscn" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://bb8sprfixm1de" path="res://Scenes/Levels/boss.tscn" id="2_go701"]
 
 [node name="World" type="Node2D"]
 
-[node name="level" parent="." instance=ExtResource("1_a02cp")]
+[node name="Boss" parent="." instance=ExtResource("2_go701")]
 
 [node name="Bullets" type="Node2D" parent="." groups=["bullets_parent_node"]]
 

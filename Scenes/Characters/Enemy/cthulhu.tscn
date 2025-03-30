@@ -1,0 +1,132 @@
+[gd_scene load_steps=14 format=3 uid="uid://bifd0t63ikkcw"]
+
+[ext_resource type="Script" uid="uid://dkkhq5a6j7vhn" path="res://Scripts/Characters/Enemies/Cthulhu/enemy.gd" id="1_3y6l8"]
+[ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="1_w1jmu"]
+[ext_resource type="Script" uid="uid://b8ankegirkm1n" path="res://Scripts/Characters/Enemies/Cthulhu/boss_stats.gd" id="2_0v7qk"]
+[ext_resource type="Texture2D" uid="uid://babm48c8dnd4n" path="res://icon.svg" id="2_3y6l8"]
+[ext_resource type="Script" uid="uid://beexnqxdlci8w" path="res://Scripts/Characters/Enemies/Cthulhu/limbo_hsm.gd" id="5_ll348"]
+[ext_resource type="Script" uid="uid://0yctoe055mab" path="res://Scripts/Characters/Enemies/Cthulhu/state_manager.gd" id="6_1kbi3"]
+[ext_resource type="Script" uid="uid://d4k46n0c1f40c" path="res://Scripts/Characters/Enemies/Cthulhu/States/idle_state.gd" id="6_jv23i"]
+[ext_resource type="Script" uid="uid://b58g6see4xa42" path="res://Scripts/Characters/Enemies/Cthulhu/States/slam_state.gd" id="7_l2hne"]
+
+[sub_resource type="Resource" id="Resource_ll348"]
+script = ExtResource("2_0v7qk")
+HP = 1500.0
+SLAM_COOLDOWN = 3.0
+SLAM_DOWNARDS_SPEED = 10.0
+SLAM_UPWARDS_SPEED = 5.0
+SQUISH_SPEED = 0.0
+SQUISH_WINDUP_COOLDOWN = 0.0
+SLAM_COOLDOWN_MULTIPLIER = 0.7
+SLAM_DOWNARDS_SPEED_MULTIPLIER = 1.2
+SQUISH_SPEED_MULTIPLIER = 0.0
+SQUISH_WINDUP_MULTIPLIER = 0.0
+SPAWNED_WORM_AMOUNT = 5.0
+SPAWNED_TURRET_AMOUNT = 3.0
+metadata/_custom_type_script = "uid://b8ankegirkm1n"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijx7g"]
+atlas = ExtResource("2_3y6l8")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0v7qk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijx7g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ll348"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2hne"]
+size = Vector2(514, 383)
+
+[node name="Cthulhu" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "hitbox")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_3y6l8")
+stats = SubResource("Resource_ll348")
+enemy_phase = Array[StringName]([&"slam1", &"worm", &"slam2", &"turret", &"slam3"])
+animated_sprite_2d = NodePath("AnimatedSprite")
+hitbox = NodePath("Hitbox")
+
+[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -236.0
+offset_right = 24.0
+offset_bottom = -213.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_w1jmu")
+limbo_hsm = NodePath("../LimboHSM")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4.067, 3)
+sprite_frames = SubResource("SpriteFrames_0v7qk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ll348")
+disabled = true
+
+[node name="LimboHSM" type="LimboHSM" parent="." node_paths=PackedStringArray("character", "states")]
+script = ExtResource("5_ll348")
+character = NodePath("..")
+states = {
+"death": NodePath("DeathState"),
+"idle": NodePath("IdleState"),
+"slam": NodePath("SlamState"),
+"turret": NodePath("TurretState"),
+"worm": NodePath("WormState")
+}
+
+[node name="IdleState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("6_jv23i")
+animation_name = &"default"
+metadata/_custom_type_script = "uid://0yctoe055mab"
+
+[node name="SlamState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("7_l2hne")
+animation_name = &"default"
+metadata/_custom_type_script = "uid://0yctoe055mab"
+
+[node name="WormState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("6_1kbi3")
+animation_name = &"default"
+metadata/_custom_type_script = "uid://0yctoe055mab"
+
+[node name="TurretState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("6_1kbi3")
+animation_name = &"default"
+metadata/_custom_type_script = "uid://0yctoe055mab"
+
+[node name="DeathState" type="LimboState" parent="LimboHSM"]
+script = ExtResource("6_1kbi3")
+animation_name = &"default"
+metadata/_custom_type_script = "uid://0yctoe055mab"
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_l2hne")
+
+[node name="AnimatedSprite2" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_0v7qk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ll348")
+disabled = true
+
+[connection signal="area_entered" from="Hitbox" to="LimboHSM/IdleState" method="_on_hitbox_area_entered"]
