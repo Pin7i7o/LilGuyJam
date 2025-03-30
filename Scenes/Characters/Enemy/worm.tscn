@@ -120,8 +120,14 @@ one_shot = true
 [node name="IdleTimer" type="Timer" parent="Timers"]
 one_shot = true
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-1.07288e-06, -2.83122e-06)
+scale = Vector2(3.2, 3.2)
+
 [connection signal="body_entered" from="Atkbox" to="LimboHSM/PatrolState" method="_on_atkbox_body_entered"]
 [connection signal="area_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="Timers/AttackCD" to="LimboHSM/AttackState" method="_on_attack_cd_timeout"]
 [connection signal="timeout" from="Timers/IdleTimer" to="LimboHSM/AttackState" method="_on_idle_timer_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

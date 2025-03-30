@@ -4,6 +4,7 @@ extends WormStateManager
 
 func _update(_delta: float) -> void:
 	_patrol()
+	print("patrolling")
 	
 	if wall_ray.is_colliding():
 		_change_direction()

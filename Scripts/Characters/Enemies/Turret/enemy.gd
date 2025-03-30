@@ -27,3 +27,9 @@ func _ready() -> void:
 	
 	projectile_parent = get_tree().get_first_node_in_group(group_names.projectiles_parent_node)
 	assert(projectile_parent != null, "No projectiles node found")
+
+func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
+	print("Entered")
+
+func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
+	print("Exited")

@@ -111,7 +111,13 @@ shape = SubResource("RectangleShape2D_jq5oc")
 wait_time = 3.0
 one_shot = true
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0.500001, -1.90735e-06)
+scale = Vector2(3.05, 3.1)
+
 [connection signal="body_entered" from="Atkbox" to="LimboHSM/ScoutState" method="_on_atkbox_body_entered"]
 [connection signal="body_exited" from="Atkbox" to="LimboHSM/AttackState" method="_on_atkbox_body_exited"]
 [connection signal="area_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

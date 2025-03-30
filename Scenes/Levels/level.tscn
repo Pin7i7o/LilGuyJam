@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://b5ntutnuc6pin"]
+[gd_scene load_steps=7 format=4 uid="uid://b5ntutnuc6pin"]
 
 [ext_resource type="PackedScene" uid="uid://det88ts0af6a6" path="res://Scenes/Characters/player.tscn" id="1_k5f4k"]
 [ext_resource type="Texture2D" uid="uid://cn10x0j7lndwe" path="res://Assets/Tilesets/test_tileset.png" id="2_6phgx"]
 [ext_resource type="PackedScene" uid="uid://ch4faolj8jq8a" path="res://Scenes/Characters/Enemy/worm.tscn" id="2_81xng"]
-[ext_resource type="PackedScene" uid="uid://b10vo8bj0iuhs" path="res://Scenes/Characters/Enemy/turret.tscn" id="3_yjxcc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwsja"]
 texture = ExtResource("2_6phgx")
@@ -236,14 +235,8 @@ collision_mask = 6
 [node name="CameraFollow" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
-[node name="Turret" parent="." instance=ExtResource("3_yjxcc")]
-position = Vector2(637, 540)
-
-[node name="Turret2" parent="." instance=ExtResource("3_yjxcc")]
-position = Vector2(1588, 414)
-
 [node name="Worm" parent="." instance=ExtResource("2_81xng")]
-position = Vector2(1279, 478)
+position = Vector2(1206, 479)
 
 [node name="Worm2" parent="." instance=ExtResource("2_81xng")]
 position = Vector2(2354, 349)
