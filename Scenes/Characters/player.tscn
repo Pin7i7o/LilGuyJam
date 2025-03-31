@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://det88ts0af6a6"]
+[gd_scene load_steps=36 format=3 uid="uid://det88ts0af6a6"]
 
 [ext_resource type="Script" uid="uid://c0w3rsxb2iman" path="res://Scripts/Characters/Player/player.gd" id="1_dxpk4"]
 [ext_resource type="Resource" uid="uid://410r6fd0wyn4" path="res://Resources/Player/player_stats.tres" id="2_15c3i"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://mu6gixmp3out" path="res://Scripts/Characters/Player/States/ground_state.gd" id="7_fepmq"]
 [ext_resource type="Script" uid="uid://d12ej273bispq" path="res://Scripts/Characters/Player/States/ground_attack_state.gd" id="8_ddhxa"]
 [ext_resource type="Script" uid="uid://ciaqc4lu5t30l" path="res://Scripts/Characters/Player/States/air_attack_state.gd" id="9_3k74t"]
-[ext_resource type="Script" uid="uid://cot5yl7brcu0h" path="res://Scripts/Characters/Player/States/ult_state.gd" id="10_v8iml"]
 [ext_resource type="Script" uid="uid://lctegp3harp3" path="res://Scripts/Characters/Player/player_input.gd" id="11_ojpki"]
 [ext_resource type="Resource" uid="uid://d347e2j7fu016" path="res://Resources/Player/player_input.tres" id="12_rv8bj"]
 [ext_resource type="PackedScene" uid="uid://bihfnv62ojgf8" path="res://Scenes/Weapons/base_weapon.tscn" id="13_01b8d"]
@@ -248,8 +247,7 @@ states = {
 "air": NodePath("AirState"),
 "air_atk": NodePath("AirAttackState"),
 "ground": NodePath("GroundState"),
-"ground_atk": NodePath("GroundAttackState"),
-"ult": NodePath("UltState")
+"ground_atk": NodePath("GroundAttackState")
 }
 
 [node name="AirState" type="LimboState" parent="LimboHSM"]
@@ -272,11 +270,6 @@ metadata/_custom_type_script = "uid://coc0ycfjrlafn"
 [node name="AirAttackState" type="LimboState" parent="LimboHSM"]
 script = ExtResource("9_3k74t")
 animation_name = &"atk"
-metadata/_custom_type_script = "uid://coc0ycfjrlafn"
-
-[node name="UltState" type="LimboState" parent="LimboHSM"]
-script = ExtResource("10_v8iml")
-animation_name = &"ult"
 metadata/_custom_type_script = "uid://coc0ycfjrlafn"
 
 [node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("limbo_hsm")]

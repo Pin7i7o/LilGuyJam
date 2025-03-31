@@ -26,7 +26,3 @@ func _bind_transitions():
 	#Air Attack state transitions
 	add_transition(states["air_atk"], states["ground"], "&toGround")
 	add_transition(states["air_atk"], states["air"], "&toAir")
-	
-	#Ult state transitions
-	add_transition(ANYSTATE, states["ult"], "&toUlt")
-	add_transition(states["ult"], states["air"], "&toAir")

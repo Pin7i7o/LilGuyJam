@@ -24,7 +24,4 @@ func _update(_delta: float) -> void:
 		
 	if blackboard.get_var(BBNames.attack_input):
 		dispatch("&toAtk")
-	
-	if blackboard.get_var(BBNames.ult_input):
-		dispatch("&toUlt")
 		
