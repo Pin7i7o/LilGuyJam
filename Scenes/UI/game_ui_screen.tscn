@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://gh1qill77tcx"]
+
+[ext_resource type="PackedScene" uid="uid://cjdvhjc2486xm" path="res://Scenes/UI/health_bar.tscn" id="1_qmm67"]
+[ext_resource type="PackedScene" uid="uid://pnsghxoskxs7" path="res://Scenes/UI/faces.tscn" id="2_pp87l"]
+
+[node name="GameUiScreen" type="CanvasLayer"]
+
+[node name="HealthBar" parent="." instance=ExtResource("1_qmm67")]
+
+[node name="Faces" parent="." instance=ExtResource("2_pp87l")]
+position = Vector2(576, 0)

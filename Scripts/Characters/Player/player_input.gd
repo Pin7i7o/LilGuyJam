@@ -37,6 +37,7 @@ func _process(_delta: float) -> void:
 		
 	if Input.is_action_pressed("pause"):
 		GameManager.pause_game()
+	
 
 
 func _add_to_history(input: Vector2) -> void:

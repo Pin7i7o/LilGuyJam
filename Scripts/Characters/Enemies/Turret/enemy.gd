@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
-	print("Entered")
+	pass
 
 func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
-	print("Exited")
+	pass

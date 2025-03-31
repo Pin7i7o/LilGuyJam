@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://bb8sprfixm1de"]
+[gd_scene load_steps=7 format=4 uid="uid://bb8sprfixm1de"]
 
 [ext_resource type="Texture2D" uid="uid://cn10x0j7lndwe" path="res://Assets/Tilesets/test_tileset.png" id="1_87a0f"]
 [ext_resource type="PackedScene" uid="uid://det88ts0af6a6" path="res://Scenes/Characters/player.tscn" id="2_10ujk"]
 [ext_resource type="PackedScene" uid="uid://bifd0t63ikkcw" path="res://Scenes/Characters/Enemy/cthulhu.tscn" id="3_10ujk"]
+[ext_resource type="PackedScene" uid="uid://gh1qill77tcx" path="res://Scenes/UI/game_ui_screen.tscn" id="4_q0q6k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0q6k"]
 texture = ExtResource("1_87a0f")
@@ -245,3 +246,7 @@ limit_top = 0
 limit_right = 1152
 limit_bottom = 648
 editor_draw_limits = true
+
+[node name="GameUiScreen" parent="." instance=ExtResource("4_q0q6k")]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)

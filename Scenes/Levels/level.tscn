@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://b5ntutnuc6pin"]
+[gd_scene load_steps=8 format=4 uid="uid://b5ntutnuc6pin"]
 
 [ext_resource type="PackedScene" uid="uid://det88ts0af6a6" path="res://Scenes/Characters/player.tscn" id="1_k5f4k"]
 [ext_resource type="Texture2D" uid="uid://cn10x0j7lndwe" path="res://Assets/Tilesets/test_tileset.png" id="2_6phgx"]
 [ext_resource type="PackedScene" uid="uid://ch4faolj8jq8a" path="res://Scenes/Characters/Enemy/worm.tscn" id="2_81xng"]
 [ext_resource type="PackedScene" uid="uid://ctkhac28bhpjg" path="res://Scenes/Levels/well.tscn" id="4_lkqqh"]
+[ext_resource type="PackedScene" uid="uid://gh1qill77tcx" path="res://Scenes/UI/game_ui_screen.tscn" id="5_tq1so"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yjxcc"]
 texture = ExtResource("2_6phgx")
@@ -226,7 +227,7 @@ tile_set = SubResource("TileSet_jggsm")
 
 [node name="Player" parent="." instance=ExtResource("1_k5f4k")]
 position = Vector2(299, 400)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 disable_mode = 1
 collision_mask = 6
 
@@ -241,7 +242,7 @@ position = Vector2(1923, 414)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(299, 400)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
 limit_bottom = 648
@@ -261,3 +262,7 @@ position = Vector2(2433, 449)
 [node name="Worm2" type="Node2D" parent="." groups=["worm_parent_node"]]
 
 [node name="Turret" type="Node2D" parent="." groups=["turret_parent_node"]]
+
+[node name="GameUiScreen" parent="." instance=ExtResource("5_tq1so")]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)

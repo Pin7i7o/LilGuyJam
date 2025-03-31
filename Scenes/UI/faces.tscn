@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://pnsghxoskxs7"]
+
+[ext_resource type="Texture2D" uid="uid://dekbaq2xiuukq" path="res://Assets/Characters/Player/demon_face.png" id="1_uvw3h"]
+
+[node name="Faces" type="Node2D"]
+
+[node name="Face" type="Sprite2D" parent="."]
+position = Vector2(-16, 16)
+texture = ExtResource("1_uvw3h")

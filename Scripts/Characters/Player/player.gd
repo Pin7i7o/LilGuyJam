@@ -10,4 +10,4 @@ func _ready():
 	pass
 
 func _die() -> void:
-	EventsManager.die()
+	EventsManager.decrease_lives()
