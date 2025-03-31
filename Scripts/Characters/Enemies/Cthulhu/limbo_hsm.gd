@@ -21,7 +21,7 @@ func _bind_transitions():
 	add_transition(states["slam"], states["idle"], "&toIdle")
 	
 	#Worm state transitions
-	add_transition(states["worm"], states["idle"], "&toSlam")
+	add_transition(states["worm"], states["idle"], "&toIdle")
 	
 	#Turret state transitions
-	add_transition(states["turret"], states["idle"], "&toSlam")
+	add_transition(states["turret"], states["idle"], "&toIdle")

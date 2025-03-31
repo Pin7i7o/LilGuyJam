@@ -29,7 +29,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
-size = Vector2(0, 0)
+size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijx7g"]
 size = Vector2(32, 61)
@@ -37,14 +37,15 @@ size = Vector2(32, 61)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2jxm"]
 size = Vector2(0, 0)
 
-[node name="Worm" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "wall_ray")]
-collision_layer = 2
-collision_mask = 23
+[node name="Worm" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "right_wall_ray", "left_wall_ray")]
+collision_layer = 0
+collision_mask = 20
 script = ExtResource("1_d38j1")
 stats = ExtResource("2_58qal")
 group_names = ExtResource("3_q50qe")
 animated_sprite_2d = NodePath("AnimatedSprite")
-wall_ray = NodePath("WallRay")
+right_wall_ray = NodePath("RightWallRay")
+left_wall_ray = NodePath("LeftWallRay")
 max_distance = 150.0
 upgrades_array = Array[ExtResource("3_ktquc")]([ExtResource("4_q50qe"), ExtResource("5_tdutr"), ExtResource("6_1vnx0"), null, null, null, null, null, null, null])
 
@@ -69,13 +70,18 @@ sprite_frames = SubResource("SpriteFrames_77ke4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1f0kj")
-disabled = true
 
-[node name="WallRay" type="RayCast2D" parent="."]
+[node name="RightWallRay" type="RayCast2D" parent="."]
 position = Vector2(42, 0)
 rotation = -1.5708
 target_position = Vector2(0, 19)
-collision_mask = 4
+collision_mask = 20
+
+[node name="LeftWallRay" type="RayCast2D" parent="."]
+position = Vector2(-42, 0)
+rotation = 1.5708
+target_position = Vector2(0, 19)
+collision_mask = 20
 
 [node name="LimboHSM" type="LimboHSM" parent="." node_paths=PackedStringArray("character", "states")]
 script = ExtResource("3_kushx")
@@ -85,9 +91,10 @@ states = {
 "patrol": NodePath("PatrolState")
 }
 
-[node name="PatrolState" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("attack_preparation_timer")]
+[node name="PatrolState" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("attack_preparation_timer", "direction_change_timer")]
 script = ExtResource("3_d38j1")
 attack_preparation_timer = NodePath("../../Timers/AttackCD")
+direction_change_timer = NodePath("../../Timers/DirectionChangeTimer")
 animation_name = &"default"
 metadata/_custom_type_script = "uid://bq6uxan0qsbor"
 
@@ -120,6 +127,9 @@ one_shot = true
 [node name="IdleTimer" type="Timer" parent="Timers"]
 one_shot = true
 
+[node name="DirectionChangeTimer" type="Timer" parent="Timers"]
+one_shot = true
+
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(-1.07288e-06, -2.83122e-06)
 scale = Vector2(3.2, 3.2)
@@ -129,5 +139,6 @@ scale = Vector2(3.2, 3.2)
 [connection signal="body_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="Timers/AttackCD" to="LimboHSM/AttackState" method="_on_attack_cd_timeout"]
 [connection signal="timeout" from="Timers/IdleTimer" to="LimboHSM/AttackState" method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="Timers/DirectionChangeTimer" to="LimboHSM/PatrolState" method="_on_direction_change_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

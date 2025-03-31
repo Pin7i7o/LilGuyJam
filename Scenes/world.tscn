@@ -13,3 +13,7 @@
 [node name="Projectiles" type="Node2D" parent="." groups=["projectiles_parent_node"]]
 
 [node name="Hand" type="Node2D" parent="." groups=["hand_parent_node"]]
+
+[node name="Worm" type="Node2D" parent="." groups=["worm_parent_node"]]
+
+[node name="Turret" type="Node2D" parent="." groups=["turret_parent_node"]]

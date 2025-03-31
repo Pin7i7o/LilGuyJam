@@ -16,14 +16,14 @@ var state = states.SCOUTING
 var initial_position: Vector2 = Vector2(576, 170)
 var initial_position_distance_treshold: float = 5.0
 var locked_target_position: Vector2 = Vector2.ZERO
+var locked_target_position_treshold: float = 5.0
 var target_body: Player
 var smoothing_speed: float = 2.0
 
 var slam_cooldown: float
 var slam_downwards_speed: float
 var slam_upwards_speed: float
-var slam_cooldown_multiplier: float = 1.0
-var slam_downwards_speed_multiplier: float = 1.0
+var slam_downwards_speed_multiplier: float 
 
 func _ready() -> void:
 	global_position = initial_position
@@ -38,6 +38,9 @@ func _physics_process(_delta: float) -> void:
 			var direction = (locked_target_position - global_position).normalized()
 			var tracking_speed = slam_downwards_speed * slam_downwards_speed_multiplier
 			position += direction * tracking_speed
+		
+			if global_position.distance_to(locked_target_position) <= locked_target_position_treshold:
+				_on_slam_impact()
 		
 		states.CENTERING:
 			if target_body:
@@ -73,10 +76,5 @@ func _on_scout_timer_timeout() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		#body._die()
-		print("dead player")
-	else:
-		print("is this floor?")
-		_on_slam_impact()
-		
+		body._die()
 	

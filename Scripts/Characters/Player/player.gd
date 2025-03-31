@@ -10,4 +10,5 @@ func _ready():
 	pass
 
 func _die() -> void:
-	queue_free()
+	print("MAN IM DEEEEAD")
+	#queue_free()

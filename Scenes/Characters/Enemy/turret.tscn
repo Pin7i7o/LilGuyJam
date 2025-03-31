@@ -29,7 +29,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfypk"]
-size = Vector2(61, 62)
+size = Vector2(62, 62)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1lxv3"]
 
@@ -38,7 +38,7 @@ size = Vector2(61, 62)
 
 [node name="Turret" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "marker_2d", "attack_cd")]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("1_o8feu")
 stats = ExtResource("2_jq5oc")
 group_names = ExtResource("3_4ynd2")
@@ -67,7 +67,6 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_4jqpi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_sfypk")
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -102,7 +101,6 @@ collision_layer = 2
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_jq5oc")
 
 [node name="Timers" type="Node" parent="."]

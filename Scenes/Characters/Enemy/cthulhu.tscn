@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bifd0t63ikkcw"]
+[gd_scene load_steps=17 format=3 uid="uid://bifd0t63ikkcw"]
 
 [ext_resource type="Script" uid="uid://dkkhq5a6j7vhn" path="res://Scripts/Characters/Enemies/Cthulhu/enemy.gd" id="1_3y6l8"]
 [ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="1_w1jmu"]
@@ -6,22 +6,22 @@
 [ext_resource type="Texture2D" uid="uid://babm48c8dnd4n" path="res://icon.svg" id="2_3y6l8"]
 [ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="3_jw5i8"]
 [ext_resource type="Script" uid="uid://beexnqxdlci8w" path="res://Scripts/Characters/Enemies/Cthulhu/limbo_hsm.gd" id="5_ll348"]
-[ext_resource type="Script" uid="uid://0yctoe055mab" path="res://Scripts/Characters/Enemies/Cthulhu/state_manager.gd" id="6_1kbi3"]
 [ext_resource type="Script" uid="uid://d4k46n0c1f40c" path="res://Scripts/Characters/Enemies/Cthulhu/States/idle_state.gd" id="6_jv23i"]
 [ext_resource type="Script" uid="uid://b58g6see4xa42" path="res://Scripts/Characters/Enemies/Cthulhu/States/slam_state.gd" id="7_l2hne"]
+[ext_resource type="Script" uid="uid://cjvlkbsf3c6gh" path="res://Scripts/Characters/Enemies/Cthulhu/States/worm_state.gd" id="9_587n5"]
+[ext_resource type="Script" uid="uid://c74o1h1ffn5o8" path="res://Scripts/Characters/Enemies/Cthulhu/States/turret_state.gd" id="10_bj4cs"]
+[ext_resource type="Script" uid="uid://rl3aa15tab72" path="res://Scripts/Characters/Enemies/Cthulhu/States/death_state.gd" id="11_bj4cs"]
 
 [sub_resource type="Resource" id="Resource_ll348"]
 script = ExtResource("2_0v7qk")
 HP = 1500.0
 SLAM_COOLDOWN = 3.0
-SLAM_DOWNARDS_SPEED = 5.0
+SLAM_DOWNWARDS_SPEED = 5.0
 SLAM_UPWARDS_SPEED = 3.0
 SLAM_2_COOLDOWN_MULTIPLIER = 0.7
-SLAM_2_DOWNARDS_SPEED_MULTIPLIER = 1.2
+SLAM_2_DOWNWARDS_SPEED_MULTIPLIER = 1.3
 SLAM_3_COOLDOWN_MULTIPLIER = 0.5
-SLAM_3_DOWNARDS_SPEED_MULTIPLIER = 1.3
-SPAWNED_WORM_AMOUNT = 5.0
-SPAWNED_TURRET_AMOUNT = 3.0
+SLAM_3_DOWNWARDS_SPEED_MULTIPLIER = 1.7
 metadata/_custom_type_script = "uid://b8ankegirkm1n"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ijx7g"]
@@ -45,15 +45,17 @@ size = Vector2(0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2hne"]
 size = Vector2(514, 383)
 
-[node name="Cthulhu" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "hitbox")]
+[node name="Cthulhu" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "hitbox", "worm_markers", "turret_markers")]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_3y6l8")
 stats = SubResource("Resource_ll348")
 group_names = ExtResource("3_jw5i8")
-enemy_phase = Array[StringName]([&"slam1", &"worm", &"slam2", &"turret", &"slam3"])
+enemy_phase = Array[StringName]([&"slam1", &"worm", &"slam2", &"turret", &"slam3", &"death"])
 animated_sprite_2d = NodePath("AnimatedSprite")
 hitbox = NodePath("Hitbox")
+worm_markers = NodePath("WormMarkers")
+turret_markers = NodePath("TurretMarkers")
 
 [node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
 anchors_preset = 3
@@ -100,17 +102,17 @@ animation_name = &"default"
 metadata/_custom_type_script = "uid://0yctoe055mab"
 
 [node name="WormState" type="LimboState" parent="LimboHSM"]
-script = ExtResource("6_1kbi3")
+script = ExtResource("9_587n5")
 animation_name = &"default"
 metadata/_custom_type_script = "uid://0yctoe055mab"
 
 [node name="TurretState" type="LimboState" parent="LimboHSM"]
-script = ExtResource("6_1kbi3")
+script = ExtResource("10_bj4cs")
 animation_name = &"default"
 metadata/_custom_type_script = "uid://0yctoe055mab"
 
 [node name="DeathState" type="LimboState" parent="LimboHSM"]
-script = ExtResource("6_1kbi3")
+script = ExtResource("11_bj4cs")
 animation_name = &"default"
 metadata/_custom_type_script = "uid://0yctoe055mab"
 
@@ -120,5 +122,30 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_l2hne")
+
+[node name="WormMarkers" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="WormMarkers"]
+position = Vector2(230, 100)
+
+[node name="Marker2D2" type="Marker2D" parent="WormMarkers"]
+position = Vector2(460, 100)
+
+[node name="Marker2D3" type="Marker2D" parent="WormMarkers"]
+position = Vector2(690, 100)
+
+[node name="Marker2D4" type="Marker2D" parent="WormMarkers"]
+position = Vector2(920, 100)
+
+[node name="TurretMarkers" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="TurretMarkers"]
+position = Vector2(100, 100)
+
+[node name="Marker2D2" type="Marker2D" parent="TurretMarkers"]
+position = Vector2(576, 100)
+
+[node name="Marker2D3" type="Marker2D" parent="TurretMarkers"]
+position = Vector2(1052, 100)
 
 [connection signal="area_entered" from="Hitbox" to="LimboHSM/IdleState" method="_on_hitbox_area_entered"]
