@@ -44,8 +44,8 @@ func _despawn_hand() -> void:
 		agent.hand_parent.get_child(0).queue_free()
 
 func _check_slam_counter() -> bool:
-	if GlobalVariables.slam_counter >= 3:
-		GlobalVariables.slam_counter = 0
+	if EventsManager.get_slam_counter() >= 3.0:
+		EventsManager.set_slam_counter(0.0)
 		return true
 		
 	return false

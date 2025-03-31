@@ -1,13 +1,16 @@
 extends Node
 
-var pause_menu_screen = preload("res://Scenes/UI/pause_menu.tscn")
+var pause_menu_screen: PackedScene = preload("res://Scenes/UI/pause_menu.tscn")
 
 func start_game():
 	if get_tree().paused:
 		continue_game()
 	
 	SceneManager.transisiton_scene("level_1")
-		
+
+func back_to_title_screen():
+	SceneManager.transisiton_scene("main_menu")
+
 func exit_game():
 	get_tree().quit()
 

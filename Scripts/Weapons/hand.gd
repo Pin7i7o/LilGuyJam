@@ -59,7 +59,7 @@ func _on_slam_impact() -> void:
 func _start_scout_cycle() -> void:
 	state = states.SCOUTING
 	scoutbox.monitoring = true
-	GlobalVariables.slam_counter += 1
+	EventsManager.increase_slam_counter()
 	target_body = null
 	collision_shape_2d.disabled = false
 
