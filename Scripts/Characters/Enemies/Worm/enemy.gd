@@ -7,9 +7,9 @@ class_name EnemyWorm
 @export var right_wall_ray: RayCast2D
 @export var left_wall_ray: RayCast2D
 @export var max_distance: float
+@export var hitbox: Area2D
 @export var upgrades_array: Array[BaseBulletStrategy]
 
-@onready var hitbox: CollisionShape2D = $Hitbox/CollisionShape2D
 
 var has_bounds: bool = true
 var right_bound: Vector2 = Vector2.ZERO
@@ -29,7 +29,6 @@ func _ready() -> void:
 	left_bound = global_position + Vector2(-max_distance, 0)
 	
 	hp = stats.HP
-	hitbox.shape = hitbox.shape.duplicate()
 	
 	upgrades_parent = get_tree().get_first_node_in_group(group_names.upgrades_parent_node)
 	assert(upgrades_parent != null, "No upgrades node found")

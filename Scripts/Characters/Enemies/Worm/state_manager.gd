@@ -6,7 +6,6 @@ class_name WormStateManager
 var enemy_stats: WormEnemyStats
 var right_wall_ray: RayCast2D
 var left_wall_ray: RayCast2D
-var hitbox: CollisionShape2D
 
 var can_change_direction: bool = true
 
@@ -16,7 +15,6 @@ func _enter() -> void:
 	enemy_stats = agent.stats
 	right_wall_ray = agent.right_wall_ray
 	left_wall_ray = agent.left_wall_ray
-	hitbox = agent.hitbox
 
 func _change_direction() -> void:
 	agent.direction.x = -agent.direction.x
@@ -28,10 +26,9 @@ func _change_direction() -> void:
 	
 func _change_hitbox(is_attacking: bool) -> void:
 	if is_attacking:
-		hitbox.shape.set_size(Vector2(16, 32))
+		agent.hitbox.monitoring = true
 	else:
-		hitbox.shape.set_size(Vector2.ZERO)
-		hitbox.position.y = 0.0
+		agent.hitbox.monitoring = false
 
 func _patrol() -> void:
 	agent.velocity.x = move_toward(agent.velocity.x, enemy_stats.SPEED * agent.direction.x, enemy_stats.ACCELERATION)

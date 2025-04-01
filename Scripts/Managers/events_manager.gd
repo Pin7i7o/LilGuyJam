@@ -25,5 +25,4 @@ func decrease_lives() -> void:
 	on_health_changed.emit(lives)
 
 func die() -> void:
-	get_tree().paused = true
 	SceneManager.transisiton_scene("death_game_over", false)
