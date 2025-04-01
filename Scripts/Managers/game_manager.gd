@@ -3,9 +3,7 @@ extends Node
 var pause_menu_screen: PackedScene = preload("res://Scenes/UI/pause_menu.tscn")
 
 func start_game():
-	if get_tree().paused:
-		continue_game()
-	
+	EventsManager.set_lives_count(3.0)
 	SceneManager.transisiton_scene("level_1", true)
 
 func back_to_title_screen():

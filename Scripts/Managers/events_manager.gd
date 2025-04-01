@@ -15,10 +15,12 @@ func get_slam_counter() -> float:
 func set_slam_counter(new_count: float) -> void:
 	slam_counter = new_count
 
+func set_lives_count(new_count: float) -> void:
+	lives = new_count
+
 func decrease_lives() -> void:
 	if lives > 1.0:
 		lives -= 1
-		
 	else:
 		die()
 	

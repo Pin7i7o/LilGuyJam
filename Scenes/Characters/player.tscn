@@ -152,7 +152,7 @@ var/ult/hint_string = "Is player ulting?"
 [sub_resource type="Resource" id="Resource_h1n2f"]
 script = ExtResource("14_xccyk")
 damage = 25.0
-bullet_speed = 10.0
+bullet_speed = 20.0
 fire_rate = 0.3
 metadata/_custom_type_script = "uid://cevxaenu2t6y7"
 
