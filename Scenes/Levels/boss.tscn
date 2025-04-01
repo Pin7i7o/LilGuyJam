@@ -1,12 +1,14 @@
 [gd_scene load_steps=7 format=4 uid="uid://bb8sprfixm1de"]
 
-[ext_resource type="Texture2D" uid="uid://cn10x0j7lndwe" path="res://Assets/Tilesets/test_tileset.png" id="1_87a0f"]
 [ext_resource type="PackedScene" uid="uid://det88ts0af6a6" path="res://Scenes/Characters/player.tscn" id="2_10ujk"]
 [ext_resource type="PackedScene" uid="uid://bifd0t63ikkcw" path="res://Scenes/Characters/Enemy/cthulhu.tscn" id="3_10ujk"]
 [ext_resource type="PackedScene" uid="uid://gh1qill77tcx" path="res://Scenes/UI/game_ui_screen.tscn" id="4_q0q6k"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_10ujk"]
+load_path = "res://.godot/imported/test_tileset.png-de12e2b83a37c5ef0f09942f83334b62.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0q6k"]
-texture = ExtResource("1_87a0f")
+texture = SubResource("CompressedTexture2D_10ujk")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0

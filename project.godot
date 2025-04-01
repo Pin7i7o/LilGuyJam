@@ -13,6 +13,7 @@ config_version=5
 config/name="LilGuyJam"
 run/main_scene="uid://0pggaavhrlae"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -24,6 +25,7 @@ EventsManager="*res://Scripts/Managers/events_manager.gd"
 [display]
 
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://h5ix5kkeo8ey"
 
 [input]
 
@@ -91,3 +93,4 @@ switch={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
