@@ -4,7 +4,7 @@ extends WormStateManager
 
 func _update(_delta: float) -> void:
 	if agent.hp <= 0:
-		_die()
+		dispatch("&toDeath")
 
 func _exit() -> void:
 	_change_hitbox(false)

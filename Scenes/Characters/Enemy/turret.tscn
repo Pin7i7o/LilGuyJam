@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b10vo8bj0iuhs"]
+[gd_scene load_steps=28 format=3 uid="uid://b10vo8bj0iuhs"]
 
 [ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="1_1lxv3"]
 [ext_resource type="Script" uid="uid://bvdihxl78jayu" path="res://Scripts/Characters/Enemies/Turret/enemy.gd" id="1_o8feu"]
@@ -11,8 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://bjhkl48vklwm" path="res://Assets/Characters/Enemies/Turret/attack.png" id="9_4ynd2"]
 [ext_resource type="Texture2D" uid="uid://b8dvin8bhy3cw" path="res://Assets/Characters/Enemies/Turret/patrol.png" id="9_jq5oc"]
 [ext_resource type="Script" uid="uid://ihcgn6rhjrsh" path="res://Scripts/Characters/Enemies/Turret/limbo_hsm.gd" id="10_sfypk"]
+[ext_resource type="Texture2D" uid="uid://ycwasikat6ah" path="res://Assets/Characters/death-sheet_minion.png" id="10_ttsbe"]
 [ext_resource type="Script" uid="uid://cnhctntopwhlm" path="res://Scripts/Characters/Enemies/Turret/States/scout_state.gd" id="11_sfypk"]
 [ext_resource type="Script" uid="uid://cavkw28ft17sq" path="res://Scripts/Characters/Enemies/Turret/States/attack_state.gd" id="12_jq5oc"]
+[ext_resource type="Script" uid="uid://d20t4mwof0rvy" path="res://Scripts/Characters/Enemies/Turret/States/death_state.gd" id="14_diixa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x6ifs"]
 atlas = ExtResource("9_4ynd2")
@@ -25,6 +27,18 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gahpi"]
 atlas = ExtResource("9_4ynd2")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q4aq"]
+atlas = ExtResource("10_ttsbe")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huqbs"]
+atlas = ExtResource("10_ttsbe")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdl8i"]
+atlas = ExtResource("10_ttsbe")
+region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ynd2"]
 atlas = ExtResource("9_jq5oc")
@@ -48,6 +62,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q4aq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huqbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdl8i")
+}],
+"loop": true,
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -98,7 +126,8 @@ limbo_hsm = NodePath("../LimboHSM")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4jqpi")
-animation = &"patrol"
+animation = &"death"
+frame_progress = 0.957346
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_sfypk")
@@ -111,6 +140,7 @@ script = ExtResource("10_sfypk")
 character = NodePath("..")
 states = {
 "attack": NodePath("AttackState"),
+"death": NodePath("DeathState"),
 "scout": NodePath("ScoutState")
 }
 
@@ -122,6 +152,12 @@ metadata/_custom_type_script = "uid://c71b6x5qep1ys"
 [node name="AttackState" type="LimboState" parent="LimboHSM"]
 script = ExtResource("12_jq5oc")
 animation_name = &"attack"
+metadata/_custom_type_script = "uid://c71b6x5qep1ys"
+
+[node name="DeathState" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("death_anim_timer")]
+script = ExtResource("14_diixa")
+death_anim_timer = NodePath("../../Timers/DeathAnim")
+animation_name = &"death"
 metadata/_custom_type_script = "uid://c71b6x5qep1ys"
 
 [node name="Atkbox" type="Area2D" parent="."]
@@ -143,6 +179,9 @@ shape = SubResource("RectangleShape2D_jq5oc")
 wait_time = 3.0
 one_shot = true
 
+[node name="DeathAnim" type="Timer" parent="Timers"]
+one_shot = true
+
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(2, 2)
 rect = Rect2(-10, -10, 16, 16)
@@ -151,5 +190,6 @@ rect = Rect2(-10, -10, 16, 16)
 [connection signal="body_exited" from="Atkbox" to="LimboHSM/AttackState" method="_on_atkbox_body_exited"]
 [connection signal="area_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Timers/DeathAnim" to="LimboHSM/DeathState" method="_on_death_anim_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

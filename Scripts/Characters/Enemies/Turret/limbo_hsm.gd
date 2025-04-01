@@ -13,6 +13,9 @@ func _ready() -> void:
 func _bind_transitions():
 	#Scout state transitions
 	add_transition(states["scout"], states["attack"], "&toAtk")
+	add_transition(states["scout"], states["death"], "&toDeath")
 	
 	#Attack state transitions
 	add_transition(states["attack"], states["scout"], "&toScout")
+	add_transition(states["attack"], states["death"], "&toDeath")
+	

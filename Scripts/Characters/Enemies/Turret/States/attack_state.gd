@@ -4,7 +4,7 @@ func _update(_delta: float) -> void:
 	_shoot()
 	
 	if agent.hp <= 0:
-		_die()
+		dispatch("&toDeath")
 
 func _on_atkbox_body_exited(body: Node2D) -> void:
 	if body is Player:

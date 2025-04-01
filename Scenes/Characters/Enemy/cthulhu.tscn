@@ -239,7 +239,7 @@ position = Vector2(104, 100)
 position = Vector2(576, 100)
 
 [node name="Marker2D3" type="Marker2D" parent="TurretMarkers"]
-position = Vector2(1032, 100)
+position = Vector2(1048, 100)
 
 [node name="DeathTimer" type="Timer" parent="."]
 one_shot = true
