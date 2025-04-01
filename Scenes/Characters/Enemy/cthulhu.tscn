@@ -219,7 +219,7 @@ shape = SubResource("RectangleShape2D_l2hne")
 [node name="WormMarkers" type="Node" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="WormMarkers"]
-position = Vector2(230, 100)
+position = Vector2(248, 100)
 
 [node name="Marker2D2" type="Marker2D" parent="WormMarkers"]
 position = Vector2(460, 100)
@@ -228,18 +228,18 @@ position = Vector2(460, 100)
 position = Vector2(690, 100)
 
 [node name="Marker2D4" type="Marker2D" parent="WormMarkers"]
-position = Vector2(920, 100)
+position = Vector2(904, 100)
 
 [node name="TurretMarkers" type="Node" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="TurretMarkers"]
-position = Vector2(100, 100)
+position = Vector2(104, 100)
 
 [node name="Marker2D2" type="Marker2D" parent="TurretMarkers"]
 position = Vector2(576, 100)
 
 [node name="Marker2D3" type="Marker2D" parent="TurretMarkers"]
-position = Vector2(1052, 100)
+position = Vector2(1032, 100)
 
 [node name="DeathTimer" type="Timer" parent="."]
 one_shot = true
