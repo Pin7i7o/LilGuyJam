@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://ca5eri0sn5uxr"]
 
 [ext_resource type="Script" uid="uid://bwqdj5xhwvn0x" path="res://Scripts/Weapons/Ammo/bullet.gd" id="1_14wxs"]
-[ext_resource type="Texture2D" uid="uid://cwqdw5o7xhgms" path="res://Assets/Characters/Weapons/Player/1.png" id="2_8bitv"]
+[ext_resource type="Texture2D" uid="uid://cefibx2lws1o3" path="res://Assets/Characters/Weapons/Bullets/demon_bullet.png" id="2_14wxs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k27yh"]
-size = Vector2(7, 3)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8bitv"]
+radius = 5.0
+height = 16.0
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 8
@@ -12,12 +13,12 @@ collision_mask = 6
 script = ExtResource("1_14wxs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_8bitv")
-region_enabled = true
+texture = ExtResource("2_14wxs")
 region_rect = Rect2(199, 71, 7, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_k27yh")
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_8bitv")
 
 [node name="Lifetime" type="Timer" parent="."]
 one_shot = true

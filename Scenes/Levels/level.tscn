@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://b5ntutnuc6pin"]
+[gd_scene load_steps=9 format=4 uid="uid://b5ntutnuc6pin"]
 
 [ext_resource type="PackedScene" uid="uid://det88ts0af6a6" path="res://Scenes/Characters/player.tscn" id="1_k5f4k"]
 [ext_resource type="Texture2D" uid="uid://cn10x0j7lndwe" path="res://Assets/Tilesets/test_tileset.png" id="2_6phgx"]
 [ext_resource type="PackedScene" uid="uid://ch4faolj8jq8a" path="res://Scenes/Characters/Enemy/worm.tscn" id="2_81xng"]
 [ext_resource type="PackedScene" uid="uid://ctkhac28bhpjg" path="res://Scenes/Levels/well.tscn" id="4_lkqqh"]
+[ext_resource type="PackedScene" uid="uid://b10vo8bj0iuhs" path="res://Scenes/Characters/Enemy/turret.tscn" id="5_rv5g2"]
 [ext_resource type="PackedScene" uid="uid://gh1qill77tcx" path="res://Scenes/UI/game_ui_screen.tscn" id="5_tq1so"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yjxcc"]
@@ -262,6 +263,9 @@ position = Vector2(2433, 449)
 [node name="Worm2" type="Node2D" parent="." groups=["worm_parent_node"]]
 
 [node name="Turret" type="Node2D" parent="." groups=["turret_parent_node"]]
+
+[node name="Turret2" parent="." instance=ExtResource("5_rv5g2")]
+position = Vector2(854, 540)
 
 [node name="GameUiScreen" parent="." instance=ExtResource("5_tq1so")]
 scale = Vector2(2, 2)

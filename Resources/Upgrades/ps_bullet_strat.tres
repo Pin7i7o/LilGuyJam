@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="PierceSpeedBulletStrategy" load_steps=2 format=3 uid="uid://clyc70v1w8f0l"]
+[gd_resource type="Resource" script_class="PierceSpeedBulletStrategy" load_steps=3 format=3 uid="uid://clyc70v1w8f0l"]
 
 [ext_resource type="Script" uid="uid://d2i7sjidd4p0i" path="res://Scripts/Weapons/Upgrades/ps_bullet_strat.gd" id="1_tqii6"]
+[ext_resource type="Texture2D" uid="uid://brlq6bdxour37" path="res://Assets/Characters/Weapons/Upgrades/pierce.png" id="2_2x7th"]
 
 [resource]
 script = ExtResource("1_tqii6")
 pierce_count = 2.0
 bullet_speed = 1.5
+texture = ExtResource("2_2x7th")
 metadata/_custom_type_script = "uid://d2i7sjidd4p0i"

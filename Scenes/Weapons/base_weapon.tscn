@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ca086vi8s620x" path="res://Scripts/Weapons/base_weapon.gd" id="1_cxo3g"]
 [ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="2_iwobt"]
-[ext_resource type="Texture2D" uid="uid://dt1a7y6cmf3y5" path="res://Assets/Characters/Weapons/Player/default.png" id="3_iwobt"]
+[ext_resource type="Texture2D" uid="uid://dt1a7y6cmf3y5" path="res://Assets/Characters/Weapons/default.png" id="3_iwobt"]
 
 [node name="BaseWeapon" type="Node2D"]
 script = ExtResource("1_cxo3g")

@@ -1,30 +1,64 @@
-[gd_scene load_steps=18 format=3 uid="uid://b10vo8bj0iuhs"]
+[gd_scene load_steps=23 format=3 uid="uid://b10vo8bj0iuhs"]
 
 [ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="1_1lxv3"]
 [ext_resource type="Script" uid="uid://bvdihxl78jayu" path="res://Scripts/Characters/Enemies/Turret/enemy.gd" id="1_o8feu"]
 [ext_resource type="Resource" uid="uid://bfcrsjcif6bje" path="res://Resources/Enemy/Turret/turret_stats.tres" id="2_jq5oc"]
-[ext_resource type="Texture2D" uid="uid://babm48c8dnd4n" path="res://icon.svg" id="2_o8feu"]
 [ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="3_4ynd2"]
 [ext_resource type="Script" uid="uid://b3lp10235nxg5" path="res://Scripts/Weapons/Upgrades/base_bullet_strat.gd" id="4_diixa"]
 [ext_resource type="Resource" uid="uid://cphvsv2a4qj56" path="res://Resources/Upgrades/fr_bullet_strat.tres" id="5_ttsbe"]
 [ext_resource type="Resource" uid="uid://clyc70v1w8f0l" path="res://Resources/Upgrades/ps_bullet_strat.tres" id="6_4q4aq"]
 [ext_resource type="Resource" uid="uid://bpojcn8lwjdax" path="res://Resources/Upgrades/spread_bullet_strat.tres" id="7_huqbs"]
+[ext_resource type="Texture2D" uid="uid://bjhkl48vklwm" path="res://Assets/Characters/Enemies/Turret/attack.png" id="9_4ynd2"]
+[ext_resource type="Texture2D" uid="uid://b8dvin8bhy3cw" path="res://Assets/Characters/Enemies/Turret/patrol.png" id="9_jq5oc"]
 [ext_resource type="Script" uid="uid://ihcgn6rhjrsh" path="res://Scripts/Characters/Enemies/Turret/limbo_hsm.gd" id="10_sfypk"]
 [ext_resource type="Script" uid="uid://cnhctntopwhlm" path="res://Scripts/Characters/Enemies/Turret/States/scout_state.gd" id="11_sfypk"]
 [ext_resource type="Script" uid="uid://cavkw28ft17sq" path="res://Scripts/Characters/Enemies/Turret/States/attack_state.gd" id="12_jq5oc"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ijx7g"]
-atlas = ExtResource("2_o8feu")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6ifs"]
+atlas = ExtResource("9_4ynd2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6a32"]
+atlas = ExtResource("9_4ynd2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gahpi"]
+atlas = ExtResource("9_4ynd2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ynd2"]
+atlas = ExtResource("9_jq5oc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diixa"]
+atlas = ExtResource("9_jq5oc")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4jqpi"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ijx7g")
+"texture": SubResource("AtlasTexture_x6ifs")
+}, {
+"duration": 12.0,
+"texture": SubResource("AtlasTexture_q6a32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gahpi")
 }],
 "loop": true,
-"name": &"default",
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_4ynd2")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_diixa")
+}],
+"loop": true,
+"name": &"patrol",
 "speed": 5.0
 }]
 
@@ -63,8 +97,9 @@ script = ExtResource("1_1lxv3")
 limbo_hsm = NodePath("../LimboHSM")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(3.875, 3.875)
 sprite_frames = SubResource("SpriteFrames_4jqpi")
+animation = &"patrol"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_sfypk")
@@ -82,12 +117,12 @@ states = {
 
 [node name="ScoutState" type="LimboState" parent="LimboHSM"]
 script = ExtResource("11_sfypk")
-animation_name = &"default"
+animation_name = &"patrol"
 metadata/_custom_type_script = "uid://c71b6x5qep1ys"
 
 [node name="AttackState" type="LimboState" parent="LimboHSM"]
 script = ExtResource("12_jq5oc")
-animation_name = &"default"
+animation_name = &"attack"
 metadata/_custom_type_script = "uid://c71b6x5qep1ys"
 
 [node name="Atkbox" type="Area2D" parent="."]

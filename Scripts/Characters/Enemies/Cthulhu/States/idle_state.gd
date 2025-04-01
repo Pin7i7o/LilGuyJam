@@ -2,7 +2,6 @@ extends BossStateManager
 
 func _enter() -> void:
 	super()
-	#play enter animation
 	agent.hitbox.monitoring = true
 
 func _update(_delta: float) -> void: 
@@ -10,7 +9,6 @@ func _update(_delta: float) -> void:
 		_get_next_phase()
 
 func _exit() -> void:
-	#play leave animation
 	agent.hitbox.monitoring = false
 
 func _on_hitbox_area_entered(area: Area2D) -> void:

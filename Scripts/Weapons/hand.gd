@@ -4,6 +4,7 @@ class_name Hand
 @onready var scout_timer: Timer = $ScoutTimer
 @onready var scoutbox: Area2D = $Scoutbox
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 enum states {
 	SCOUTING,
@@ -24,6 +25,10 @@ var slam_cooldown: float
 var slam_downwards_speed: float
 var slam_upwards_speed: float
 var slam_downwards_speed_multiplier: float 
+
+var slam_scout_sprite: Texture2D = preload("res://Assets/Characters/Enemies/Boss/hand_scout.png")
+var slam_downward_sprite: Texture2D = preload("res://Assets/Characters/Enemies/Boss/hand_slam.png")
+var slam_upwards_sprite: Texture2D = preload("res://Assets/Characters/Enemies/Boss/hand_upwards.png")
 
 func _ready() -> void:
 	global_position = initial_position
@@ -51,10 +56,20 @@ func _physics_process(_delta: float) -> void:
 				
 				if abs(y_distance) <= initial_position_distance_treshold:
 					_start_scout_cycle()
-		
+
+func _change_hand_sprite() -> void:
+	match state:
+		states.CENTERING:
+			sprite_2d.texture = slam_upwards_sprite
+		states.SCOUTING:
+			sprite_2d.texture = slam_scout_sprite
+		states.SLAMING:
+			sprite_2d.texture = slam_downward_sprite
+
 func _on_slam_impact() -> void:
 	state = states.CENTERING
 	collision_shape_2d.set_deferred("disabled", true)
+	_change_hand_sprite()
 
 func _start_scout_cycle() -> void:
 	state = states.SCOUTING
@@ -62,6 +77,7 @@ func _start_scout_cycle() -> void:
 	EventsManager.increase_slam_counter()
 	target_body = null
 	collision_shape_2d.disabled = false
+	_change_hand_sprite()
 
 func _on_scoutbox_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -73,6 +89,7 @@ func _on_scout_timer_timeout() -> void:
 	if target_body:
 		locked_target_position = target_body.global_position
 		state = states.SLAMING
+		_change_hand_sprite()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:

@@ -9,6 +9,7 @@ var next_phase: bool
 
 
 func _enter() -> void:
+	agent.animated_sprite_2d.play(animation_name)
 	enemy_stats = agent.stats
 	
 	next_phase = false

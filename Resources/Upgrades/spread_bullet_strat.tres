@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpreadBulletStrategy" load_steps=3 format=3 uid="uid://bpojcn8lwjdax"]
 
 [ext_resource type="Script" uid="uid://b4oyv4ywuf2xx" path="res://Scripts/Weapons/Upgrades/spread_bullet_strat.gd" id="1_kykly"]
-[ext_resource type="Texture2D" uid="uid://bhtdt0hw53tqj" path="res://Assets/Characters/Weapons/Player/explosive.png" id="2_kykly"]
+[ext_resource type="Texture2D" uid="uid://cqwaxjj6jmx2n" path="res://Assets/Characters/Weapons/Upgrades/spread.png" id="2_kykly"]
 
 [resource]
 script = ExtResource("1_kykly")

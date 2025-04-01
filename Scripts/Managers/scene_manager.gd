@@ -3,7 +3,8 @@ extends Node
 var scenes: Dictionary = {	"level_1": "res://Scenes/Levels/level.tscn",
 							"boss": "res://Scenes/Levels/boss.tscn",
 							"death_game_over": "res://Scenes/UI/death_game_over.tscn",
-							"main_menu": "res://Scenes/UI/main_menu.tscn"
+							"main_menu": "res://Scenes/UI/main_menu.tscn",
+							"end_game_over": "res://Scenes/UI/end_game_over.tscn"
 						}
 
 

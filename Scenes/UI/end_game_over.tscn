@@ -1,35 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://btcyt11a1fxe8"]
+[gd_scene load_steps=3 format=3 uid="uid://odeeber1jbs2"]
 
-[ext_resource type="FontFile" uid="uid://rgr7odjps317" path="res://Assets/Fonts/Bytesized-Regular.ttf" id="1_3u85f"]
-[ext_resource type="Script" uid="uid://bcxllbu85i34o" path="res://Scripts/UI/death_game_over.gd" id="1_kae60"]
+[ext_resource type="FontFile" uid="uid://rgr7odjps317" path="res://Assets/Fonts/Bytesized-Regular.ttf" id="1_7uyso"]
+[ext_resource type="Script" uid="uid://450vrtfkgxyy" path="res://Scripts/UI/end_game_over.gd" id="1_awnpm"]
 
-[node name="DeathGameOver" type="Control"]
+[node name="EndGameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_kae60")
+script = ExtResource("1_awnpm")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
 offset_right = 576.0
 offset_bottom = 648.0
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-layout_mode = 0
 offset_left = 576.0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
 offset_top = 221.0
 offset_right = 1152.0
 offset_bottom = 324.0
-theme_override_fonts/normal_font = ExtResource("1_3u85f")
+theme_override_fonts/normal_font = ExtResource("1_7uyso")
 theme_override_font_sizes/normal_font_size = 82
 bbcode_enabled = true
 text = "[color=black]GAME [/color][color=white]OVER[/color]"
@@ -38,15 +35,27 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+offset_top = 349.0
+offset_right = 1152.0
+offset_bottom = 399.0
+theme_override_fonts/normal_font = ExtResource("1_7uyso")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[color=purple] Thank you for playing! [/color]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
-layout_mode = 0
 offset_top = 424.0
 offset_right = 1152.0
 offset_bottom = 474.0
-theme_override_fonts/normal_font = ExtResource("1_3u85f")
+theme_override_fonts/normal_font = ExtResource("1_7uyso")
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "[pulse freq=1.0 color=#ffffff40 ease=-2.0][color=purple]	press [ENTER] to restart	[/color][/pulse]"
+text = "[pulse freq=1.0 color=#ffffff40 ease=-2.0][color=purple] press [ENTER] to leave [/color][/pulse]"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1

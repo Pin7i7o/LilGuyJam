@@ -10,4 +10,5 @@ func _ready():
 	pass
 
 func _die() -> void:
+	animated_sprite_2d.play("dmg")
 	EventsManager.decrease_lives()

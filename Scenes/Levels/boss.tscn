@@ -250,3 +250,15 @@ editor_draw_limits = true
 [node name="GameUiScreen" parent="." instance=ExtResource("4_q0q6k")]
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="Bullets" type="Node2D" parent="." groups=["bullets_parent_node"]]
+
+[node name="Upgrades" type="Node2D" parent="." groups=["upgrades_parent_node"]]
+
+[node name="Projectiles" type="Node2D" parent="." groups=["projectiles_parent_node"]]
+
+[node name="Hand" type="Node2D" parent="." groups=["hand_parent_node"]]
+
+[node name="Worm" type="Node2D" parent="." groups=["worm_parent_node"]]
+
+[node name="Turret" type="Node2D" parent="." groups=["turret_parent_node"]]

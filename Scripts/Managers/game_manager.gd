@@ -11,6 +11,9 @@ func start_game():
 func back_to_title_screen():
 	SceneManager.transisiton_scene("main_menu")
 
+func finish_game():
+	SceneManager.transisiton_scene("end_game_over")
+
 func exit_game():
 	get_tree().quit()
 

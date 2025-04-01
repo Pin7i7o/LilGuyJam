@@ -18,10 +18,12 @@ func set_slam_counter(new_count: float) -> void:
 func decrease_lives() -> void:
 	if lives > 1.0:
 		lives -= 1
+		
 	else:
 		die()
 	
 	on_health_changed.emit(lives)
 
 func die() -> void:
+	get_tree().paused = true
 	SceneManager.transisiton_scene("death_game_over")

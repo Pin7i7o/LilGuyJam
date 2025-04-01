@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cct2vi1ajwkog"]
 
-[ext_resource type="Texture2D" uid="uid://cwqdw5o7xhgms" path="res://Assets/Characters/Weapons/Player/1.png" id="1_cn8sc"]
 [ext_resource type="Script" uid="uid://b8nej16288ge8" path="res://Scripts/Weapons/hand.gd" id="1_k1vmn"]
+[ext_resource type="Texture2D" uid="uid://d2c7jueqreua2" path="res://Assets/Characters/Enemies/Boss/hand_scout.png" id="2_k1vmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cn8sc"]
 size = Vector2(25, 7)
@@ -15,8 +15,8 @@ collision_mask = 5
 script = ExtResource("1_k1vmn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_cn8sc")
-region_enabled = true
+scale = Vector2(0.78125, 0.476563)
+texture = ExtResource("2_k1vmn")
 region_rect = Rect2(96, 37, 25, 7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

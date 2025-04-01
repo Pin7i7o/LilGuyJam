@@ -1,11 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://bifd0t63ikkcw"]
+[gd_scene load_steps=30 format=3 uid="uid://bifd0t63ikkcw"]
 
 [ext_resource type="Script" uid="uid://dkkhq5a6j7vhn" path="res://Scripts/Characters/Enemies/Cthulhu/enemy.gd" id="1_3y6l8"]
 [ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="1_w1jmu"]
 [ext_resource type="Script" uid="uid://b8ankegirkm1n" path="res://Scripts/Characters/Enemies/Cthulhu/boss_stats.gd" id="2_0v7qk"]
-[ext_resource type="Texture2D" uid="uid://babm48c8dnd4n" path="res://icon.svg" id="2_3y6l8"]
 [ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="3_jw5i8"]
+[ext_resource type="Texture2D" uid="uid://bvnupx88i36lq" path="res://Assets/Characters/Enemies/Boss/attack.png" id="5_8rejh"]
 [ext_resource type="Script" uid="uid://beexnqxdlci8w" path="res://Scripts/Characters/Enemies/Cthulhu/limbo_hsm.gd" id="5_ll348"]
+[ext_resource type="Texture2D" uid="uid://dlqnt6f0q7uhl" path="res://Assets/Characters/death-sheet.png" id="6_5umcr"]
+[ext_resource type="Texture2D" uid="uid://dlbqeuygu17jp" path="res://Assets/Characters/Enemies/Boss/idle.png" id="6_hbqxp"]
 [ext_resource type="Script" uid="uid://d4k46n0c1f40c" path="res://Scripts/Characters/Enemies/Cthulhu/States/idle_state.gd" id="6_jv23i"]
 [ext_resource type="Script" uid="uid://b58g6see4xa42" path="res://Scripts/Characters/Enemies/Cthulhu/States/slam_state.gd" id="7_l2hne"]
 [ext_resource type="Script" uid="uid://cjvlkbsf3c6gh" path="res://Scripts/Characters/Enemies/Cthulhu/States/worm_state.gd" id="9_587n5"]
@@ -24,18 +26,105 @@ SLAM_3_COOLDOWN_MULTIPLIER = 0.5
 SLAM_3_DOWNWARDS_SPEED_MULTIPLIER = 1.7
 metadata/_custom_type_script = "uid://b8ankegirkm1n"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ijx7g"]
-atlas = ExtResource("2_3y6l8")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5umcr"]
+atlas = ExtResource("5_8rejh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jcft"]
+atlas = ExtResource("5_8rejh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq8x4"]
+atlas = ExtResource("5_8rejh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2hlh"]
+atlas = ExtResource("5_8rejh")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_racim"]
+atlas = ExtResource("5_8rejh")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dctv"]
+atlas = ExtResource("5_8rejh")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbqxp"]
+atlas = ExtResource("6_5umcr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0bb2"]
+atlas = ExtResource("6_5umcr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljq43"]
+atlas = ExtResource("6_5umcr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjo5t"]
+atlas = ExtResource("6_hbqxp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnjmu"]
+atlas = ExtResource("6_hbqxp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k67l"]
+atlas = ExtResource("6_hbqxp")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0v7qk"]
 animations = [{
 "frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_5umcr")
+}, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ijx7g")
+"texture": SubResource("AtlasTexture_0jcft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wq8x4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2hlh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_racim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dctv")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_hbqxp")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_e0bb2")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ljq43")
 }],
 "loop": true,
-"name": &"default",
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_tjo5t")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_pnjmu")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_0k67l")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -73,8 +162,11 @@ script = ExtResource("1_w1jmu")
 limbo_hsm = NodePath("../LimboHSM")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4.067, 3)
+position = Vector2(7.39098e-06, 0)
+scale = Vector2(16.0625, 11.9453)
 sprite_frames = SubResource("SpriteFrames_0v7qk")
+animation = &"idle"
+frame_progress = 0.582677
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ll348")
@@ -93,27 +185,28 @@ states = {
 
 [node name="IdleState" type="LimboState" parent="LimboHSM"]
 script = ExtResource("6_jv23i")
-animation_name = &"default"
+animation_name = &"idle"
 metadata/_custom_type_script = "uid://0yctoe055mab"
 
 [node name="SlamState" type="LimboState" parent="LimboHSM"]
 script = ExtResource("7_l2hne")
-animation_name = &"default"
+animation_name = &"attack"
 metadata/_custom_type_script = "uid://0yctoe055mab"
 
 [node name="WormState" type="LimboState" parent="LimboHSM"]
 script = ExtResource("9_587n5")
-animation_name = &"default"
+animation_name = &"attack"
 metadata/_custom_type_script = "uid://0yctoe055mab"
 
 [node name="TurretState" type="LimboState" parent="LimboHSM"]
 script = ExtResource("10_bj4cs")
-animation_name = &"default"
+animation_name = &"attack"
 metadata/_custom_type_script = "uid://0yctoe055mab"
 
-[node name="DeathState" type="LimboState" parent="LimboHSM"]
+[node name="DeathState" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("death_anim_timer")]
 script = ExtResource("11_bj4cs")
-animation_name = &"default"
+death_anim_timer = NodePath("../../DeathTimer")
+animation_name = &"death"
 metadata/_custom_type_script = "uid://0yctoe055mab"
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -148,4 +241,8 @@ position = Vector2(576, 100)
 [node name="Marker2D3" type="Marker2D" parent="TurretMarkers"]
 position = Vector2(1052, 100)
 
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="Hitbox" to="LimboHSM/IdleState" method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="DeathTimer" to="LimboHSM/DeathState" method="_on_death_timer_timeout"]

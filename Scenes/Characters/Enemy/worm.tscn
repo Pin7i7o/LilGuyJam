@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://ch4faolj8jq8a"]
+[gd_scene load_steps=35 format=3 uid="uid://ch4faolj8jq8a"]
 
 [ext_resource type="Script" uid="uid://bfuce4lt4qwwd" path="res://Scripts/Characters/Enemies/Worm/enemy.gd" id="1_d38j1"]
 [ext_resource type="Resource" uid="uid://17rnn3snio4n" path="res://Resources/Enemy/Worm/worm_stats.tres" id="2_58qal"]
-[ext_resource type="Texture2D" uid="uid://babm48c8dnd4n" path="res://icon.svg" id="2_kushx"]
 [ext_resource type="Script" uid="uid://12hf5wvkav4h" path="res://Scripts/Characters/Enemies/Worm/States/patrol_state.gd" id="3_d38j1"]
 [ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="3_k2jxm"]
 [ext_resource type="Script" uid="uid://b3lp10235nxg5" path="res://Scripts/Weapons/Upgrades/base_bullet_strat.gd" id="3_ktquc"]
@@ -12,19 +11,138 @@
 [ext_resource type="Resource" uid="uid://clyc70v1w8f0l" path="res://Resources/Upgrades/ps_bullet_strat.tres" id="5_tdutr"]
 [ext_resource type="Resource" uid="uid://bpojcn8lwjdax" path="res://Resources/Upgrades/spread_bullet_strat.tres" id="6_1vnx0"]
 [ext_resource type="Script" uid="uid://doabgggwp7ujq" path="res://Scripts/Characters/Enemies/Worm/States/attack_state.gd" id="7_k2jxm"]
+[ext_resource type="Texture2D" uid="uid://bpk1bksmbg0ue" path="res://Assets/Characters/Enemies/Worm/patrol.png" id="9_q50qe"]
+[ext_resource type="Texture2D" uid="uid://c35pf2xsxrdaa" path="res://Assets/Characters/Enemies/Worm/attack.png" id="9_tdutr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ijx7g"]
-atlas = ExtResource("2_kushx")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_prwhp"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ijk3"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vf43"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceihd"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7rfm"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b2w7"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1xlj"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmc0m"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpueh"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1v3h"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byp43"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x8q1"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_426yw"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77ybe"]
+atlas = ExtResource("9_tdutr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdutr"]
+atlas = ExtResource("9_q50qe")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vnx0"]
+atlas = ExtResource("9_q50qe")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_324xh"]
+atlas = ExtResource("9_q50qe")
+region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_77ke4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ijx7g")
+"texture": SubResource("AtlasTexture_prwhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ijk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vf43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceihd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7rfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b2w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1xlj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmc0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpueh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1v3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byp43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x8q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_426yw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77ybe")
 }],
 "loop": true,
-"name": &"default",
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdutr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vnx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_324xh")
+}],
+"loop": true,
+"name": &"patrol",
 "speed": 5.0
 }]
 
@@ -65,8 +183,11 @@ script = ExtResource("3_k2jxm")
 limbo_hsm = NodePath("../LimboHSM")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_77ke4")
+animation = &"attack"
+frame = 3
+frame_progress = 0.19577
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1f0kj")
@@ -95,13 +216,13 @@ states = {
 script = ExtResource("3_d38j1")
 attack_preparation_timer = NodePath("../../Timers/AttackCD")
 direction_change_timer = NodePath("../../Timers/DirectionChangeTimer")
-animation_name = &"default"
+animation_name = &"patrol"
 metadata/_custom_type_script = "uid://bq6uxan0qsbor"
 
 [node name="AttackState" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("idle_timer")]
 script = ExtResource("7_k2jxm")
 idle_timer = NodePath("../../Timers/IdleTimer")
-animation_name = &"default"
+animation_name = &"attack"
 metadata/_custom_type_script = "uid://bq6uxan0qsbor"
 
 [node name="Atkbox" type="Area2D" parent="."]

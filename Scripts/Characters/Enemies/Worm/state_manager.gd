@@ -21,6 +21,10 @@ func _enter() -> void:
 func _change_direction() -> void:
 	agent.direction.x = -agent.direction.x
 	can_change_direction = false
+	if sign(agent.direction.x) > 0:
+		agent.animated_sprite_2d.flip_h = false
+	else:
+		agent.animated_sprite_2d.flip_h = true
 	
 func _change_hitbox(is_attacking: bool) -> void:
 	if is_attacking:

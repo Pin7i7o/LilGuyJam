@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://det88ts0af6a6"]
+[gd_scene load_steps=33 format=3 uid="uid://det88ts0af6a6"]
 
 [ext_resource type="Script" uid="uid://c0w3rsxb2iman" path="res://Scripts/Characters/Player/player.gd" id="1_dxpk4"]
 [ext_resource type="Resource" uid="uid://410r6fd0wyn4" path="res://Resources/Player/player_stats.tres" id="2_15c3i"]
 [ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="3_yt1oc"]
+[ext_resource type="Texture2D" uid="uid://cfqwsupjg13ki" path="res://Assets/Characters/Player/demon_dmg.png" id="4_dxpk4"]
 [ext_resource type="Texture2D" uid="uid://odu36eacpvrp" path="res://Assets/Characters/Player/demon_idle.png" id="4_h1n2f"]
 [ext_resource type="Texture2D" uid="uid://c8pnjvlgmdj1v" path="res://Assets/Characters/Player/demon_walk.png" id="5_dxpk4"]
 [ext_resource type="Script" uid="uid://cu1dwtcn4sj7s" path="res://Scripts/Characters/Player/limbo_hsm.gd" id="5_hy8lp"]
@@ -15,6 +16,18 @@
 [ext_resource type="Resource" uid="uid://d347e2j7fu016" path="res://Resources/Player/player_input.tres" id="12_rv8bj"]
 [ext_resource type="PackedScene" uid="uid://bihfnv62ojgf8" path="res://Scenes/Weapons/base_weapon.tscn" id="13_01b8d"]
 [ext_resource type="Script" uid="uid://cevxaenu2t6y7" path="res://Scripts/Weapons/weapon_stats.gd" id="14_xccyk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15c3i"]
+atlas = ExtResource("4_dxpk4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxpk4"]
+atlas = ExtResource("4_dxpk4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv8bj"]
+atlas = ExtResource("4_dxpk4")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yt1oc"]
 atlas = ExtResource("4_h1n2f")
@@ -54,6 +67,20 @@ region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dd72n"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15c3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxpk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv8bj")
+}],
+"loop": true,
+"name": &"dmg",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yt1oc")
@@ -97,9 +124,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phill"]
-radius = 4.0
-height = 16.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_h1n2f"]
+radius = 8.0
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_8erm5"]
 var/direction/name = &"direction"
@@ -161,11 +187,10 @@ limbo_hsm = NodePath("../LimboHSM")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dd72n")
-animation = &"idle"
+animation = &"dmg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_phill")
+shape = SubResource("CircleShape2D_h1n2f")
 
 [node name="LimboHSM" type="LimboHSM" parent="." node_paths=PackedStringArray("character", "states")]
 blackboard_plan = SubResource("BlackboardPlan_8erm5")
