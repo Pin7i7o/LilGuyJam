@@ -1,7 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://byyxufsk4t0gd"]
+[gd_scene load_steps=10 format=3 uid="uid://byyxufsk4t0gd"]
 
 [ext_resource type="Script" uid="uid://b4i5jwdp6g1qx" path="res://Scripts/Weapons/Ammo/projectile.gd" id="1_u1pgf"]
 [ext_resource type="Texture2D" uid="uid://bamya8u66f28g" path="res://Assets/Characters/Weapons/Bullets/turret_projectile.png" id="2_u1pgf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1pgf"]
+atlas = ExtResource("2_u1pgf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyri1"]
+atlas = ExtResource("2_u1pgf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtxjg"]
+atlas = ExtResource("2_u1pgf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3eph"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1pgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyri1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtxjg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hyri1"]
 radius = 7.0
@@ -16,9 +45,10 @@ collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_u1pgf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_u1pgf")
-region_rect = Rect2(199, 71, 7, 3)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x3eph")
+frame = 2
+frame_progress = 0.364286
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hyri1")

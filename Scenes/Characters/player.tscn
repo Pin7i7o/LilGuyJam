@@ -85,7 +85,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yt1oc")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_jnx77")
 }, {
 "duration": 1.0,
@@ -187,7 +187,8 @@ limbo_hsm = NodePath("../LimboHSM")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dd72n")
-animation = &"dmg"
+animation = &"idle"
+frame_progress = 0.0566903
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h1n2f")

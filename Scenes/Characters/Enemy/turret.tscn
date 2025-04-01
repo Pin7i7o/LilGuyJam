@@ -63,12 +63,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfypk"]
-size = Vector2(62, 62)
+size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1lxv3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jq5oc"]
-size = Vector2(61, 62)
+size = Vector2(16, 16)
 
 [node name="Turret" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "marker_2d", "attack_cd")]
 collision_layer = 0
@@ -97,7 +97,6 @@ script = ExtResource("1_1lxv3")
 limbo_hsm = NodePath("../LimboHSM")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3.875, 3.875)
 sprite_frames = SubResource("SpriteFrames_4jqpi")
 animation = &"patrol"
 
@@ -105,7 +104,7 @@ animation = &"patrol"
 shape = SubResource("RectangleShape2D_sfypk")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -40)
+position = Vector2(0, -21)
 
 [node name="LimboHSM" type="LimboHSM" parent="." node_paths=PackedStringArray("character", "states")]
 script = ExtResource("10_sfypk")
@@ -145,8 +144,8 @@ wait_time = 3.0
 one_shot = true
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(0.500001, -1.90735e-06)
-scale = Vector2(3.05, 3.1)
+position = Vector2(2, 2)
+rect = Rect2(-10, -10, 16, 16)
 
 [connection signal="body_entered" from="Atkbox" to="LimboHSM/ScoutState" method="_on_atkbox_body_entered"]
 [connection signal="body_exited" from="Atkbox" to="LimboHSM/AttackState" method="_on_atkbox_body_exited"]

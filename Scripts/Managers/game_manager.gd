@@ -6,13 +6,13 @@ func start_game():
 	if get_tree().paused:
 		continue_game()
 	
-	SceneManager.transisiton_scene("level_1")
+	SceneManager.transisiton_scene("level_1", true)
 
 func back_to_title_screen():
-	SceneManager.transisiton_scene("main_menu")
+	SceneManager.transisiton_scene("main_menu", true)
 
 func finish_game():
-	SceneManager.transisiton_scene("end_game_over")
+	SceneManager.transisiton_scene("end_game_over", true)
 
 func exit_game():
 	get_tree().quit()

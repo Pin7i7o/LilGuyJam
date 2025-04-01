@@ -7,4 +7,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.queue_free()
 	
 	await  get_tree().create_timer(2.0).timeout
-	SceneManager.transisiton_scene("boss")
+	SceneManager.transisiton_scene("boss", false)

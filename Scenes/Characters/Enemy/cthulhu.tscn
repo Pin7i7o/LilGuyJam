@@ -132,7 +132,7 @@ animations = [{
 size = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2hne"]
-size = Vector2(514, 383)
+size = Vector2(320, 320)
 
 [node name="Cthulhu" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "hitbox", "worm_markers", "turret_markers")]
 collision_layer = 0
@@ -163,7 +163,7 @@ limbo_hsm = NodePath("../LimboHSM")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.39098e-06, 0)
-scale = Vector2(16.0625, 11.9453)
+scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_0v7qk")
 animation = &"idle"
 frame_progress = 0.582677

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ch4faolj8jq8a"]
+[gd_scene load_steps=28 format=3 uid="uid://ch4faolj8jq8a"]
 
 [ext_resource type="Script" uid="uid://bfuce4lt4qwwd" path="res://Scripts/Characters/Enemies/Worm/enemy.gd" id="1_d38j1"]
 [ext_resource type="Resource" uid="uid://17rnn3snio4n" path="res://Resources/Enemy/Worm/worm_stats.tres" id="2_58qal"]
@@ -16,116 +16,67 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_prwhp"]
 atlas = ExtResource("9_tdutr")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ijk3"]
 atlas = ExtResource("9_tdutr")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(16, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vf43"]
 atlas = ExtResource("9_tdutr")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ceihd"]
-atlas = ExtResource("9_tdutr")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(32, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7rfm"]
 atlas = ExtResource("9_tdutr")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(48, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4b2w7"]
 atlas = ExtResource("9_tdutr")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(32, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1xlj"]
 atlas = ExtResource("9_tdutr")
-region = Rect2(48, 0, 16, 16)
+region = Rect2(32, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lmc0m"]
 atlas = ExtResource("9_tdutr")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qpueh"]
-atlas = ExtResource("9_tdutr")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h1v3h"]
-atlas = ExtResource("9_tdutr")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_byp43"]
-atlas = ExtResource("9_tdutr")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8x8q1"]
-atlas = ExtResource("9_tdutr")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_426yw"]
-atlas = ExtResource("9_tdutr")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_77ybe"]
-atlas = ExtResource("9_tdutr")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(48, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdutr"]
 atlas = ExtResource("9_q50qe")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1vnx0"]
 atlas = ExtResource("9_q50qe")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(16, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_324xh"]
 atlas = ExtResource("9_q50qe")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(32, 0, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_77ke4"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_prwhp")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_8ijk3")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_5vf43")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ceihd")
-}, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_n7rfm")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_4b2w7")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_j1xlj")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_lmc0m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qpueh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h1v3h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_byp43")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8x8q1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_426yw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_77ybe")
 }],
 "loop": true,
 "name": &"attack",
@@ -147,10 +98,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
-size = Vector2(64, 64)
+size = Vector2(16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijx7g"]
-size = Vector2(32, 61)
+size = Vector2(16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2jxm"]
 size = Vector2(0, 0)
@@ -183,23 +134,21 @@ script = ExtResource("3_k2jxm")
 limbo_hsm = NodePath("../LimboHSM")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_77ke4")
 animation = &"attack"
-frame = 3
-frame_progress = 0.19577
+frame_progress = 0.744762
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1f0kj")
 
 [node name="RightWallRay" type="RayCast2D" parent="."]
-position = Vector2(42, 0)
+position = Vector2(10, 0)
 rotation = -1.5708
 target_position = Vector2(0, 19)
 collision_mask = 20
 
 [node name="LeftWallRay" type="RayCast2D" parent="."]
-position = Vector2(-42, 0)
+position = Vector2(-10, 0)
 rotation = 1.5708
 target_position = Vector2(0, 19)
 collision_mask = 20
@@ -252,8 +201,8 @@ one_shot = true
 one_shot = true
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(-1.07288e-06, -2.83122e-06)
-scale = Vector2(3.2, 3.2)
+position = Vector2(2, -6)
+rect = Rect2(-10, -10, 16, 32)
 
 [connection signal="body_entered" from="Atkbox" to="LimboHSM/PatrolState" method="_on_atkbox_body_entered"]
 [connection signal="area_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_area_entered"]

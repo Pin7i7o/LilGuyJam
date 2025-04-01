@@ -9,6 +9,8 @@ class_name Projectile
 
 @onready var hurtbox: Area2D = $Hurtbox
 
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
+
 var reached_max_height: bool = false
 var is_scouting: bool = false
 var locked_target_position: Vector2 = Vector2.ZERO
@@ -18,6 +20,9 @@ var target_distance_treshold: float = 5.0
 var projectile_speed: float
 var projectile_speed_multiplier: float
 var projectile_max_height: float
+
+func _ready() -> void:
+	sprite_2d.play("default")
 
 func _physics_process(_delta: float) -> void:
 	if !reached_max_height:

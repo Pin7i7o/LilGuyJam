@@ -1,23 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctkhac28bhpjg"]
+[gd_scene load_steps=3 format=3 uid="uid://ctkhac28bhpjg"]
 
 [ext_resource type="Script" uid="uid://8w4e864nxcbr" path="res://Scripts/well.gd" id="1_607ni"]
-[ext_resource type="Texture2D" uid="uid://dwfm38lvy1fex" path="res://Assets/Characters/well.png" id="2_607ni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jm3e"]
-size = Vector2(126, 63)
+size = Vector2(16, 8)
 
 [node name="Well" type="Node2D"]
 script = ExtResource("1_607ni")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(7.875, 7.4375)
-texture = ExtResource("2_607ni")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 28)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_7jm3e")
 debug_color = Color(0.249614, 0.622565, 0.372247, 0.42)
 

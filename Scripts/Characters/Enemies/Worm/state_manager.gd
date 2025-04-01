@@ -28,7 +28,7 @@ func _change_direction() -> void:
 	
 func _change_hitbox(is_attacking: bool) -> void:
 	if is_attacking:
-		hitbox.shape.set_size(Vector2(32, 61))
+		hitbox.shape.set_size(Vector2(16, 32))
 	else:
 		hitbox.shape.set_size(Vector2.ZERO)
 		hitbox.position.y = 0.0

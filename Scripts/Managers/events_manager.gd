@@ -26,4 +26,4 @@ func decrease_lives() -> void:
 
 func die() -> void:
 	get_tree().paused = true
-	SceneManager.transisiton_scene("death_game_over")
+	SceneManager.transisiton_scene("death_game_over", false)

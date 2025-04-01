@@ -9,6 +9,7 @@ func _update(_delta: float) -> void:
 		dispatch("&toGround")
 	
 	if agent.is_on_floor():
+		agent.previous_safe_position = agent.global_position
 		if blackboard.get_var(BBNames.jump_input) && current_jump == 0:
 			_jump()
 	else:

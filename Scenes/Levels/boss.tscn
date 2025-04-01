@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://gh1qill77tcx" path="res://Scenes/UI/game_ui_screen.tscn" id="4_q0q6k"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_10ujk"]
-load_path = "res://.godot/imported/test_tileset.png-de12e2b83a37c5ef0f09942f83334b62.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0q6k"]
 texture = SubResource("CompressedTexture2D_10ujk")
