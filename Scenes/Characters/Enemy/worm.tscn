@@ -165,7 +165,7 @@ limbo_hsm = NodePath("../LimboHSM")
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_77ke4")
 animation = &"death"
-frame_progress = 0.949566
+frame_progress = 0.852379
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1f0kj")

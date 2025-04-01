@@ -11,6 +11,8 @@ class_name Projectile
 
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
+@onready var explosion_particles: GPUParticles2D = $GPUParticles2D
+
 var reached_max_height: bool = false
 var is_scouting: bool = false
 var locked_target_position: Vector2 = Vector2.ZERO
@@ -50,8 +52,13 @@ func _reached_max_height() -> void:
 func _reached_target_position() -> void:
 	reached_target_position = true
 	hurtbox.monitoring = true
-	lifetime.start(0.2)
-	
+	_spawn_explosion()
+
+func _spawn_explosion() -> void:
+	sprite_2d.visible = false
+	explosion_particles.emitting = true
+	lifetime.start(0.5)
+
 func _on_lifetime_timeout() -> void:
 	queue_free()
 
@@ -75,4 +82,3 @@ func _on_atkbox_body_entered(body: Node2D) -> void:
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body._die()
-	queue_free()
