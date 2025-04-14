@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://0pggaavhrlae"]
+[gd_scene load_steps=5 format=3 uid="uid://0pggaavhrlae"]
 
 [ext_resource type="FontFile" uid="uid://rgr7odjps317" path="res://Assets/Fonts/Bytesized-Regular.ttf" id="1_i2xx2"]
 [ext_resource type="Script" uid="uid://cbst4qotem3oa" path="res://Scripts/UI/main_menu.gd" id="1_o14dv"]
+[ext_resource type="PackedScene" uid="uid://jlbln44cripp" path="res://Scenes/Audio.tscn" id="3_u7lva"]
+[ext_resource type="AudioStream" uid="uid://d2vrshx62g8wg" path="res://Assets/Audio/Music/main_menu.ogg" id="4_mrfpk"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -28,7 +30,22 @@ offset_bottom = 324.0
 theme_override_fonts/normal_font = ExtResource("1_i2xx2")
 theme_override_font_sizes/normal_font_size = 82
 bbcode_enabled = true
-text = "[color=black]d	u	a[/color][color=purple]	l	[/color][color=white]i	t	y[/color]"
+text = "[color=black]c	r	y[/color][color=purple]	p	[/color][color=white]t	i	d[/color]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 288.0
+offset_right = 1153.0
+offset_bottom = 391.0
+theme_override_fonts/normal_font = ExtResource("1_i2xx2")
+theme_override_font_sizes/normal_font_size = 82
+bbcode_enabled = true
+text = "[color=black]TAKE[/color][color=white] OVER[/color]"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -47,3 +64,8 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Audio" parent="." instance=ExtResource("3_u7lva")]
+stream = ExtResource("4_mrfpk")
+volume_db = -40.0
+autoplay = true

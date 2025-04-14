@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bihfnv62ojgf8"]
+[gd_scene load_steps=6 format=3 uid="uid://bihfnv62ojgf8"]
 
 [ext_resource type="Script" uid="uid://ca086vi8s620x" path="res://Scripts/Weapons/base_weapon.gd" id="1_cxo3g"]
 [ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="2_iwobt"]
 [ext_resource type="Texture2D" uid="uid://dt1a7y6cmf3y5" path="res://Assets/Characters/Weapons/default.png" id="3_iwobt"]
+[ext_resource type="PackedScene" uid="uid://jlbln44cripp" path="res://Scenes/Audio.tscn" id="4_hkqi2"]
+[ext_resource type="AudioStream" uid="uid://cyrbk8iedi3nu" path="res://Assets/Audio/Sfx/fireball.wav" id="5_gvhx1"]
 
 [node name="BaseWeapon" type="Node2D"]
 script = ExtResource("1_cxo3g")
@@ -23,5 +25,9 @@ one_shot = true
 [node name="UpgradesLifetime" type="Timer" parent="Timers"]
 wait_time = 10.0
 one_shot = true
+
+[node name="Fireball" parent="." instance=ExtResource("4_hkqi2")]
+stream = ExtResource("5_gvhx1")
+volume_db = -40.0
 
 [connection signal="timeout" from="Timers/UpgradesLifetime" to="." method="_on_upgrades_lifetime_timeout"]

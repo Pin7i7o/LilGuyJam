@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://btcyt11a1fxe8"]
+[gd_scene load_steps=5 format=3 uid="uid://btcyt11a1fxe8"]
 
 [ext_resource type="FontFile" uid="uid://rgr7odjps317" path="res://Assets/Fonts/Bytesized-Regular.ttf" id="1_3u85f"]
 [ext_resource type="Script" uid="uid://bcxllbu85i34o" path="res://Scripts/UI/death_game_over.gd" id="1_kae60"]
+[ext_resource type="PackedScene" uid="uid://jlbln44cripp" path="res://Scenes/Audio.tscn" id="3_jwp6s"]
+[ext_resource type="AudioStream" uid="uid://bafjh5y7n2mcd" path="res://Assets/Audio/Sfx/game_over.wav" id="4_dk3dq"]
 
 [node name="DeathGameOver" type="Control"]
 layout_mode = 3
@@ -51,3 +53,8 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Audio" parent="." instance=ExtResource("3_jwp6s")]
+stream = ExtResource("4_dk3dq")
+volume_db = -40.0
+autoplay = true

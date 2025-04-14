@@ -5,6 +5,7 @@ class_name Hand
 @onready var scoutbox: Area2D = $Scoutbox
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sfx_slam: AudioStreamPlayer2D = $Sfx
 
 enum states {
 	SCOUTING,
@@ -67,6 +68,7 @@ func _change_hand_sprite() -> void:
 			sprite_2d.texture = slam_downward_sprite
 
 func _on_slam_impact() -> void:
+	sfx_slam.play()
 	state = states.CENTERING
 	collision_shape_2d.set_deferred("disabled", true)
 	_change_hand_sprite()

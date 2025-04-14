@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://b5ntutnuc6pin"]
+[gd_scene load_steps=11 format=4 uid="uid://b5ntutnuc6pin"]
 
 [ext_resource type="PackedScene" uid="uid://det88ts0af6a6" path="res://Scenes/Characters/player.tscn" id="1_k5f4k"]
 [ext_resource type="TileSet" uid="uid://clq310b34bj1d" path="res://Resources/Tilesets/tileset.tres" id="1_lkqqh"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://gh1qill77tcx" path="res://Scenes/UI/game_ui_screen.tscn" id="5_tq1so"]
 [ext_resource type="PackedScene" uid="uid://b10vo8bj0iuhs" path="res://Scenes/Characters/Enemy/turret.tscn" id="6_lhx7y"]
 [ext_resource type="PackedScene" uid="uid://ch4faolj8jq8a" path="res://Scenes/Characters/Enemy/worm.tscn" id="7_i5435"]
+[ext_resource type="PackedScene" uid="uid://jlbln44cripp" path="res://Scenes/Audio.tscn" id="8_jbixu"]
+[ext_resource type="AudioStream" uid="uid://bkkegmmlnrngb" path="res://Assets/Audio/Music/One Man Symphony - After The Disaster (Free) - 02 Night Time Scavenge I (Loops).mp3" id="9_rxcld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhx7y"]
 size = Vector2(7691.5, 22)
@@ -159,5 +161,12 @@ position = Vector2(5480, 232)
 
 [node name="Turret17" parent="LevelTurrets" instance=ExtResource("6_lhx7y")]
 position = Vector2(5032, 200)
+
+[node name="Audio" parent="." instance=ExtResource("8_jbixu")]
+stream = ExtResource("9_rxcld")
+volume_db = -30.0
+autoplay = true
+max_distance = 100000.0
+attenuation = 0.101531
 
 [connection signal="body_entered" from="Deathzone" to="Deathzone" method="_on_body_entered"]

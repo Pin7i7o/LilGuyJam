@@ -1,6 +1,5 @@
-[gd_scene load_steps=28 format=3 uid="uid://b10vo8bj0iuhs"]
+[gd_scene load_steps=30 format=3 uid="uid://b10vo8bj0iuhs"]
 
-[ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="1_1lxv3"]
 [ext_resource type="Script" uid="uid://bvdihxl78jayu" path="res://Scripts/Characters/Enemies/Turret/enemy.gd" id="1_o8feu"]
 [ext_resource type="Resource" uid="uid://bfcrsjcif6bje" path="res://Resources/Enemy/Turret/turret_stats.tres" id="2_jq5oc"]
 [ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="3_4ynd2"]
@@ -15,6 +14,9 @@
 [ext_resource type="Script" uid="uid://cnhctntopwhlm" path="res://Scripts/Characters/Enemies/Turret/States/scout_state.gd" id="11_sfypk"]
 [ext_resource type="Script" uid="uid://cavkw28ft17sq" path="res://Scripts/Characters/Enemies/Turret/States/attack_state.gd" id="12_jq5oc"]
 [ext_resource type="Script" uid="uid://d20t4mwof0rvy" path="res://Scripts/Characters/Enemies/Turret/States/death_state.gd" id="14_diixa"]
+[ext_resource type="PackedScene" uid="uid://jlbln44cripp" path="res://Scenes/Audio.tscn" id="16_huqbs"]
+[ext_resource type="AudioStream" uid="uid://c55kn3tix4nub" path="res://Assets/Audio/Sfx/turret_shot.wav" id="17_jdl8i"]
+[ext_resource type="AudioStream" uid="uid://brmpt2t7yq6b5" path="res://Assets/Audio/Sfx/enemy_death.wav" id="18_jdl8i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x6ifs"]
 atlas = ExtResource("9_4ynd2")
@@ -109,21 +111,6 @@ upgrades_array = Array[ExtResource("4_diixa")]([ExtResource("5_ttsbe"), ExtResou
 marker_2d = NodePath("Marker2D")
 attack_cd = NodePath("Timers/AttackCD")
 
-[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -21.0
-offset_top = -61.0
-offset_right = 19.0
-offset_bottom = -38.0
-grow_horizontal = 0
-grow_vertical = 0
-script = ExtResource("1_1lxv3")
-limbo_hsm = NodePath("../LimboHSM")
-
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4jqpi")
 animation = &"death"
@@ -185,6 +172,19 @@ one_shot = true
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(2, 2)
 rect = Rect2(-10, -10, 16, 16)
+
+[node name="Sfx" type="Node" parent="."]
+
+[node name="Shoot" parent="Sfx" instance=ExtResource("16_huqbs")]
+stream = ExtResource("17_jdl8i")
+volume_db = -60.0
+pitch_scale = 0.36
+max_distance = 10000.0
+
+[node name="Death" parent="Sfx" instance=ExtResource("16_huqbs")]
+stream = ExtResource("18_jdl8i")
+volume_db = -35.0
+max_distance = 10000.0
 
 [connection signal="body_entered" from="Atkbox" to="LimboHSM/ScoutState" method="_on_atkbox_body_entered"]
 [connection signal="body_exited" from="Atkbox" to="LimboHSM/AttackState" method="_on_atkbox_body_exited"]

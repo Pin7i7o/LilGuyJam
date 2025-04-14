@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv5r7ihm7h5u4"]
+[gd_scene load_steps=5 format=3 uid="uid://dv5r7ihm7h5u4"]
 
 [ext_resource type="Script" uid="uid://dcj1pbt0546oe" path="res://Scripts/Weapons/Upgrades/upgrade.gd" id="1_5f4pk"]
+[ext_resource type="PackedScene" uid="uid://jlbln44cripp" path="res://Scenes/Audio.tscn" id="2_cqcm6"]
+[ext_resource type="AudioStream" uid="uid://dxpjodpjmxb2j" path="res://Assets/Audio/Sfx/upgrade.wav" id="3_dfrwy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5f4pk"]
 
@@ -13,4 +15,12 @@ region_rect = Rect2(211, 132, 9, 9)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5f4pk")
 
+[node name="Sfx" parent="." instance=ExtResource("2_cqcm6")]
+stream = ExtResource("3_dfrwy")
+volume_db = -10.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

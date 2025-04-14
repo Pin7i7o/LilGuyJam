@@ -5,6 +5,7 @@ extends BossStateManager
 func _enter() -> void:
 	super()
 	death_anim_timer.start(3.0)
+	agent.sfx_death.play()
 
 func _on_death_timer_timeout() -> void:
 	GameManager.finish_game()

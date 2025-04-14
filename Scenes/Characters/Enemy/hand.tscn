@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cct2vi1ajwkog"]
+[gd_scene load_steps=7 format=3 uid="uid://cct2vi1ajwkog"]
 
 [ext_resource type="Script" uid="uid://b8nej16288ge8" path="res://Scripts/Weapons/hand.gd" id="1_k1vmn"]
 [ext_resource type="Texture2D" uid="uid://d2c7jueqreua2" path="res://Assets/Characters/Enemies/Boss/hand_scout.png" id="2_k1vmn"]
+[ext_resource type="PackedScene" uid="uid://jlbln44cripp" path="res://Scenes/Audio.tscn" id="3_5vlno"]
+[ext_resource type="AudioStream" uid="uid://cmhtbq4io2jlp" path="res://Assets/Audio/Sfx/slam.mp3" id="4_v5cjl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cn8sc"]
 size = Vector2(25, 7)
@@ -30,6 +32,10 @@ shape = SubResource("RectangleShape2D_k1vmn")
 
 [node name="ScoutTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Sfx" parent="." instance=ExtResource("3_5vlno")]
+stream = ExtResource("4_v5cjl")
+volume_db = -20.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Scoutbox" to="." method="_on_scoutbox_body_entered"]

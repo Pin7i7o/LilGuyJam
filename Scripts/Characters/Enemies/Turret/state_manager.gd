@@ -22,6 +22,8 @@ func _is_on_cooldown() -> bool:
 
 func _shoot() -> void:
 	if !_is_on_cooldown():
+		agent.sfx_shoot.play()
+		
 		var projectile: Projectile = agent.projectile_scene.instantiate()
 		agent.projectile_parent.add_child(projectile)
 		

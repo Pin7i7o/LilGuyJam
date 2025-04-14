@@ -9,6 +9,8 @@ class_name EnemyTurret
 @export var attack_cd: Timer
 
 @onready var attackbox: CollisionShape2D = $Atkbox/CollisionShape2D
+@onready var sfx_death: AudioStreamPlayer2D = $Sfx/Death
+@onready var sfx_shoot: AudioStreamPlayer2D = $Sfx/Shoot
 
 var gravity: float = 12.0
 var hp: float

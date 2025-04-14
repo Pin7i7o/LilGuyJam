@@ -1,7 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://bifd0t63ikkcw"]
+[gd_scene load_steps=32 format=3 uid="uid://bifd0t63ikkcw"]
 
 [ext_resource type="Script" uid="uid://dkkhq5a6j7vhn" path="res://Scripts/Characters/Enemies/Cthulhu/enemy.gd" id="1_3y6l8"]
-[ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="1_w1jmu"]
 [ext_resource type="Script" uid="uid://b8ankegirkm1n" path="res://Scripts/Characters/Enemies/Cthulhu/boss_stats.gd" id="2_0v7qk"]
 [ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="3_jw5i8"]
 [ext_resource type="Texture2D" uid="uid://bvnupx88i36lq" path="res://Assets/Characters/Enemies/Boss/attack.png" id="5_8rejh"]
@@ -13,6 +12,9 @@
 [ext_resource type="Script" uid="uid://cjvlkbsf3c6gh" path="res://Scripts/Characters/Enemies/Cthulhu/States/worm_state.gd" id="9_587n5"]
 [ext_resource type="Script" uid="uid://c74o1h1ffn5o8" path="res://Scripts/Characters/Enemies/Cthulhu/States/turret_state.gd" id="10_bj4cs"]
 [ext_resource type="Script" uid="uid://rl3aa15tab72" path="res://Scripts/Characters/Enemies/Cthulhu/States/death_state.gd" id="11_bj4cs"]
+[ext_resource type="PackedScene" uid="uid://jlbln44cripp" path="res://Scenes/Audio.tscn" id="14_5umcr"]
+[ext_resource type="AudioStream" uid="uid://brmpt2t7yq6b5" path="res://Assets/Audio/Sfx/enemy_death.wav" id="15_wq8x4"]
+[ext_resource type="AudioStream" uid="uid://r0eqhjldflpy" path="res://Assets/Audio/Sfx/boss_scream.mp3" id="16_l2hlh"]
 
 [sub_resource type="Resource" id="Resource_ll348"]
 script = ExtResource("2_0v7qk")
@@ -146,21 +148,6 @@ hitbox = NodePath("Hitbox")
 worm_markers = NodePath("WormMarkers")
 turret_markers = NodePath("TurretMarkers")
 
-[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -236.0
-offset_right = 24.0
-offset_bottom = -213.0
-grow_horizontal = 0
-grow_vertical = 0
-script = ExtResource("1_w1jmu")
-limbo_hsm = NodePath("../LimboHSM")
-
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.39098e-06, 0)
 scale = Vector2(10, 10)
@@ -193,8 +180,9 @@ script = ExtResource("7_l2hne")
 animation_name = &"attack"
 metadata/_custom_type_script = "uid://0yctoe055mab"
 
-[node name="WormState" type="LimboState" parent="LimboHSM"]
+[node name="WormState" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("spawner_timer")]
 script = ExtResource("9_587n5")
+spawner_timer = NodePath("../../SpawnerTimer")
 animation_name = &"attack"
 metadata/_custom_type_script = "uid://0yctoe055mab"
 
@@ -244,5 +232,19 @@ position = Vector2(1048, 100)
 [node name="DeathTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="SpawnerTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sfx" type="Node" parent="."]
+
+[node name="Death" parent="Sfx" instance=ExtResource("14_5umcr")]
+stream = ExtResource("15_wq8x4")
+volume_db = -20.0
+
+[node name="Scream" parent="Sfx" instance=ExtResource("14_5umcr")]
+stream = ExtResource("16_l2hlh")
+volume_db = -20.0
+
 [connection signal="area_entered" from="Hitbox" to="LimboHSM/IdleState" method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="DeathTimer" to="LimboHSM/DeathState" method="_on_death_timer_timeout"]
+[connection signal="timeout" from="SpawnerTimer" to="LimboHSM/WormState" method="_on_spawner_timer_timeout"]

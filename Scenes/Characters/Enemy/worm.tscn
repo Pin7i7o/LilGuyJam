@@ -1,9 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://ch4faolj8jq8a"]
+[gd_scene load_steps=35 format=3 uid="uid://ch4faolj8jq8a"]
 
 [ext_resource type="Script" uid="uid://bfuce4lt4qwwd" path="res://Scripts/Characters/Enemies/Worm/enemy.gd" id="1_d38j1"]
 [ext_resource type="Resource" uid="uid://17rnn3snio4n" path="res://Resources/Enemy/Worm/worm_stats.tres" id="2_58qal"]
 [ext_resource type="Script" uid="uid://12hf5wvkav4h" path="res://Scripts/Characters/Enemies/Worm/States/patrol_state.gd" id="3_d38j1"]
-[ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="3_k2jxm"]
 [ext_resource type="Script" uid="uid://b3lp10235nxg5" path="res://Scripts/Weapons/Upgrades/base_bullet_strat.gd" id="3_ktquc"]
 [ext_resource type="Script" uid="uid://dyyq16x30jmdy" path="res://Scripts/Characters/Enemies/Worm/limbo_hsm.gd" id="3_kushx"]
 [ext_resource type="Resource" uid="uid://7nvr27dnpodu" path="res://Resources/Data/group_names.tres" id="3_q50qe"]
@@ -15,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://c35pf2xsxrdaa" path="res://Assets/Characters/Enemies/Worm/attack.png" id="9_tdutr"]
 [ext_resource type="Texture2D" uid="uid://ycwasikat6ah" path="res://Assets/Characters/death-sheet_minion.png" id="10_324xh"]
 [ext_resource type="Script" uid="uid://j5d3opj5nvga" path="res://Scripts/Characters/Enemies/Worm/States/death_state.gd" id="14_1vnx0"]
+[ext_resource type="PackedScene" uid="uid://jlbln44cripp" path="res://Scenes/Audio.tscn" id="16_prwhp"]
+[ext_resource type="AudioStream" uid="uid://cmolw8kxh0chr" path="res://Assets/Audio/Sfx/bite.wav" id="17_5vf43"]
+[ext_resource type="AudioStream" uid="uid://brmpt2t7yq6b5" path="res://Assets/Audio/Sfx/enemy_death.wav" id="18_n7rfm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_prwhp"]
 atlas = ExtResource("9_tdutr")
@@ -147,21 +149,6 @@ max_distance = 150.0
 hitbox = NodePath("Hitbox")
 upgrades_array = Array[ExtResource("3_ktquc")]([ExtResource("4_q50qe"), ExtResource("5_tdutr"), ExtResource("6_1vnx0"), null, null, null, null, null, null, null])
 
-[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -21.0
-offset_top = -61.0
-offset_right = 19.0
-offset_bottom = -38.0
-grow_horizontal = 0
-grow_vertical = 0
-script = ExtResource("3_k2jxm")
-limbo_hsm = NodePath("../LimboHSM")
-
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_77ke4")
 animation = &"death"
@@ -243,6 +230,21 @@ one_shot = true
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(2, -6)
 rect = Rect2(-10, -10, 16, 32)
+
+[node name="Sfx" type="Node" parent="."]
+
+[node name="Attack" parent="Sfx" instance=ExtResource("16_prwhp")]
+stream = ExtResource("17_5vf43")
+volume_db = -25.0
+pitch_scale = 0.36
+max_distance = 10000.0
+attenuation = 0.03983
+
+[node name="Death" parent="Sfx" instance=ExtResource("16_prwhp")]
+stream = ExtResource("18_n7rfm")
+volume_db = -35.0
+max_distance = 10000.0
+attenuation = 0.026278
 
 [connection signal="body_entered" from="Atkbox" to="LimboHSM/PatrolState" method="_on_atkbox_body_entered"]
 [connection signal="area_entered" from="Hitbox" to="LimboHSM/AttackState" method="_on_hitbox_area_entered"]

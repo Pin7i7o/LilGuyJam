@@ -8,6 +8,7 @@ class_name BaseWeapon
 @onready var upgrades_lifetime_timer: Timer = $Timers/UpgradesLifetime
 @onready var fire_rate_timer: Timer = $Timers/FireRate
 @onready var marker_2d: Marker2D = $Marker2D
+@onready var sfx_fireball: AudioStreamPlayer2D = $Fireball
 
 var bullet_scene: PackedScene = preload("res://Scenes/Weapons/bullet.tscn")
 var bullet_parent: Node2D
@@ -68,6 +69,8 @@ func spawn_bullet(_rotation_offset: float) -> void:
 	
 	for upgrade in upgrades:
 		upgrade.apply_bullet_upgrade(bullet)
+	
+	sfx_fireball.play()
 
 func _on_upgrades_lifetime_timeout() -> void:
 	if upgrades.is_empty():

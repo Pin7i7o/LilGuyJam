@@ -2,6 +2,10 @@ extends WormStateManager
 
 @export var idle_timer: Timer
 
+func _enter() -> void:
+	super()
+	agent.sfx_attack.play()
+
 func _update(_delta: float) -> void:
 	if agent.hp <= 0:
 		dispatch("&toDeath")

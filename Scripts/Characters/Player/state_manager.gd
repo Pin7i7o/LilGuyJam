@@ -24,6 +24,7 @@ func _apply_gravity(multiplier: bool) -> void:
 			agent.velocity.y += player_stats.DEFAULT_GRAVITY * player_stats.GRAVITY_MULTIPLIER
 
 func _jump() -> void:
+	agent.sfx_jump.play()
 	if current_jump < player_stats.MAX_JUMPS:
 		agent.velocity.y = -player_stats.JUMP
 		current_jump += 1

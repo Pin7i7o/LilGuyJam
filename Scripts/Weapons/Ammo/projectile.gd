@@ -12,6 +12,7 @@ class_name Projectile
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 @onready var explosion_particles: GPUParticles2D = $GPUParticles2D
+@onready var sfx_explosion: AudioStreamPlayer2D = $Explosion
 
 var reached_max_height: bool = false
 var is_scouting: bool = false
@@ -57,6 +58,7 @@ func _reached_target_position() -> void:
 func _spawn_explosion() -> void:
 	sprite_2d.visible = false
 	explosion_particles.emitting = true
+	sfx_explosion.play()
 	lifetime.start(0.5)
 
 func _on_lifetime_timeout() -> void:

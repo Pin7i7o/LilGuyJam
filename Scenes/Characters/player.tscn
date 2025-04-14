@@ -1,8 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://det88ts0af6a6"]
+[gd_scene load_steps=35 format=3 uid="uid://det88ts0af6a6"]
 
 [ext_resource type="Script" uid="uid://c0w3rsxb2iman" path="res://Scripts/Characters/Player/player.gd" id="1_dxpk4"]
 [ext_resource type="Resource" uid="uid://410r6fd0wyn4" path="res://Resources/Player/player_stats.tres" id="2_15c3i"]
-[ext_resource type="Script" uid="uid://c2j2c6qhm4h5w" path="res://Scripts/state_label.gd" id="3_yt1oc"]
 [ext_resource type="Texture2D" uid="uid://cfqwsupjg13ki" path="res://Assets/Characters/Player/demon_dmg.png" id="4_dxpk4"]
 [ext_resource type="Texture2D" uid="uid://odu36eacpvrp" path="res://Assets/Characters/Player/demon_idle.png" id="4_h1n2f"]
 [ext_resource type="Texture2D" uid="uid://c8pnjvlgmdj1v" path="res://Assets/Characters/Player/demon_walk.png" id="5_dxpk4"]
@@ -16,6 +15,9 @@
 [ext_resource type="Resource" uid="uid://d347e2j7fu016" path="res://Resources/Player/player_input.tres" id="12_rv8bj"]
 [ext_resource type="PackedScene" uid="uid://bihfnv62ojgf8" path="res://Scenes/Weapons/base_weapon.tscn" id="13_01b8d"]
 [ext_resource type="Script" uid="uid://cevxaenu2t6y7" path="res://Scripts/Weapons/weapon_stats.gd" id="14_xccyk"]
+[ext_resource type="PackedScene" uid="uid://jlbln44cripp" path="res://Scenes/Audio.tscn" id="17_hy8lp"]
+[ext_resource type="AudioStream" uid="uid://tcimhi5j0j1c" path="res://Assets/Audio/Sfx/jump.wav" id="18_uxymp"]
+[ext_resource type="AudioStream" uid="uid://ekvkck02b7ic" path="res://Assets/Audio/Sfx/hit.wav" id="19_fepmq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_15c3i"]
 atlas = ExtResource("4_dxpk4")
@@ -156,34 +158,21 @@ bullet_speed = 20.0
 fire_rate = 0.3
 metadata/_custom_type_script = "uid://cevxaenu2t6y7"
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "coyote_time_timer", "weapon")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "coyote_time_timer", "weapon", "sfx_dmg_taken", "sfx_jump")]
 collision_mask = 20
 script = ExtResource("1_dxpk4")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 stats = ExtResource("2_15c3i")
 coyote_time_timer = NodePath("Timers/CoyoteTimer")
 weapon = NodePath("BaseWeapon")
+sfx_dmg_taken = NodePath("Sfx/DamageTaken")
+sfx_jump = NodePath("Sfx/Jump")
 
 [node name="Timers" type="Node" parent="."]
 
 [node name="CoyoteTimer" type="Timer" parent="Timers"]
 wait_time = 0.15
 one_shot = true
-
-[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("limbo_hsm")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -21.0
-offset_top = -35.0
-offset_right = 19.0
-offset_bottom = -12.0
-grow_horizontal = 0
-grow_vertical = 0
-script = ExtResource("3_yt1oc")
-limbo_hsm = NodePath("../LimboHSM")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dd72n")
@@ -235,3 +224,17 @@ limbo_hsm = NodePath("../LimboHSM")
 scale = Vector2(0.7, 0.7)
 weapon_stats = SubResource("Resource_h1n2f")
 player_input = NodePath("../PlayerInput")
+
+[node name="Sfx" type="Node" parent="."]
+
+[node name="Jump" parent="Sfx" instance=ExtResource("17_hy8lp")]
+stream = ExtResource("18_uxymp")
+volume_db = -50.0
+max_distance = 10000.0
+attenuation = 0.00552428
+
+[node name="DamageTaken" parent="Sfx" instance=ExtResource("17_hy8lp")]
+stream = ExtResource("19_fepmq")
+volume_db = -30.0
+max_distance = 10000.0
+attenuation = 0.0441942

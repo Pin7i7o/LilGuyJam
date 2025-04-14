@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://odeeber1jbs2"]
+[gd_scene load_steps=5 format=3 uid="uid://odeeber1jbs2"]
 
 [ext_resource type="FontFile" uid="uid://rgr7odjps317" path="res://Assets/Fonts/Bytesized-Regular.ttf" id="1_7uyso"]
 [ext_resource type="Script" uid="uid://450vrtfkgxyy" path="res://Scripts/UI/end_game_over.gd" id="1_awnpm"]
+[ext_resource type="PackedScene" uid="uid://jlbln44cripp" path="res://Scenes/Audio.tscn" id="3_65ay8"]
+[ext_resource type="AudioStream" uid="uid://b2fgbsb0mfro" path="res://Assets/Audio/Music/end_game_over.ogg" id="4_b8kwf"]
 
 [node name="EndGameOver" type="Control"]
 layout_mode = 3
@@ -25,10 +27,14 @@ offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_top = 221.0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -110.0
 offset_right = 1152.0
-offset_bottom = 324.0
+offset_bottom = -7.0
+grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("1_7uyso")
 theme_override_font_sizes/normal_font_size = 82
 bbcode_enabled = true
@@ -40,9 +46,9 @@ vertical_alignment = 1
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_top = 349.0
+offset_top = 323.0
 offset_right = 1152.0
-offset_bottom = 399.0
+offset_bottom = 373.0
 theme_override_fonts/normal_font = ExtResource("1_7uyso")
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
@@ -52,16 +58,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_top = 424.0
-offset_right = 1152.0
-offset_bottom = 474.0
-theme_override_fonts/normal_font = ExtResource("1_7uyso")
-theme_override_font_sizes/normal_font_size = 40
-bbcode_enabled = true
-text = "[pulse freq=1.0 color=#ffffff40 ease=-2.0][color=purple] press [ENTER] to leave [/color][/pulse]"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Audio" parent="." instance=ExtResource("3_65ay8")]
+stream = ExtResource("4_b8kwf")
+volume_db = -40.0
+autoplay = true

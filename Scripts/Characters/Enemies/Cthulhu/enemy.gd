@@ -9,6 +9,9 @@ class_name EnemyBoss
 @export var worm_markers: Node
 @export var turret_markers: Node
 
+@onready var sfx_death: AudioStreamPlayer2D = $Sfx/Death
+@onready var sfx_scream: AudioStreamPlayer2D = $Sfx/Scream
+
 var hp: float
 var slam_phase_counter: float
 

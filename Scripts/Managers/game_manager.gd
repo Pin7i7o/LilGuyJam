@@ -5,7 +5,7 @@ var pause_menu_screen: PackedScene = preload("res://Scenes/UI/pause_menu.tscn")
 func start_game():
 	EventsManager.set_lives_count(3.0)
 	EventsManager.set_slam_counter(3.0)
-	SceneManager.transisiton_scene("level_1", true)
+	SceneManager.transisiton_scene("level_1", false)
 
 func back_to_title_screen():
 	SceneManager.transisiton_scene("main_menu", true)

@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://bb8sprfixm1de"]
+[gd_scene load_steps=11 format=4 uid="uid://bb8sprfixm1de"]
 
 [ext_resource type="Texture2D" uid="uid://c8rukwp8hf5d2" path="res://Assets/Tilesets/monochrome_tilemap_transparent_packed.png" id="1_q0q6k"]
 [ext_resource type="PackedScene" uid="uid://det88ts0af6a6" path="res://Scenes/Characters/player.tscn" id="2_10ujk"]
 [ext_resource type="PackedScene" uid="uid://bifd0t63ikkcw" path="res://Scenes/Characters/Enemy/cthulhu.tscn" id="3_10ujk"]
 [ext_resource type="PackedScene" uid="uid://gh1qill77tcx" path="res://Scenes/UI/game_ui_screen.tscn" id="4_q0q6k"]
+[ext_resource type="PackedScene" uid="uid://jlbln44cripp" path="res://Scenes/Audio.tscn" id="5_u5wos"]
+[ext_resource type="AudioStream" uid="uid://c7tv26nr23tpt" path="res://Assets/Audio/Music/boss_fight.ogg" id="6_66tkl"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_q0q6k"]
 tile_data = PackedInt32Array(0, 1048577, 10, 65537, 1245185, 16)
@@ -465,3 +467,8 @@ transform = Transform2D(2, 0, 0, 2, 0, 0)
 [node name="Worm" type="Node2D" parent="." groups=["worm_parent_node"]]
 
 [node name="Turret" type="Node2D" parent="." groups=["turret_parent_node"]]
+
+[node name="Audio" parent="." instance=ExtResource("5_u5wos")]
+stream = ExtResource("6_66tkl")
+volume_db = -40.0
+autoplay = true

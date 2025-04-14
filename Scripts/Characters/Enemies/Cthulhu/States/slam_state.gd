@@ -3,6 +3,7 @@ extends BossStateManager
 func _enter() -> void:
 	super()
 	_spawn_hand()
+	agent.sfx_scream.play()
 
 func _update(_delta: float) -> void:
 	if _check_slam_counter():

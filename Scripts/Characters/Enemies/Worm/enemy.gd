@@ -10,6 +10,8 @@ class_name EnemyWorm
 @export var hitbox: Area2D
 @export var upgrades_array: Array[BaseBulletStrategy]
 
+@onready var sfx_attack: AudioStreamPlayer2D = $Sfx/Attack
+@onready var sfx_death: AudioStreamPlayer2D = $Sfx/Death
 
 var has_bounds: bool = true
 var right_bound: Vector2 = Vector2.ZERO

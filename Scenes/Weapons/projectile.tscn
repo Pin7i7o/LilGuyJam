@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://byyxufsk4t0gd"]
+[gd_scene load_steps=16 format=3 uid="uid://byyxufsk4t0gd"]
 
 [ext_resource type="Script" uid="uid://b4i5jwdp6g1qx" path="res://Scripts/Weapons/Ammo/projectile.gd" id="1_u1pgf"]
 [ext_resource type="Texture2D" uid="uid://bamya8u66f28g" path="res://Assets/Characters/Weapons/Bullets/turret_projectile.png" id="2_u1pgf"]
 [ext_resource type="Texture2D" uid="uid://bfqht372g8ag3" path="res://Assets/Characters/Weapons/Bullets/explosion.png" id="3_hyri1"]
+[ext_resource type="PackedScene" uid="uid://jlbln44cripp" path="res://Scenes/Audio.tscn" id="4_x3eph"]
+[ext_resource type="AudioStream" uid="uid://cn4y5240twlkp" path="res://Assets/Audio/Sfx/explosion.wav" id="5_7drep"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1pgf"]
 atlas = ExtResource("2_u1pgf")
@@ -104,6 +106,10 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_x3eph")
+
+[node name="Explosion" parent="." instance=ExtResource("4_x3eph")]
+stream = ExtResource("5_7drep")
+volume_db = -40.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Atkbox" to="." method="_on_atkbox_body_entered"]
